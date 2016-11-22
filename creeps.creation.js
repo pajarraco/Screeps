@@ -18,8 +18,8 @@ var creepsCreation = {
         n = 1;
       }
       var newName = Game.spawns['House1'].createCreep(
-          [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ], undefined,
-          {role : 'harvester', source : n});
+          //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ], undefined,
+          [ WORK, CARRY, MOVE ], undefined, {role : 'harvester', source : n});
       // console.log('Spawning new harvester: ' + newName);
     }
 
