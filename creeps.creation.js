@@ -17,7 +17,8 @@ var creepsCreation = {
         n = 1;
       }
       //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ]
-      var newName = Game.spawns['House1'].createCreep([WORK, CARRY, MOVE], undefined, {role: 'harvester', source: n});
+      var newName = Game.spawns['House1'].createCreep(
+          [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: n});
       // console.log('Spawning new harvester: ' + newName);
     }
 
@@ -29,7 +30,8 @@ var creepsCreation = {
       if (upgraders.length % 2 == 0) {
         n = 1;
       }
-      var newName = Game.spawns['House1'].createCreep([WORK, CARRY, MOVE], undefined, {role: 'upgrader', source: n});
+      var newName = Game.spawns['House1'].createCreep(
+          [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'upgrader', source: n});
       // console.log('Spawning new upgrader: ' + newName);
     }
 
@@ -41,7 +43,8 @@ var creepsCreation = {
       if (builders.length % 2 == 0) {
         n = 1;
       }
-      var newName = Game.spawns['House1'].createCreep([WORK, CARRY, MOVE], undefined, {role: 'builder', source: n});
+      var newName = Game.spawns['House1'].createCreep(
+          [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'builder', source: n});
       // console.log('Spawning new builders: ' + newName);
     }
 
