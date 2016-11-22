@@ -24,7 +24,6 @@ module.exports.loop = function() {
 
     creepsCreation.run();
 
-
     for (var name in Game.creeps) {
         var creep = Game.creeps[name];
         if (creep.memory.role == 'harvester') {
