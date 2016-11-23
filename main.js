@@ -24,7 +24,7 @@ module.exports.loop = function() {
       }
   }*/
 
-  // creepsCreation.run();
+  creepsCreation.run();
 
   for (var name in Game.creeps) {
     var creep = Game.creeps[name];

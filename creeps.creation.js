@@ -11,7 +11,7 @@ var creepsCreation = {
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     // console.log('Harvesters: ' + (harvesters.length % 2));
 
-    if (harvesters.length < 5) {
+    if (harvesters.length < 2) {
       var n = 0;
       if (harvesters.length % 2 == 0) {
         n = 1;
@@ -24,7 +24,7 @@ var creepsCreation = {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     // console.log('Upgraders: ' + upgraders.length);
 
-    if (upgraders.length < 3) {
+    if (upgraders.length < 2) {
       var n = 0;
       if (upgraders.length % 2 == 0) {
         n = 1;
@@ -36,7 +36,7 @@ var creepsCreation = {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     // console.log('Upgraders: ' + upgraders.length);
 
-    if (builders.length < 3) {
+    if (builders.length < 2) {
       var n = 0;
       if (builders.length % 2 == 0) {
         n = 1;
@@ -54,6 +54,18 @@ var creepsCreation = {
     MOVE, MOVE], undefined, { role: 'soldier' });
         //console.log('Spawning new soldier: ' + newName);
     }*/
+
+    var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
+    // console.log('Upgraders: ' + upgraders.length);
+
+    if (mechanics.length < 1) {
+      var n = 0;
+      if (mechanics.length % 2 == 0) {
+        n = 1;
+      }
+      var newName = Game.spawns['House1'].createCreep([WORK, CARRY, MOVE], undefined, {role: 'mechanic', source: n});
+      // console.log('Spawning new builders: ' + newName);
+    }
   }
 };
 
