@@ -19,10 +19,18 @@ var roleMechanic = {
         }
       }
     } else {
-      var sources = creep.room.find(FIND_SOURCES);
-      var i = creep.memory.source;
-      if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[i]);
+      var containers = creep.pos.findClosestByRange(
+          FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
+      if (containers) {
+        if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(containers);
+        }
+      } else {
+        var sources = creep.room.find(FIND_SOURCES);
+        var i = creep.memory.source;
+        if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources[i]);
+        }
       }
     }
   }
