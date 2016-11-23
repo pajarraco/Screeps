@@ -11,7 +11,7 @@ var creepsCreation = {
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     // console.log('Harvesters: ' + (harvesters.length % 2));
 
-    if (harvesters.length < 2) {
+    if (harvesters.length < 3) {
       var n = 0;
       if (harvesters.length % 2 == 0) {
         n = 1;
@@ -58,7 +58,7 @@ var creepsCreation = {
     var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
     // console.log('Upgraders: ' + upgraders.length);
 
-    if (mechanics.length < 1) {
+    if (mechanics.length < 2) {
       var n = 0;
       if (mechanics.length % 2 == 0) {
         n = 1;
