@@ -20,10 +20,18 @@ var roleBuilder = {
         }
       }
     } else {
-      var sources = creep.room.find(FIND_SOURCES);
-      var i = creep.memory.source;
-      if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[i]);
+      var containers = creep.room.find(
+          FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
+      if (containers.length > 0 && targets.length > 0) {
+        if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(containers[0]);
+        }
+      } else {
+        var sources = creep.room.find(FIND_SOURCES);
+        var i = creep.memory.source;
+        if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources[i]);
+        }
       }
     }
   }
