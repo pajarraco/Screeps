@@ -15,6 +15,31 @@ var roleHarvester = {
     }
 
     if (creep.memory.transferring) {
+      var depositTargets = creep.room.find(FIND_STRUCTURES, {
+        filter: (s) => {
+          return (
+              (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN ||
+               s.structureType == STRUCTURE_TOWER) &&
+              s.energy < s.energyCapacity);
+        }
+      });
+      if (depositTargets.length > 0) {
+        if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(depositTargets[0]);
+        }
+      } else {
+        var depositContainers = creep.room.find(
+            FIND_STRUCTURES,
+            {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+        if (depositContainers.length > 0) {
+          if (creep.transfer(depositContainers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(depositContainers[0]);
+          }
+        } else {
+          roleBuilder.run(creep);
+        }
+      }
+    } else {
       var targets = creep.room.find(FIND_STRUCTURES, {
         filter: (s) => {
           return (
@@ -23,26 +48,9 @@ var roleHarvester = {
               s.energy < s.energyCapacity);
         }
       });
-      if (targets.length > 0) {
-        if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(targets[0]);
-        }
-      } else {
-        var containers = creep.room.find(
-            FIND_STRUCTURES,
-            {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.storeCapacity});
-        if (containers.length > 0) {
-          if (creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(containers[0]);
-          }
-        } else {
-          roleBuilder.run(creep);
-        }
-      }
-    } else {
       var containers = creep.room.find(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
-      if (containers.length > 0) {
+      if (containers.length > 0 && targets.length > 0) {
         if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(containers[0]);
         }
