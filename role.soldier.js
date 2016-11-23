@@ -1,8 +1,8 @@
 var roleSoldier = {
-  run : function(creep) {
+  run: function(creep) {
 
     var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-    console.log('soldier creep: ' + creep + " hostile " + closestHostile);
+    console.log('soldier creep: ' + creep + ' hostile ' + closestHostile);
     if (closestHostile) {
       creep.moveTo(closestHostile);
       Game.spawns['Spawn1'].room.controller.activateSafeMode();
