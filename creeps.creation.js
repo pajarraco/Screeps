@@ -9,7 +9,7 @@ var creepsCreation = {
     }
 
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    console.log('Harvesters: ' + (harvesters.length % 2));
+    // console.log('Harvesters: ' + (harvesters.length % 2));
 
     if (harvesters.length < 5) {
       var n = 0;
