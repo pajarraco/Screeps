@@ -38,7 +38,7 @@ var creepsCreation = {
 var createCreep = function(name, role) {
   // calculate source
   var n = 0;
-  if (Game.creeps.length % 2 == 0) {
+  if (_.size(Game.creeps) % 2 == 0) {
     n = 1;
   }
   //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ]
