@@ -12,6 +12,7 @@ var creepsCreation = {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
+    var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     // creeps selection
     if (harvesters.length < 3) {
       createCreep(name, 'harvester');
@@ -21,6 +22,9 @@ var creepsCreation = {
       createCreep(name, 'builder');
     } else if (mechanics.length < 2) {
       createCreep(name, 'mechanic');
+    } else if (miners.length < 1) {
+      var newName = Game.spawns['House1'].createCreep(
+          [WORK, WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: 0});
     } else {
       /*var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role ==
       'soldier');
