@@ -7,11 +7,12 @@ var roleMiner = {
         creep.moveTo(sources[i]);
       }
     } else {
-      var containers = creep.pos.findClosestByRange(
-          FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
-      if (containers.length > 0) {
-        if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(containers[0]);
+      var container = creep.pos.findClosestByRange(
+          FIND_STRUCTURES,
+          {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+      if (container) {
+        if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(container);
         }
       }
     }
