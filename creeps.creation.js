@@ -23,7 +23,10 @@ var creepsCreation = {
     } else if (mechanics.length < 2) {
       createCreep(name, 'mechanic');
     } else if (miners.length < 2) {
-      var n = miners.length;
+      var n = 0;
+      if (miners[0].memory.source == 0) {
+        n = 1;
+      }
       var newName = Game.spawns['House1'].createCreep(
           [WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
     } else {
