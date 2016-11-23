@@ -2,6 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleSoldier = require('role.soldier');
+var roleMechanic = require('role.mechanic');
 var creepsCreation = require('creeps.creation');
 
 module.exports.loop = function() {
@@ -23,7 +24,7 @@ module.exports.loop = function() {
       }
   }*/
 
-  //creepsCreation.run();
+  // creepsCreation.run();
 
   for (var name in Game.creeps) {
     var creep = Game.creeps[name];
@@ -39,5 +40,8 @@ module.exports.loop = function() {
     /* if (creep.memory.role == 'soldier') {
          roleSoldier.run(creep);
      }*/
+    if (creep.memory.role == 'mechanic') {
+      roleMechanic.run(creep);
+    }
   }
 }
