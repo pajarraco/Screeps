@@ -22,9 +22,10 @@ var creepsCreation = {
       createCreep(name, 'builder');
     } else if (mechanics.length < 2) {
       createCreep(name, 'mechanic');
-    } else if (miners.length < 1) {
+    } else if (miners.length < 2) {
+      var n = miners.length;
       var newName = Game.spawns['House1'].createCreep(
-          [WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: 0});
+          [WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
     } else {
       /*var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role ==
       'soldier');
