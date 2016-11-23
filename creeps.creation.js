@@ -29,7 +29,7 @@ var creepsCreation = {
           n = 1;
         }
       }
-      var newName = Game.spawns['House1'].createCreep(
+      var newName = Game.spawns['Spawn1'].createCreep(
           [WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
     } else {
       /*var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role ==
@@ -37,7 +37,7 @@ var creepsCreation = {
       //console.log('soldiers: ' + soldiers.length);
 
       if (soldiers.length < 2) {
-          var newName = Game.spawns['House1'].createCreep([TOUGH, ATTACK, ATTACK,
+          var newName = Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK,
       MOVE, MOVE], undefined, { role: 'soldier' });
           //console.log('Spawning new soldier: ' + newName);
       }*/
