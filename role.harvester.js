@@ -28,16 +28,16 @@ var roleHarvester = {
           creep.moveTo(depositTargets[0]);
         }
       } else {
-        var depositContainers = creep.room.find(
-            FIND_STRUCTURES,
-            {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.storeCapacity});
-        if (depositContainers.length > 0) {
-          if (creep.transfer(depositContainers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(depositContainers[0]);
-          }
-        } else {
-          roleBuilder.run(creep);
-        }
+        //  var depositContainers = creep.room.find(
+        //      FIND_STRUCTURES,
+        //      {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+        //  if (depositContainers.length > 0) {
+        //    if (creep.transfer(depositContainers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        //      creep.moveTo(depositContainers[0]);
+        //    }
+        //  } else {
+        roleBuilder.run(creep);
+        //  }
       }
     } else {
       var targets = creep.room.find(FIND_STRUCTURES, {
