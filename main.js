@@ -44,8 +44,8 @@ module.exports.loop = function() {
     if (creep.memory.role == 'miner') {
       roleMiner.run(creep);
     }
-    /* if (creep.memory.role == 'soldier') {
-         roleSoldier.run(creep);
-     }*/
+    if (creep.memory.role == 'soldier') {
+      roleSoldier.run(creep);
+    }
   }
 }

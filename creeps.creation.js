@@ -14,11 +14,11 @@ var creepsCreation = {
     var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
     var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     // creeps selection
-    if (harvesters.length < 3) {
+    if (harvesters.length < 5) {
       createCreep(name, 'harvester');
-    } else if (upgraders.length < 2) {
+    } else if (upgraders.length < 5) {
       createCreep(name, 'upgrader');
-    } else if (builders.length < 3) {
+    } else if (builders.length < 5) {
       createCreep(name, 'builder');
     } else if (mechanics.length < 2) {
       createCreep(name, 'mechanic');
@@ -32,15 +32,12 @@ var creepsCreation = {
       var newName = Game.spawns['Spawn1'].createCreep(
           [WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
     } else {
-      /*var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role ==
-      'soldier');
-      //console.log('soldiers: ' + soldiers.length);
-
-      if (soldiers.length < 2) {
-          var newName = Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK,
-      MOVE, MOVE], undefined, { role: 'soldier' });
-          //console.log('Spawning new soldier: ' + newName);
-      }*/
+      var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+      if (soldiers.length < 5) {
+        var newName =
+            Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
+        // console.log('Spawning new soldier: ' + newName);
+      }
     }
   }
 };

@@ -4,9 +4,10 @@ var roleSoldier = {
     var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
     console.log('soldier creep: ' + creep + ' hostile ' + closestHostile);
     if (closestHostile) {
-      creep.moveTo(closestHostile);
       Game.spawns['Spawn1'].room.controller.activateSafeMode();
-      creep.attack(closestHostile);
+      if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(closestHostile);
+      }
     } else {
       var move = creep.pos.lookFor(FIND_HOSTILE_CREEPS);
       console.log('move ' + move);
