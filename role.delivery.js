@@ -7,7 +7,7 @@ var getPickupTarget = function(creep) {
   var pickupTarget = containers[0];
   containers.forEach(function(container) {
     if (container.store[RESOURCE_ENERGY] > pickupTarget.store[RESOURCE_ENERGY]) {
-      pickupTarget = container;
+      pickupTarget = index;
     }
   });
   return pickupTarget;
@@ -19,7 +19,7 @@ var getDeliveryTarget = function(creep) {
   containers.forEach(function(container, index) {
     console.log(index);
     if (container.store[RESOURCE_ENERGY] < deliveryTarget.store[RESOURCE_ENERGY]) {
-      deliveryTarget = container;
+      deliveryTarget = index;
     }
   });
   return deliveryTarget;
@@ -30,25 +30,21 @@ var roleDelivery = {
     if (creep.memory.delivering && creep.carry.energy == 0) {
       creep.memory.delivering = false;
       creep.say('getting');
-      var pickupTarget = getPickupTarget(creep);
+      creep.memory.pickupTarget = getPickupTarget(creep);
     }
     if (!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
       creep.memory.delivering = true;
       creep.say('delivering');
-      var deliveryTarget = getDeliveryTarget(creep);
+      creep.memory.deliveryTarget = getDeliveryTarget(creep);
     }
 
     if (creep.memory.delivering) {
-      if (!deliveryTarget) {
-        var deliveryTarget = getDeliveryTarget(creep);
-      }
+      var deliveryTarget = getContainers(creep)[creep.memory.deliveryTarget];
       if (creep.transfer(deliveryTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(deliveryTarget);
       }
     } else {
-      if (!pickupTarget) {
-        var pickupTarget = getPickupTarget(creep);
-      }
+      var pickupTarget = getContainers(creep)[creep.memory.pickupTarget];
       if (creep.withdraw(pickupTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(pickupTarget);
       }
