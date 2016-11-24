@@ -15,11 +15,11 @@ var creepsCreation = {
     var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     var deliveries = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
     // creeps selection
-    if (harvesters.length < 5) {
+    if (harvesters.length < 3) {
       createCreep(name, 'harvester');
-    } else if (upgraders.length < 5) {
+    } else if (upgraders.length < 3) {
       createCreep(name, 'upgrader');
-    } else if (builders.length < 5) {
+    } else if (builders.length < 3) {
       createCreep(name, 'builder');
     } else if (mechanics.length < 5) {
       createCreep(name, 'mechanic');
