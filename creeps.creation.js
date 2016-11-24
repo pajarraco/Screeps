@@ -44,9 +44,9 @@ var creepsCreation = {
 
 var createCreep = function(name, role) {
   // calculate source
-  var n = 0;
-  if (_.size(Game.creeps) % 2 == 0) {
-    n = 1;
+  var n = 0, creepsSize = _.map(Game.creeps);
+  if (creepsSize.length > 0) {
+    n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
   }
   //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ]
   var newName = Game.spawns['Spawn1'].createCreep([WORK, CARRY, MOVE], undefined, {role: role, source: n});
