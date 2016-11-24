@@ -36,10 +36,10 @@ var creepsCreation = {
       createCreep(name, 'mechanic');
     } else {
       var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-      if (soldiers.length < 5) {
-        //  var newName =
-        //    Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
-        // console.log('Spawning new soldier: ' + newName);
+      if (soldiers.length < 3) {
+        var newName =
+            Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
+        console.log('Spawning new soldier: ' + newName);
       }
     }
   }
