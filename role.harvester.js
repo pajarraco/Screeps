@@ -40,17 +40,17 @@ var roleHarvester = {
         //  }
       }
     } else {
-      var targets = creep.room.find(FIND_STRUCTURES, {
+      /*var targets = creep.room.find(FIND_STRUCTURES, {
         filter: (s) => {
           return (
               (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN ||
                s.structureType == STRUCTURE_TOWER) &&
               s.energy < s.energyCapacity);
         }
-      });
+      });*/
       var containers = creep.room.find(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
-      if (containers.length > 0 && targets.length > 0) {
+      if (containers.length > 0) {
         if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(containers[0]);
         }
