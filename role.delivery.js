@@ -30,21 +30,24 @@ var roleDelivery = {
     if (creep.memory.delivering && creep.carry.energy == 0) {
       creep.memory.delivering = false;
       creep.say('getting');
-      var deliveryTarget = getPickupTarget(creep);
+      var pickupTarget = getPickupTarget(creep);
     }
     if (!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
       creep.memory.delivering = true;
       creep.say('delivering');
-      var pickupTarget = getDeliveryTarget(creep);
+      var deliveryTarget = getDeliveryTarget(creep);
     }
 
     if (creep.memory.delivering) {
+      if (!deliveryTarget) {
+        var deliveryTarget = getDeliveryTarget(creep);
+      }
       if (creep.transfer(deliveryTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(deliveryTarget);
       }
     } else {
       if (!pickupTarget) {
-        var pickupTarget = getDeliveryTarget(creep);
+        var pickupTarget = getPickupTarget(creep);
       }
       if (creep.withdraw(pickupTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(pickupTarget);
