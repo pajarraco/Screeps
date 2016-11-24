@@ -16,7 +16,7 @@ var creepsCreation = {
     // creeps selection
     if (harvesters.length < 5) {
       createCreep(name, 'harvester');
-    } else if (upgraders.length < 5) {
+    } else if (upgraders.length < 2) {
       createCreep(name, 'upgrader');
     } else if (builders.length < 5) {
       createCreep(name, 'builder');
