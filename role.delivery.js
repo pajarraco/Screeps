@@ -5,24 +5,25 @@ var getContainers = function(creep) {
 var getPickupTarget = function(creep) {
   var containers = getContainers(creep);
   var pickupTarget = containers[0];
+  var _index = 0;
   containers.forEach(function(container, index) {
     if (container.store[RESOURCE_ENERGY] > pickupTarget.store[RESOURCE_ENERGY]) {
-      pickupTarget = index;
+      _index = index;
     }
   });
-  return pickupTarget;
+  return _index;
 };
 
 var getDeliveryTarget = function(creep) {
   var containers = getContainers(creep);
   var deliveryTarget = containers[0];
+  var _index = 0
   containers.forEach(function(container, index) {
-    // console.log(index);
     if (container.store[RESOURCE_ENERGY] < deliveryTarget.store[RESOURCE_ENERGY]) {
-      deliveryTarget = index;
+      _index = index;
     }
   });
-  return deliveryTarget;
+  return _index;
 };
 
 var roleDelivery = {
