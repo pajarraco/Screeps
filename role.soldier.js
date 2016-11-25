@@ -6,13 +6,13 @@ var findEmptyRampart = function(creep) {
   ramparts.forEach(function(rampart) {
     var emptyRampart = true;
     soldiers.forEach(function(soldier) {
-      console.log('soldier', soldier.pos);
+      // console.log('soldier', soldier.pos);
       if (rampart.pos.x == soldier.pos.x && rampart.pos.y == soldier.pos.y) {
-        console.log('pos ', rampart.pos, soldier.pos);
+        // console.log('pos ', rampart.pos, soldier.pos);
         emptyRampart = false;
       }
     });
-    console.log('empty rampart ', rampart.pos, emptyRampart);
+    // console.log('empty rampart ', rampart.pos, emptyRampart);
     if (emptyRampart) {
       returnRampart = rampart;
       return false;
@@ -29,14 +29,12 @@ var roleSoldier = {
     var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
     // console.log('soldier creep: ' + creep + ' hostile ' + closestHostile);
     if (closestHostile) {
-      Game.spawns['Spawn1'].room.controller.activateSafeMode();
       if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
         creep.moveTo(closestHostile);
       }
     } else {
       rampart = findEmptyRampart(creep);
-
-      console.log('rampart: ', rampart);
+      // console.log('rampart: ', rampart);
       if (rampart) {
         creep.moveTo(rampart);
       }
