@@ -38,11 +38,13 @@ var roleDelivery = {
       creep.memory.delivering = false;
       creep.say('getting');
       creep.memory.pickupTarget = getPickupTarget(creep);
+      delete creep.memory.deliveryTarget;
     }
     if (!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
       creep.memory.delivering = true;
       creep.say('delivering');
       creep.memory.deliveryTarget = getDeliveryTarget(creep);
+      delete creep.memory.pickupTarget;
     }
 
     if (creep.memory.delivering) {
