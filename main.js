@@ -11,6 +11,7 @@ var towerActivity = require('tower.activity');
 module.exports.loop = function() {
 
   creepsCreation.run();
+
   towerActivity.run();
 
   for (var name in Game.creeps) {
