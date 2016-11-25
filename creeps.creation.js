@@ -52,7 +52,7 @@ var createCreep = function(name, role) {
     n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
   }
   //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ]
-  var newName = Game.spawns['Spawn1'].createCreep([WORK, CARRY, MOVE], undefined, {role: role, source: n});
+  var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
   // console.log('Spawning new harvester: ' + newName);
 };
 

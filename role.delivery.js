@@ -51,6 +51,9 @@ var roleDelivery = {
         creep.moveTo(deliveryTarget);
       }
     } else {
+      if (!creep.memory.pickupTarget) {
+        creep.memory.pickupTarget = 0;
+      }
       var pickupTarget = getContainers(creep)[creep.memory.pickupTarget];
       if (creep.withdraw(pickupTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(pickupTarget);
