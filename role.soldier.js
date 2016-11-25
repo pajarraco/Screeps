@@ -1,5 +1,6 @@
 /** @param {Creep} creep **/
 var findEmptyRampart = function(creep) {
+  var returnRampart;
   var soldiers = _.filter(Game.creeps, (c) => c.memory.role == 'soldier' && c.id != creep.id);
   var ramparts = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_RAMPART});
   ramparts.forEach(function(rampart) {
@@ -13,9 +14,11 @@ var findEmptyRampart = function(creep) {
     });
     console.log('empty rampart ', rampart.pos, emptyRampart);
     if (emptyRampart) {
-      return rampart;
+      returnRampart = rampart;
+      return false;
     }
   });
+  return returnRampart;
 };
 
 var roleSoldier = {
@@ -32,6 +35,8 @@ var roleSoldier = {
       }
     } else {
       rampart = findEmptyRampart(creep);
+
+      console.log('rampart: ', rampart);
       if (rampart) {
         creep.moveTo(rampart);
       }
