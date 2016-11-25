@@ -11,9 +11,11 @@ var roleSoldier = {
         creep.moveTo(closestHostile);
       }
     } else {
-      var move = creep.pos.lookFor(FIND_HOSTILE_CREEPS);
-      console.log('move ' + move);
-      // creep.moveTo(30,45);
+      var containers =
+          creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_RAMPART});
+      if (containers) {
+        creep.moveTo(containers);
+      }
     }
   }
 };
