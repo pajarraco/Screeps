@@ -56,10 +56,9 @@ var roleDelivery = {
       }
       var pickupTarget = getContainers(creep)[creep.memory.pickupTarget];
       var withdrawEnergy = creep.withdraw(pickupTarget, RESOURCE_ENERGY);
-      if (withdrawEnergy) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(pickupTarget);
-        }
-      else if (withdrawEnergy == ERR_NOT_ENOUGH_RESOURCES) {
+      if (withdrawEnergy == ERR_NOT_IN_RANGE) {
+        creep.moveTo(pickupTarget);
+      } else if (withdrawEnergy == ERR_NOT_ENOUGH_RESOURCES) {
         delete creep.memory.pickupTarget;
       }
     }
