@@ -38,13 +38,11 @@ var roleDelivery = {
       creep.memory.delivering = false;
       creep.say('getting');
       creep.memory.pickupTarget = getPickupTarget(creep);
-      delete creep.memory.deliveryTarget;
     }
     if (!creep.memory.delivering && creep.carry.energy == creep.carryCapacity) {
       creep.memory.delivering = true;
       creep.say('delivering');
       creep.memory.deliveryTarget = getDeliveryTarget(creep);
-      delete creep.memory.pickupTarget;
     }
 
     if (creep.memory.delivering) {
@@ -57,8 +55,12 @@ var roleDelivery = {
         creep.memory.pickupTarget = 0;
       }
       var pickupTarget = getContainers(creep)[creep.memory.pickupTarget];
-      if (creep.withdraw(pickupTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(pickupTarget);
+      var withdrawEnergy = creep.withdraw(pickupTarget, RESOURCE_ENERGY);
+      if (withdrawEnergy) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(pickupTarget);
+        }
+      else if (withdrawEnergy == ERR_NOT_ENOUGH_RESOURCES) {
+        delete creep.memory.pickupTarget;
       }
     }
   }
