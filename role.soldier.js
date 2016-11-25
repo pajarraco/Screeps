@@ -1,3 +1,23 @@
+/** @param {Creep} creep **/
+var findEmptyRampart = function(creep) {
+  var soldiers = _.filter(Game.creeps, (c) => c.memory.role == 'soldier' && c.id != creep.id);
+  var ramparts = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_RAMPART});
+  ramparts.forEach(function(rampart) {
+    var emptyRampart = true;
+    soldiers.forEach(function(soldier) {
+      console.log('soldier', soldier.pos);
+      if (rampart.pos.x == soldier.pos.x && rampart.pos.y == soldier.pos.y) {
+        console.log('pos ', rampart.pos, soldier.pos);
+        emptyRampart = false;
+      }
+    });
+    console.log('empty rampart ', rampart.pos, emptyRampart);
+    if (emptyRampart) {
+      return rampart;
+    }
+  });
+};
+
 var roleSoldier = {
 
   /** @param {Creep} creep **/
@@ -11,9 +31,7 @@ var roleSoldier = {
         creep.moveTo(closestHostile);
       }
     } else {
-      var rampart =
-          creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_RAMPART});
-      console.log('rampart', rampart);
+      rampart = findEmptyRampart(creep);
       if (rampart) {
         creep.moveTo(rampart);
       }
