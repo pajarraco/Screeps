@@ -1,3 +1,5 @@
+
+/** @param {Creep} creep **/
 var getContainers = function(creep) {
   return creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER});
 };
@@ -14,6 +16,7 @@ var getPickupTarget = function(creep) {
   return _index;
 };
 
+/** @param {Creep} creep **/
 var getDeliveryTarget = function(creep) {
   var containers = getContainers(creep);
   var deliveryTarget = containers[0];
@@ -27,7 +30,10 @@ var getDeliveryTarget = function(creep) {
 };
 
 var roleDelivery = {
+
+  /** @param {Creep} creep **/
   run: function(creep) {
+
     if (creep.memory.delivering && creep.carry.energy == 0) {
       creep.memory.delivering = false;
       creep.say('getting');
@@ -52,4 +58,5 @@ var roleDelivery = {
     }
   }
 };
+
 module.exports = roleDelivery;

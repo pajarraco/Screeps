@@ -1,4 +1,6 @@
 var roleMechanic = {
+
+  /** @param {Creep} creep **/
   run: function(creep) {
 
     if (creep.memory.repairing && creep.carry.energy == 0) {

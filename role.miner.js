@@ -1,4 +1,6 @@
 var roleMiner = {
+
+  /** @param {Creep} creep **/
   run: function(creep) {
     if (creep.carry.energy < creep.carryCapacity) {
       var sources = creep.room.find(FIND_SOURCES);
@@ -18,4 +20,5 @@ var roleMiner = {
     }
   }
 };
+
 module.exports = roleMiner;
