@@ -10,6 +10,7 @@ var creepsCreation = {
     // get creeps numbers
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+    var towerkeepers = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper');
     var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var deliveries = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
@@ -19,6 +20,8 @@ var creepsCreation = {
       createCreep(name, 'harvester');
     } else if (upgraders.length < 3) {
       createCreep(name, 'upgrader');
+    } else if (upgraders.length < 1) {
+      createCreep(name, 'towerkeeper');
     } else if (miners.length < 2) {
       var n = 0;
       if (miners.length > 0) {

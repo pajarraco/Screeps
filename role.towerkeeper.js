@@ -1,6 +1,6 @@
 var roleBuilder = require('role.builder');
 
-var roleHarvester = {
+var roleTowerkeeper = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
@@ -17,9 +17,7 @@ var roleHarvester = {
     if (creep.memory.transferring) {
       var depositTargets = creep.room.find(FIND_STRUCTURES, {
         filter: (s) => {
-          return (
-              (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-              s.energy < s.energyCapacity);
+          return ((s.structureType == STRUCTURE_TOWER) && s.energy < s.energyCapacity);
         }
       });
       if (depositTargets.length > 0) {
@@ -47,4 +45,4 @@ var roleHarvester = {
   }
 };
 
-module.exports = roleHarvester;
+module.exports = roleTowerkeeper;
