@@ -20,7 +20,7 @@ var creepsCreation = {
       createCreep(name, 'harvester');
     } else if (upgraders.length < 3) {
       createCreep(name, 'upgrader');
-    } else if (upgraders.length < 1) {
+    } else if (towerkeepers.length < 1) {
       createCreep(name, 'towerkeeper');
     } else if (miners.length < 2) {
       var n = 0;

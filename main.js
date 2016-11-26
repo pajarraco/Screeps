@@ -39,7 +39,7 @@ module.exports.loop = function() {
       roleSoldier.run(creep);
     }
     if (creep.memory.role == 'towerkeeper') {
-      roelTowerkeeper.run(creep);
+      roleTowerkeeper.run(creep);
     }
   }
 }
