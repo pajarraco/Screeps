@@ -6,6 +6,7 @@ var roleMiner = require('role.miner');
 var roleDelivery = require('role.delivery');
 var roleSoldier = require('role.soldier');
 var roleTowerkeeper = require('role.towerkeeper');
+var roleExplorer = require('role.explorer');
 var creepsCreation = require('creeps.creation');
 var towerActivity = require('tower.activity');
 
@@ -40,6 +41,9 @@ module.exports.loop = function() {
     }
     if (creep.memory.role == 'towerkeeper') {
       roleTowerkeeper.run(creep);
+    }
+    if (creep.memory.role == 'explorer') {
+      roleExplorer.run(creep);
     }
   }
 }
