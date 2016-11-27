@@ -4,8 +4,8 @@ var towerActivity = {
 
     var tower = Game.getObjectById('5837ad49f4ec434d64dc5214');
     if (tower) {
-      var closestDamagedStructure =
-          tower.pos.findClosestByRange(FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax});
+      var closestDamagedStructure = tower.pos.findClosestByRange(
+          FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax && structure.hits < 100000});
       if (closestDamagedStructure && tower.energy > 500) {
         tower.repair(closestDamagedStructure);
       }

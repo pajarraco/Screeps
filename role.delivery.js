@@ -21,7 +21,7 @@ var getPickupTarget = function(creep) {
 var getDeliveryTarget = function(creep) {
   var containers = getContainers(creep);
   var deliveryTarget = containers[0];
-  var _index = 0
+  var _index = 1
   containers.forEach(function(container, index) {
     if (container.store[RESOURCE_ENERGY] < deliveryTarget.store[RESOURCE_ENERGY]) {
       _index = index;
