@@ -20,7 +20,7 @@ var creepsCreation = {
       createCreep(name, 'harvester');
     } else if (upgraders.length < 3) {
       createCreep(name, 'upgrader');
-    } else if (towerkeepers.length < 1) {
+    } else if (towerkeepers.length < 2) {
       createCreep(name, 'towerkeeper');
     } else if (miners.length < 2) {
       var n = 0;
@@ -30,7 +30,7 @@ var creepsCreation = {
         }
       }
       var newName = Game.spawns['Spawn1'].createCreep(
-          [WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
+          [WORK, WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
     } else if (builders.length < 3) {
       createCreep(name, 'builder');
     } else if (deliveries.length < 2) {
@@ -56,7 +56,8 @@ var createCreep = function(name, role) {
     n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
   }
   //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ]
-  var newName = Game.spawns['Spawn1'].createCreep([WORK, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+  var newName =
+      Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   // console.log('Spawning new harvester: ' + newName);
 };
 

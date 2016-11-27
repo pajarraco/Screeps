@@ -9,7 +9,8 @@ var getPickupTarget = function(creep) {
   var pickupTarget = containers[0];
   var _index = 0;
   containers.forEach(function(container, index) {
-    if (container.store[RESOURCE_ENERGY] > pickupTarget.store[RESOURCE_ENERGY]) {
+    if (container.store[RESOURCE_ENERGY] > pickupTarget.store[RESOURCE_ENERGY] &&
+        container.store[RESOURCE_ENERGY] > 1000) {
       _index = index;
     }
   });
