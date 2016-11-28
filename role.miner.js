@@ -27,6 +27,7 @@ var roleMiner = {
         }
       }
     }
-  };
+  }
+};
 
-  module.exports = roleMiner;
+module.exports = roleMiner;
