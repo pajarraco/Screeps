@@ -1,7 +1,8 @@
 
 /** @param {Creep} creep **/
 var getContainers = function(creep) {
-  return creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER});
+  return creep.room.find(
+      FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER || s.structureType == STRUCTURE_STORAGE});
 };
 
 var getPickupTarget = function(creep) {
