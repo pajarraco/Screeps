@@ -4,7 +4,6 @@ var creepsCreation = {
     for (var name in Memory.creeps) {
       if (!Game.creeps[name]) {
         delete Memory.creeps[name];
-        // console.log('Clearing non-existing creep memory:', name);
       }
     }
     // get creeps numbers
@@ -29,7 +28,7 @@ var creepsCreation = {
           n = 1;
         }
       }
-      var newName = Game.spawns['Spawn1'].createCreep(
+      Game.spawns['Spawn1'].createCreep(
           [WORK, WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
     } else if (builders.length < 2) {
       createCreep(name, 'builder');
@@ -40,9 +39,7 @@ var creepsCreation = {
     } else {
       var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
       if (soldiers.length < 5) {
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
-        // console.log('Spawning new soldier: ' + newName);
+        Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
       }
     }
   }
@@ -54,9 +51,7 @@ var createCreep = function(name, role) {
   if (creepsSize.length > 0) {
     n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
   }
-  //    [ WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE ]
-  var newName = Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
-  // console.log('Spawning new harvester: ' + newName);
+  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
 };
 
 module.exports = creepsCreation;
