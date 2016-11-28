@@ -21,12 +21,16 @@ var creepsCreation = {
       createCreep(name, 'upgrader');
     } else if (towerkeepers.length < 4) {
       createCreep(name, 'towerkeeper');
-    } else if (miners.length < 2) {
-      var n = 0;
+    } else if (miners.length < 3) {
+      var n = 1;
       if (miners.length > 0) {
-        if (miners[0].memory.source == 0) {
-          n = 1;
-        }
+        // if (miners[0].memory.source == 0) {
+        miners.forEach(function(m) {
+          if (m.memory.source == 1) {
+            n = 0;
+          }
+        });
+        //}
       }
       Game.spawns['Spawn1'].createCreep(
           [WORK, WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
@@ -34,7 +38,7 @@ var creepsCreation = {
       createCreep(name, 'builder');
     } else if (deliveries.length < 2) {
       var newName = Game.spawns['Spawn1'].createCreep([CARRY, CARRY, MOVE, MOVE], undefined, {role: 'delivery'});
-    } else if (mechanics.length < 5) {
+    } else if (mechanics.length < 2) {
       createCreep(name, 'mechanic');
     } else {
       var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
