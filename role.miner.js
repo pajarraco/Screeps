@@ -16,9 +16,17 @@ var roleMiner = {
         if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(container);
         }
+      } else {
+        var storage = creep.pos.findClosestByRange(
+            FIND_STRUCTURES,
+            {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+        if (storage) {
+          if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(storage);
+          }
+        }
       }
     }
-  }
-};
+  };
 
-module.exports = roleMiner;
+  module.exports = roleMiner;
