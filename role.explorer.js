@@ -3,7 +3,7 @@ var roleExplorer = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
-
+    ceep.moveTo(Game.flags['LeftRoom']);
 
     // if (creep.energy < creep.energyCapacity) {
     //   var source = Game.rooms['E36S69'].find(FIND_SOURCES);
