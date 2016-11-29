@@ -14,6 +14,7 @@ var creepsCreation = {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var deliveries = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
     var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
+    var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
     // creeps selection
     if (harvesters.length < 4) {
       createCreep(name, 'harvester');
@@ -40,22 +41,24 @@ var creepsCreation = {
       var newName = Game.spawns['Spawn1'].createCreep([CARRY, CARRY, MOVE, MOVE], undefined, {role: 'delivery'});
     } else if (mechanics.length < 2) {
       createCreep(name, 'mechanic');
+    } else if (soldiers.length < 3) {
+      Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
     } else {
-      var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-      if (soldiers.length < 5) {
-        Game.spawns['Spawn1'].createCreep([TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
+      var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+      if (explorers.length < 10) {
+        Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE, MOVE, ATTACK], undefined, {role: 'soldier'});
       }
     }
-  }
-};
+  };
 
-var createCreep = function(name, role) {
-  // calculate source
-  var n = 0, creepsSize = _.map(Game.creeps);
-  if (creepsSize.length > 0) {
-    n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
-  }
-  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
-};
+  var createCreep =
+      function(name, role) {
+        // calculate source
+        var n = 0, creepsSize = _.map(Game.creeps);
+        if (creepsSize.length > 0) {
+          n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
+        }
+        Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
+      };
 
-module.exports = creepsCreation;
+  module.exports = creepsCreation;
