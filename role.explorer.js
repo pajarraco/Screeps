@@ -32,8 +32,6 @@ var roleExplorer = {
       }
     }
   }
-}
-}
-;
+};
 
 module.exports = roleExplorer;
