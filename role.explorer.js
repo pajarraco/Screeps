@@ -35,6 +35,8 @@ var roleExplorer = {
         var source = creep.pos.findClosestByRange(FIND_SOURCES);
         if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
           creep.moveTo(source);
+        } else {
+          creep.moveTo(Game.flags['Home']);
         }
       } else {
         creep.moveTo(Game.flags['LeftRoom']);
