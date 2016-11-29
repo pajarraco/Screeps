@@ -1,3 +1,16 @@
+var repairing = function(creep) {
+  var closestDamagedStructure =
+      creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 5000});
+  if (closestDamagedStructure) {
+    if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(closestDamagedStructure);
+    }
+    return true;
+  } else {
+    return false;
+  }
+};
+
 var roleMechanic = {
 
   /** @param {Creep} creep **/
@@ -13,11 +26,11 @@ var roleMechanic = {
     }
 
     if (creep.memory.repairing) {
-      var closestDamagedStructure = creep.pos.findClosestByRange(
-          FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax && structure.hits < 150000});
-      if (closestDamagedStructure) {
-        if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(closestDamagedStructure);
+      if (!repairing(creep)) {
+        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+          repairing(creep)
+        } else {
+          creep.moveTo(Game.flags['LeftRoom']);
         }
       }
     } else {
