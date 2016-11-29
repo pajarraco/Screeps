@@ -3,12 +3,12 @@ var roleExplorer = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
-    if (creep.energy < creep.energyCapacity) {
+    if (creep.carry.energy < creep.carryCapacity) {
       //   var source = Game.rooms['E36S69'].find(FIND_SOURCES);
       //   if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
       //     creep.moveTo(sources[0]);
       //   }else{
-      ceep.moveTo(Game.flags['LeftRoom']);
+      creep.moveTo(Game.flags['LeftRoom']);
       //}
     } else {
       var depositTargets = Game.rooms['E37S69'].find(FIND_STRUCTURES, {
