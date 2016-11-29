@@ -49,16 +49,16 @@ var creepsCreation = {
         Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE, MOVE, ATTACK], undefined, {role: 'soldier'});
       }
     }
-  };
+  }
+};
 
-  var createCreep =
-      function(name, role) {
-        // calculate source
-        var n = 0, creepsSize = _.map(Game.creeps);
-        if (creepsSize.length > 0) {
-          n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
-        }
-        Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
-      };
+var createCreep = function(name, role) {
+  // calculate source
+  var n = 0, creepsSize = _.map(Game.creeps);
+  if (creepsSize.length > 0) {
+    n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
+  }
+  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE], undefined, {role: role, source: n});
+};
 
-  module.exports = creepsCreation;
+module.exports = creepsCreation;

@@ -20,22 +20,19 @@ var roleExplorer = {
         }
       } else {
         var depositTargets = Game.rooms['E37S69'].find(FIND_STRUCTURES, {
-          filter: (s) => {
-            return (
-                (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-                s.energy < s.energyCapacity);
-          }
-        });
-        if (depositTargets.length > 0) {
-          if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(depositTargets[0]);
-          }
-        } else {
-          roleTowerkeeper.run(creep);
+        filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity;}
+      });
+      if (depositTargets.length > 0) {
+        if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(depositTargets[0]);
         }
+      } else {
+        roleTowerkeeper.run(creep);
       }
     }
   }
-};
+}
+}
+;
 
 module.exports = roleExplorer;
