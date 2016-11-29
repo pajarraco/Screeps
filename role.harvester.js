@@ -15,16 +15,16 @@ var roleHarvester = {
     }
 
     if (creep.memory.transferring) {
-      var depositTargets = creep.room.find(FIND_STRUCTURES, {
+      var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (s) => {
           return (
               (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
               s.energy < s.energyCapacity);
         }
       });
-      if (depositTargets.length > 0) {
-        if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(depositTargets[0]);
+      if (depositTargets) {
+        if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(depositTargets);
         }
       } else {
         roleTowerkeeper.run(creep);
