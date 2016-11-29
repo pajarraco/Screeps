@@ -26,13 +26,13 @@ var roleMechanic = {
     }
 
     if (creep.memory.repairing) {
-      if (!repairing(creep)) {
-        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
-          repairing(creep)
-        } else {
-          creep.moveTo(Game.flags['LeftRoom']);
-        }
+      // if (!repairing(creep)) {
+      if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+        repairing(creep)
+      } else {
+        creep.moveTo(Game.flags['LeftRoom']);
       }
+      //}
     } else {
       var containers = creep.pos.findClosestByRange(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
