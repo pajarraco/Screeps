@@ -20,29 +20,21 @@ module.exports.loop = function() {
     var creep = Game.creeps[name];
     if (creep.memory.role == 'harvester') {
       roleHarvester.run(creep);
-    }
-    if (creep.memory.role == 'upgrader') {
+    } else if (creep.memory.role == 'upgrader') {
       roleUpgrader.run(creep);
-    }
-    if (creep.memory.role == 'builder') {
+    } else if (creep.memory.role == 'builder') {
       roleBuilder.run(creep);
-    }
-    if (creep.memory.role == 'mechanic') {
+    } else if (creep.memory.role == 'mechanic') {
       roleMechanic.run(creep);
-    }
-    if (creep.memory.role == 'miner') {
+    } else if (creep.memory.role == 'miner') {
       roleMiner.run(creep);
-    }
-    if (creep.memory.role == 'delivery') {
+    } else if (creep.memory.role == 'delivery') {
       roleDelivery.run(creep);
-    }
-    if (creep.memory.role == 'soldier') {
+    } else if (creep.memory.role == 'soldier') {
       roleSoldier.run(creep);
-    }
-    if (creep.memory.role == 'towerkeeper') {
+    } else if (creep.memory.role == 'towerkeeper') {
       roleTowerkeeper.run(creep);
-    }
-    if (creep.memory.role == 'explorer') {
+    } else if (creep.memory.role == 'explorer') {
       roleExplorer.run(creep);
     }
   }
