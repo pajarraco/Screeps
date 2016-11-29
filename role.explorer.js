@@ -4,12 +4,14 @@ var roleExplorer = {
   run: function(creep) {
 
     if (creep.carry.energy < creep.carryCapacity) {
-      //   var source = Game.rooms['E36S69'].find(FIND_SOURCES);
-      //   if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-      //     creep.moveTo(sources[0]);
-      //   }else{
-      creep.moveTo(Game.flags['LeftRoom']);
-      //}
+      if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+        var source = Game.rooms['E36S69'].find(FIND_SOURCES);
+        if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources[0]);
+        }
+      } else {
+        creep.moveTo(Game.flags['LeftRoom']);
+      }
     } else {
       var depositTargets = Game.rooms['E37S69'].find(FIND_STRUCTURES, {
         filter: (s) => {
