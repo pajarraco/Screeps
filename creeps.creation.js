@@ -46,7 +46,7 @@ var creepsCreation = {
     } else {
       var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
       if (explorers.length < 10) {
-        Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE, MOVE, ATTACK], undefined, {role: 'soldier'});
+        Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, MOVE, MOVE, ATTACK], undefined, {role: 'explorer'});
       }
     }
   }
