@@ -31,7 +31,7 @@ var roleSoldier = {
     } else {
       rampart = findEmptyRampart(creep);
       if (rampart) {
-        creep.moveTo(rampart);
+        creep.moveTo(Game.flags['Home']);  // rampart);
       }
     }
   }
