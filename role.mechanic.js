@@ -41,10 +41,9 @@ var roleMechanic = {
           creep.moveTo(containers);
         }
       } else {
-        var sources = creep.room.find(FIND_SOURCES);
-        var i = creep.memory.source;
-        if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(sources[i]);
+        var sources = creep.pos.findClosestByRange(FIND_SOURCES);
+        if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(sources);
         }
       }
     }
