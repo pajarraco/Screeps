@@ -1,3 +1,5 @@
+var roleExplorer = require('role.explorer');
+
 var repairing = function(creep) {
   var closestDamagedStructure =
       creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 25000});
@@ -28,7 +30,9 @@ var roleMechanic = {
     if (creep.memory.repairing) {
       // if (!repairing(creep)) {
       if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
-        repairing(creep)
+        if (!repairing(creep)) {
+          roleExplorer.run(creep);
+        }
       } else {
         creep.moveTo(Game.flags['LeftRoom']);
       }
