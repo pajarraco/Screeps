@@ -31,7 +31,7 @@ var roleMechanic = {
       // if (!repairing(creep)) {
       if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
         if (!repairing(creep)) {
-          roleExplorer.run(creep);
+          // roleExplorer.run(creep);
         }
       } else {
         creep.moveTo(Game.flags['LeftRoom']);
