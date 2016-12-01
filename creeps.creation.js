@@ -1,3 +1,12 @@
+var createCreep = function(name, role) {
+  // calculate source
+  var n = 0, creepsSize = _.map(Game.creeps);
+  if (creepsSize.length > 0) {
+    n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
+  }
+  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+};
+
 var creepsCreation = {
   run: function() {
     // clear memory
@@ -70,7 +79,7 @@ var creepsCreation = {
                   //
                   // Explorer
                   var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                  if (explorers.length < 5) {
+                  if (explorers.length < cr10) {
                     Game.spawns['Spawn1'].createCreep(
                         [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
                         {role: 'explorer'});
@@ -86,13 +95,6 @@ var creepsCreation = {
   }
 };
 
-var createCreep = function(name, role) {
-  // calculate source
-  var n = 0, creepsSize = _.map(Game.creeps);
-  if (creepsSize.length > 0) {
-    n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
-  }
-  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
-};
+
 
 module.exports = creepsCreation;

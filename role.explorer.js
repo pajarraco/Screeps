@@ -31,13 +31,27 @@ var roleExplorer = {
         }
       }
     } else {
-      if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
-        var source = creep.pos.findClosestByRange(FIND_SOURCES);
-        if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(source);
+      var creepsOnRoom = _.filter(Game.creeps, function(c) {
+                            return c.room.name == creep.pos.roomName
+                          }).length;
+      if (creepsOnRoom > 5) {
+        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+          var source = creep.pos.findClosestByRange(FIND_SOURCES);
+          if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(source);
+          }
+        } else {
+          creep.moveTo(Game.flags['LeftRoom']);
         }
       } else {
-        creep.moveTo(Game.flags['LeftRoom']);
+        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+          var source = creep.pos.findClosestByRange(FIND_SOURCES);
+          if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(source);
+          }
+        } else {
+          creep.moveTo(Game.flags['LeftRoom']);
+        }
       }
     }
   }
