@@ -3,6 +3,15 @@ var roleExplorer = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
+    // attack hostile
+    var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+    if (closestHostile) {
+      if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(closestHostile);
+      }
+    }
+
+    // find resources
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
       creep.say('harvesting');
