@@ -11,15 +11,25 @@ var roleConquest = {
       }
     }
 
-    // find controler
-    creep.moveTo(0, 22);
-
-    if (creep.room.controller) {
-      if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(creep.room.controller);
+    // attack hostile
+    var closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
+    if (closestHostileStructures) {
+      if (creep.attack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(closestHostileStructures);
       }
     }
 
+    // find controler
+    creep.moveTo(32, 0);
+
+
+
+    /* if (creep.room.controller) {
+         console.log(creep.claimController(creep.room.controller));
+       if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+         creep.moveTo(creep.room.controller);
+       }
+     }*/
 
   }
 };
