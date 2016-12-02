@@ -12,7 +12,7 @@ var roleConquest = {
     }
 
     // find controler
-    creep.moveTo(-1, 22);
+    creep.moveTo(0, 22);
 
   }
 };
