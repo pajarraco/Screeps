@@ -89,8 +89,18 @@ var creepsCreation = {
                     //
                     // Conquest
                     var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                    if (conquesters.length < 1) {
-                      Game.spawns['Spawn1'].createCreep([CLAIM, MOVE], undefined, {role: 'conquest'});
+                    if (conquesters.length < 2) {
+                      var n = 1;
+                      if (conquesters.length > 0) {
+                        // if (miners[0].memory.source == 0) {
+                        conquesters.forEach(function(m) {
+                          if (m.memory.source == 1) {
+                            n = 0;
+                          }
+                        });
+                        //}
+                      }
+                      Game.spawns['Spawn1'].createCreep([CLAIM, MOVE], undefined, {role: 'conquest', source: n});
                     }
                     //
                     // Explorer
