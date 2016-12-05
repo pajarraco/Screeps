@@ -10,6 +10,7 @@ var calSource = function(creeps) {
       n = 0;
     }
   }
+  return n;
 };
 
 var creepsCreation = {
