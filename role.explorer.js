@@ -13,6 +13,14 @@ var roleExplorer = {
       }
     }
 
+    // attack hostile structure
+    var closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
+    if (closestHostileStructures) {
+      if (creep.attack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(closestHostileStructures);
+      }
+    }
+
     // find resources
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
