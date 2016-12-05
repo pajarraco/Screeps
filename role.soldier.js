@@ -29,9 +29,16 @@ var roleSoldier = {
         creep.moveTo(closestHostile);
       }
     } else {
-      rampart = findEmptyRampart(creep);
-      if (rampart) {
-        creep.moveTo(Game.flags['Home']);  // rampart);
+      var closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
+      if (closestHostileStructures) {
+        if (creep.attack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(closestHostileStructures);
+        }
+      } else {
+        rampart = findEmptyRampart(creep);
+        if (rampart) {
+          creep.moveTo(Game.flags['Home']);  // rampart);
+        }
       }
     }
   }
