@@ -77,6 +77,12 @@ var creepsCreation = {
                       [TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
                 } else {
                   //
+                  // Conquest
+                  var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+                  if (conquesters.length < 1) {
+                    Game.spawns['Spawn1'].createCreep([CLAIM, MOVE], undefined, {role: 'conquest'});
+                  }
+                  //
                   // Explorer
                   var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
                   if (explorers.length < 10) {

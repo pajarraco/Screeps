@@ -11,7 +11,7 @@ var roleConquest = {
       }
     }
 
-    // attack hostile
+    // attack hostile structure
     var closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
     if (closestHostileStructures) {
       if (creep.attack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
@@ -19,18 +19,15 @@ var roleConquest = {
       }
     }
 
-    // find controler
-    creep.moveTo(32, 0);
-
-
-
-    /* if (creep.room.controller) {
-         console.log(creep.claimController(creep.room.controller));
-       if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-         creep.moveTo(creep.room.controller);
-       }
-     }*/
-
+    // reserve controler
+    if (!creep.room.controller.my) {
+      console.log(creep.reserveController(creep.room.controller));
+      if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(creep.room.controller);
+      }
+    } else {
+      creep.moveTo(0, 26);
+    }
   }
 };
 
