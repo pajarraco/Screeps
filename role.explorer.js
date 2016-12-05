@@ -1,3 +1,5 @@
+var roleTowerkeeper = require('role.towerkepper');
+
 var roleExplorer = {
 
   /** @param {Creep} creep **/
