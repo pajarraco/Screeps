@@ -28,15 +28,20 @@ var roleMechanic = {
     }
 
     if (creep.memory.repairing) {
-      // if (!repairing(creep)) {
-      if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
-        if (!repairing(creep)) {
-          // roleExplorer.run(creep);
+      if (creep.memory.source == 0) {
+        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+          repairing(creep);
+        } else {
+          creep.moveTo(Game.flags['LeftRoom']);
         }
       } else {
-        creep.moveTo(Game.flags['LeftRoom']);
+        if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+          repairing(creep);
+        } else {
+          creep.moveTo(Game.flags['TopRoom']);
+        }
       }
-      //}
+
     } else {
       var storages = creep.pos.findClosestByRange(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 300});

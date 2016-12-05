@@ -1,9 +1,5 @@
-var createCreep = function(name, role) {
-  // calculate source
-  var n = 0, creepsSize = _.map(Game.creeps);
-  if (creepsSize.length > 0) {
-    n = creepsSize[creepsSize.length - 1].memory.source == 0 ? 1 : 0;
-  }
+var createCreep = function(name, role, creeps) {
+  var n = calSource(creeps);
   Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
 };
 
@@ -28,19 +24,19 @@ var creepsCreation = {
     // Harvester
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     if (harvesters.length < 3) {
-      createCreep(name, 'harvester');
+      createCreep(name, 'harvester', harvesters);
     } else {
       //
       // upgrader
       var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
       if (upgraders.length < 3) {
-        createCreep(name, 'upgrader');
+        createCreep(name, 'upgrader', upgraders);
       } else {
         //
         // Tower keeper
         var towerkeepers = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper');
         if (towerkeepers.length < 3) {
-          createCreep(name, 'towerkeeper');
+          createCreep(name, 'towerkeeper', towerkeepers);
         } else {
           //
           // Miner
@@ -63,7 +59,7 @@ var creepsCreation = {
             // Builder
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
             if (builders.length < 2) {
-              createCreep(name, 'builder');
+              createCreep(name, 'builder', builders);
             } else {
               //
               // Delivery
@@ -86,7 +82,7 @@ var creepsCreation = {
                 // Mechanic
                 var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
                 if (mechanics.length < 2) {
-                  createCreep(name, 'mechanic');
+                  createCreep(name, 'mechanic', mechanics);
                 } else {
                   //
                   // Soldier
