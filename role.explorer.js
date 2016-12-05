@@ -1,4 +1,4 @@
-var roleTowerkeeper = require('role.towerkepper');
+var roleTowerkeeper = require('role.towerkeeper');
 
 var roleExplorer = {
 
