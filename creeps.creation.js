@@ -89,7 +89,7 @@ var creepsCreation = {
                   var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
                   if (soldiers.length < 3) {
                     Game.spawns['Spawn1'].createCreep(
-                        [TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
+                        [TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE], undefined, {role: 'soldier'});
                   } else {
                     //
                     // Conquest
