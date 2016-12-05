@@ -1,4 +1,4 @@
-var roleExplorer = require('role.explorer');
+// var roleExplorer = require('role.explorer');
 
 var repairing = function(creep) {
   var closestDamagedStructure =
