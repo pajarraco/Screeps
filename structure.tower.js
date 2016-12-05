@@ -12,8 +12,8 @@ var structureTower = {
           tower.attack(closestHostile);
         } else {
           var closestDamagedStructure = tower.pos.findClosestByRange(
-              FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax && structure.hits < 250000});
-          if (closestDamagedStructure && tower.energy > 500) {
+              FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax && structure.hits < 500000});
+          if (closestDamagedStructure && tower.energy > 600) {
             tower.repair(closestDamagedStructure);
           }
         }
