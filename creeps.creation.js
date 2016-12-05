@@ -59,8 +59,19 @@ var creepsCreation = {
               //
               // Delivery
               var deliveries = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
-              if (deliveries.length < 1) {
-                var newName = Game.spawns['Spawn1'].createCreep([CARRY, MOVE], undefined, {role: 'delivery'});
+              if (deliveries.length < 2) {
+                var n = 1;
+                if (deliveries.length > 0) {
+                  // if (miners[0].memory.source == 0) {
+                  deliveries.forEach(function(m) {
+                    if (m.memory.source == 1) {
+                      n = 0;
+                    }
+                  });
+                  //}
+                }
+                var newName =
+                    Game.spawns['Spawn1'].createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
               } else {
                 //
                 // Mechanic

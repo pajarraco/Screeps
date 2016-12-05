@@ -37,20 +37,46 @@ var roleDelivery = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
-    var linkFrom = creep.room.lookForAt('structure', 29, 39)[1];
-    if (creep.pos.x == 29 && creep.pos.y == 39) {
-      var containers = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
-      if (containers) {
-        if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(containers);
-        } else {
-          if (creep.transfer(linkFrom, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(linkFrom);
+    if (creep.memory.source == 1) {
+      var linkFrom = creep.room.lookForAt('structure', 29, 39)[1];
+      if (creep.pos.x == 30 && creep.pos.y == 39) {
+        var containers = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
+        if (containers.length > 0) {
+          if (creep.withdraw(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(containers[0]);
+          } else {
+            if (creep.transfer(linkFrom, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(linkFrom);
+            }
           }
         }
+      } else {
+        creep.moveTo(30, 39);
       }
     } else {
-      creep.moveTo(29, 39);
+      var linkTo = room.lookForAt('structure', 32, 26)[1];
+      if (creep.pos.x == 31 && creep.pos.y == 26) {
+        if (creep.carry.energy < creep.carryCapacity) {
+          if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(linkTo);
+          }
+        } else {
+          var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (s) => {
+              return (
+                  (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                  s.energy < s.energyCapacity);
+            }
+          });
+          if (depositTargets) {
+            if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(depositTargets);
+            }
+          }
+        }
+      } else {
+        creep.moveTo(31, 26);
+      }
     }
 
     /*if (creep.memory.delivering && creep.carry.energy == 0) {
