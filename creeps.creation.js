@@ -58,41 +58,40 @@ var creepsCreation = {
             } else {
               //
               // Delivery
-              /*var deliveries = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
-              if (deliveries.length < 2) {
-                var newName = Game.spawns['Spawn1'].createCreep(
-                    [CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'delivery'});
-              } else {*/
-              //
-              // Mechanic
-              var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
-              if (mechanics.length < 2) {
-                createCreep(name, 'mechanic');
+              var deliveries = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
+              if (deliveries.length < 1) {
+                var newName = Game.spawns['Spawn1'].createCreep([CARRY, MOVE], undefined, {role: 'delivery'});
               } else {
                 //
-                // Soldier
-                var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-                if (soldiers.length < 3) {
-                  Game.spawns['Spawn1'].createCreep(
-                      [TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
+                // Mechanic
+                var mechanics = _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic');
+                if (mechanics.length < 2) {
+                  createCreep(name, 'mechanic');
                 } else {
                   //
-                  // Conquest
-                  var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                  if (conquesters.length < 1) {
-                    Game.spawns['Spawn1'].createCreep([CLAIM, MOVE], undefined, {role: 'conquest'});
-                  }
-                  //
-                  // Explorer
-                  var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                  if (explorers.length < 10) {
+                  // Soldier
+                  var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+                  if (soldiers.length < 3) {
                     Game.spawns['Spawn1'].createCreep(
-                        [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
-                        {role: 'explorer'});
+                        [TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE], undefined, {role: 'soldier'});
+                  } else {
+                    //
+                    // Conquest
+                    var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+                    if (conquesters.length < 1) {
+                      Game.spawns['Spawn1'].createCreep([CLAIM, MOVE], undefined, {role: 'conquest'});
+                    }
+                    //
+                    // Explorer
+                    var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+                    if (explorers.length < 10) {
+                      Game.spawns['Spawn1'].createCreep(
+                          [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
+                          {role: 'explorer'});
+                    }
                   }
                 }
               }
-              //} close for delivery
             }
           }
         }

@@ -1,11 +1,12 @@
 
 /** @param {Creep} creep **/
-var getContainers = function(creep) {
+/*var getContainers = function(creep) {
   return creep.room.find(
       FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER || s.structureType == STRUCTURE_STORAGE});
-};
+};*/
 
-var getPickupTarget = function(creep) {
+/** @param {Creep} creep **/
+/*var getPickupTarget = function(creep) {
   var containers = getContainers(creep);
   var pickupTarget = containers[0];
   var _index = 0;
@@ -16,10 +17,10 @@ var getPickupTarget = function(creep) {
     }
   });
   return _index;
-};
+};*/
 
 /** @param {Creep} creep **/
-var getDeliveryTarget = function(creep) {
+/*var getDeliveryTarget = function(creep) {
   var containers = getContainers(creep);
   var deliveryTarget = containers[0];
   var _index = 1
@@ -29,14 +30,30 @@ var getDeliveryTarget = function(creep) {
     }
   });
   return _index;
-};
+};*/
 
 var roleDelivery = {
 
   /** @param {Creep} creep **/
   run: function(creep) {
 
-    if (creep.memory.delivering && creep.carry.energy == 0) {
+    var linkFrom = creep.room.lookForAt('structure', 29, 39)[1];
+    if (creep.pos.x == 29 && creep.pos.y == 39) {
+      var containers = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
+      if (containers) {
+        if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(containers);
+        } else {
+          if (creep.transfer(linkFrom, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(linkFrom);
+          }
+        }
+      }
+    } else {
+      creep.moveTo(29, 39);
+    }
+
+    /*if (creep.memory.delivering && creep.carry.energy == 0) {
       creep.memory.delivering = false;
       creep.say('getting');
       creep.memory.pickupTarget = getPickupTarget(creep);
@@ -45,9 +62,9 @@ var roleDelivery = {
       creep.memory.delivering = true;
       creep.say('delivering');
       creep.memory.deliveryTarget = getDeliveryTarget(creep);
-    }
+    }*/
 
-    if (creep.memory.delivering) {
+    /*if (creep.memory.delivering) {
       var deliveryTarget = getContainers(creep)[creep.memory.deliveryTarget];
       if (creep.transfer(deliveryTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
         creep.moveTo(deliveryTarget);
@@ -63,7 +80,7 @@ var roleDelivery = {
       } else if (withdrawEnergy == ERR_NOT_ENOUGH_RESOURCES) {
         delete creep.memory.pickupTarget;
       }
-    }
+    }*/
   }
 };
 
