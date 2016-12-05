@@ -16,7 +16,8 @@ module.exports.loop = function() {
 
   creepsCreation.run();
 
-  for (var room in Game.rooms) {
+  for (var roomName in Game.rooms) {
+    var room = Game.rooms[roomName];
     structureTower.run(room);
     structureLink.run(room);
   }
