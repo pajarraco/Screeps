@@ -106,9 +106,19 @@ var creepsCreation = {
                     // Explorer
                     var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
                     if (explorers.length < 10) {
+                      var n = 1;
+                      if (conquesters.length > 0) {
+                        // if (miners[0].memory.source == 0) {
+                        conquesters.forEach(function(m) {
+                          if (m.memory.source == 1) {
+                            n = 0;
+                          }
+                        });
+                        //}
+                      }
                       Game.spawns['Spawn1'].createCreep(
                           [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
-                          {role: 'explorer'});
+                          {role: 'explorer', source: n});
                     }
                   }
                 }

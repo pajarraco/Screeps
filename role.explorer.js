@@ -53,13 +53,13 @@ var roleExplorer = {
           creep.moveTo(Game.flags['LeftRoom']);
         }
       } else {
-        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+        if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
           var source = creep.pos.findClosestByRange(FIND_SOURCES);
           if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
             creep.moveTo(source);
           }
         } else {
-          creep.moveTo(Game.flags['LeftRoom']);
+          creep.moveTo(Game.flags['TopRoom']);
         }
       }
     }
