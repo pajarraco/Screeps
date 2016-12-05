@@ -24,19 +24,19 @@ var creepsCreation = {
 
     // Harvester
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    if (harvesters.length < 3) {
+    if (harvesters.length < 2) {
       createCreep(name, 'harvester', harvesters);
     } else {
       //
       // upgrader
       var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-      if (upgraders.length < 3) {
+      if (upgraders.length < 2) {
         createCreep(name, 'upgrader', upgraders);
       } else {
         //
         // Tower keeper
         var towerkeepers = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper');
-        if (towerkeepers.length < 3) {
+        if (towerkeepers.length < 4) {
           createCreep(name, 'towerkeeper', towerkeepers);
         } else {
           //
