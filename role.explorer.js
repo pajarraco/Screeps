@@ -44,7 +44,20 @@ var roleExplorer = {
                 creep.moveTo(depositTargets[0]);
               }
             } else {
-              roleTowerkeeper.run(creep);
+              var otherTargets = Game.rooms['E37S69'].find(FIND_STRUCTURES, {
+                filter: (s) => {
+                  return (
+                      (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                      s.energy < s.energyCapacity);
+                }
+              });
+              if (otherTargets.length > 0) {
+                if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                  creep.moveTo(otherTargets[0]);
+                }
+              } else {
+                roleTowerkeeper.run(creep);
+              }
             }
           }
         } else {
