@@ -8,7 +8,7 @@ var roleMiner = {
       if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
         creep.moveTo(sources[i]);
       }
-    } else {
+    } /*else {
       var container = creep.pos.findClosestByRange(
           FIND_STRUCTURES,
           {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.storeCapacity});
@@ -26,7 +26,7 @@ var roleMiner = {
           }
         }
       }
-    }
+    }*/
   }
 };
 
