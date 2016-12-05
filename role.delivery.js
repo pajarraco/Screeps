@@ -54,7 +54,7 @@ var roleDelivery = {
         creep.moveTo(30, 39);
       }
     } else {
-      var linkTo = room.lookForAt('structure', 32, 26)[1];
+      var linkTo = creep.room.lookForAt('structure', 32, 26)[1];
       if (creep.pos.x == 31 && creep.pos.y == 26) {
         if (creep.carry.energy < creep.carryCapacity) {
           if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
