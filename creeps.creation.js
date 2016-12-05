@@ -48,7 +48,7 @@ var creepsCreation = {
               //}
             }
             Game.spawns['Spawn1'].createCreep(
-                [WORK, WORK, WORK, WORK, WORK, WORK, CARRY, MOVE], undefined, {role: 'miner', source: n});
+                [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
           } else {
             //
             // Builder
