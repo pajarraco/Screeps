@@ -1,8 +1,9 @@
 var structureTower = {
 
-  run: function() {
+  /** @param  {Room} room  **/
+  run: function(room) {
 
-    var towers = Game.room.find(FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
+    var towers = room.find(FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
     if (towers.length > 0) {
       towers.forEach(function(tower) {
         var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
