@@ -7,6 +7,15 @@ var createCreep = function(name, role) {
   Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
 };
 
+var calSource = function(creeps) {
+  var n = 1;
+  if (creeps.length > 0) {
+    if (creeps[creeps.length - 1] == 1) {
+      n = 0;
+    }
+  }
+};
+
 var creepsCreation = {
   run: function() {
     // clear memory
@@ -106,16 +115,7 @@ var creepsCreation = {
                     // Explorer
                     var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
                     if (explorers.length < 10) {
-                      var n = 1;
-                      if (conquesters.length > 0) {
-                        // if (miners[0].memory.source == 0) {
-                        conquesters.forEach(function(m) {
-                          if (m.memory.source == 1) {
-                            n = 0;
-                          }
-                        });
-                        //}
-                      }
+                      var n = calSource(explorers);
                       Game.spawns['Spawn1'].createCreep(
                           [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
                           {role: 'explorer', source: n});
