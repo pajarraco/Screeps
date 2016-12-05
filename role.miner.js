@@ -7,10 +7,11 @@ var roleMiner = {
     var i = creep.memory.source;
     if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
       creep.moveTo(sources[i]);
-
-      var container = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
-      var containerPos = creep.pos.getDirectionTo(container);
-      console.log(containerPos);
+    }
+    var container = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
+    console.log(container);
+    if (container) {
+      creep.moveTo(container);
     }
     /*} else {
       var container = creep.pos.findClosestByRange(

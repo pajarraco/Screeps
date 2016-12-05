@@ -38,16 +38,24 @@ var roleMechanic = {
       }
       //}
     } else {
-      var containers = creep.pos.findClosestByRange(
-          FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
-      if (containers) {
-        if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(containers);
+      var storages = creep.pos.findClosestByRange(
+          FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 300});
+      if (storages) {
+        if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(storages);
         }
       } else {
-        var sources = creep.pos.findClosestByRange(FIND_SOURCES);
-        if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(sources);
+        var containers = creep.pos.findClosestByRange(
+            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
+        if (containers) {
+          if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(containers);
+          }
+        } else {
+          var sources = creep.pos.findClosestByRange(FIND_SOURCES);
+          if (creep.harvest(sources) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(sources);
+          }
         }
       }
     }
