@@ -55,28 +55,28 @@ var roleDelivery = {
       }
     } else {
       var linkTo = creep.room.lookForAt('structure', 32, 26)[1];
-      if (creep.pos.x == 31 && creep.pos.y == 26) {
-        if (creep.carry.energy < creep.carryCapacity) {
-          if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(linkTo);
-          }
-        } else {
-          var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (s) => {
-              return (
-                  (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-                  s.energy < s.energyCapacity);
-            }
-          });
-          if (depositTargets) {
-            if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(depositTargets);
-            }
-          }
+      // if (creep.pos.x == 31 && creep.pos.y == 26) {
+      if (creep.carry.energy < creep.carryCapacity) {
+        if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(linkTo);
         }
       } else {
-        creep.moveTo(31, 26);
+        var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+          filter: (s) => {
+            return (
+                (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                s.energy < s.energyCapacity);
+          }
+        });
+        if (depositTargets) {
+          if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(depositTargets);
+          }
+        }
       }
+      //} else {
+      //  creep.moveTo(31, 26);
+      //}
     }
 
     /*if (creep.memory.delivering && creep.carry.energy == 0) {
