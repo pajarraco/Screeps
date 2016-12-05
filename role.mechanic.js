@@ -41,7 +41,6 @@ var roleMechanic = {
           creep.moveTo(Game.flags['TopRoom']);
         }
       }
-
     } else {
       var storages = creep.pos.findClosestByRange(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 300});
