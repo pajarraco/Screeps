@@ -27,7 +27,16 @@ var roleHarvester = {
           creep.moveTo(depositTargets);
         }
       } else {
-        roleTowerkeeper.run(creep);
+        var storageTargets = creep.room.find(
+            FIND_STRUCTURES,
+            {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+        if (storageTargets.length > 0) {
+          if (creep.transfer(storageTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(storageTargets[0]);
+          }
+        } else {
+          roleTowerkeeper.run(creep);
+        }
       }
     } else {
       var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
