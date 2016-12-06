@@ -6,7 +6,7 @@ var createCreep = function(name, role, creeps) {
 var calSource = function(creeps) {
   var n = 1;
   if (creeps.length > 0) {
-    if (creeps[creeps.length - 1] == 1) {
+    if (creeps[creeps.length - 1].memory.source == 1) {
       n = 0;
     }
   }
@@ -24,7 +24,6 @@ var creepsCreation = {
 
     // Harvester
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    console.log(harvesters[harvesters.length - 1].memory.source);
     if (harvesters.length < 2) {
       createCreep(name, 'harvester', harvesters);
     } else {
