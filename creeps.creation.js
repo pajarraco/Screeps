@@ -111,7 +111,7 @@ var creepsCreation = {
                     //
                     // Explorer
                     var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                    if (explorers.length < 15) {
+                    if (explorers.length < 20) {
                       var n = calSource(explorers);
                       Game.spawns['Spawn1'].createCreep(
                           [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
