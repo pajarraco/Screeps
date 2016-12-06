@@ -72,6 +72,15 @@ var roleDelivery = {
           if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
             creep.moveTo(depositTargets);
           }
+        } else {
+          var storageTargets = Game.room.find(
+              FIND_STRUCTURES,
+              {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+          if (storageTargets.length > 0) {
+            if (creep.transfer(storageTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(storageTargets[0]);
+            }
+          }
         }
       }
       //} else {
