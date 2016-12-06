@@ -1,6 +1,7 @@
 var createCreep = function(name, role, creeps) {
   var n = calSource(creeps);
-  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+  Game.spawns['Spawn1'].createCreep(
+      [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
 };
 
 var calSource = function(creeps) {
@@ -114,7 +115,7 @@ var creepsCreation = {
                     if (explorers.length < 20) {
                       var n = calSource(explorers);
                       Game.spawns['Spawn1'].createCreep(
-                          [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
+                          [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
                           {role: 'explorer', source: n});
                     }
                   }
