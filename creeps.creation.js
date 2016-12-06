@@ -24,6 +24,7 @@ var creepsCreation = {
 
     // Harvester
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    console.log(harvesters[harvesters.length - 1]);
     if (harvesters.length < 2) {
       createCreep(name, 'harvester', harvesters);
     } else {
