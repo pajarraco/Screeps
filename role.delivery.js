@@ -73,7 +73,7 @@ var roleDelivery = {
             creep.moveTo(depositTargets);
           }
         } else {
-          var storageTargets = Game.room.find(
+          var storageTargets = creep.room.find(
               FIND_STRUCTURES,
               {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
           if (storageTargets.length > 0) {
