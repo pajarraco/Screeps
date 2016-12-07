@@ -1,7 +1,8 @@
 var createCreep = function(name, role, creeps) {
   var n = calSource(creeps);
   Game.spawns['Spawn1'].createCreep(
-      [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+      [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined,
+      {role: role, source: n});
 };
 
 var calSource = function(creeps) {
