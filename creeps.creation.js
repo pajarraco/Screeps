@@ -1,8 +1,6 @@
 var createCreep = function(name, role, creeps) {
   var n = calSource(creeps);
-  Game.spawns['Spawn1'].createCreep(
-      [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined,
-      {role: role, source: n});
+  Game.spawns['Spawn1'].createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
 };
 
 var calSource = function(creeps) {
@@ -92,7 +90,8 @@ var creepsCreation = {
                   var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
                   if (soldiers.length < 3) {
                     Game.spawns['Spawn1'].createCreep(
-                        [TOUGH, TOUGH, ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE], undefined, {role: 'soldier'});
+                        [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
+                        undefined, {role: 'soldier'});
                   } else {
                     //
                     // Conquest
