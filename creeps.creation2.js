@@ -23,26 +23,26 @@ var creepsCreation = {
     }
 
     // Harvester
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == 'E37S67');
+    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == 'E37S68');
     if (harvesters.length < 2) {
       createCreep(name, 'harvester', harvesters);
     } else {
       //
       // upgrader
-      var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == 'E37S67');
+      var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == 'E37S68');
       if (upgraders.length < 2) {
         createCreep(name, 'upgrader', upgraders);
       } else {
         //
         // Tower keeper
         var towerkeepers =
-            _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == 'E37S67');
+            _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == 'E37S68');
         if (towerkeepers.length < 4) {
           createCreep(name, 'towerkeeper', towerkeepers);
         } else {
           //
           // Miner
-          var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == 'E37S67');
+          var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == 'E37S68');
           if (miners.length < 2) {
             var n = 1;
             if (miners.length > 0) {
@@ -60,14 +60,14 @@ var creepsCreation = {
             //
             // Builder
             var builders =
-                _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == 'E37S67');
+                _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == 'E37S68');
             if (builders.length < 2) {
               createCreep(name, 'builder', builders);
             } else {
               //
               // Delivery
               var deliveries =
-                  _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == 'E37S67');
+                  _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == 'E37S68');
               if (deliveries.length < 2) {
                 var n = 1;
                 if (deliveries.length > 0) {
