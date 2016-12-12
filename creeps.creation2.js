@@ -85,14 +85,14 @@ var creepsCreation = {
             //
             // Mechanic
             var mechanics =
-                _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic' && creep.room.name == 'E37S67');
+                _.filter(Game.creeps, (creep) => creep.memory.role == 'mechanic' && creep.room.name == 'E37S68');
             if (mechanics.length < 2) {
               createCreep(name, 'mechanic', mechanics);
             } else {
               //
               // Soldier
               /*var soldiers =
-                  _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier' && creep.room.name == 'E37S67');
+                  _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier' && creep.room.name == 'E37S68');
               if (soldiers.length < 3) {
                 Game.spawns['Spawn2'].createCreep(
                     [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
@@ -101,7 +101,7 @@ var creepsCreation = {
               //
               // Conquest
               /*var conquesters =
-                  _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest' && creep.room.name == 'E37S67');
+                  _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest' && creep.room.name == 'E37S68');
               if (conquesters.length < 2) {
                 var n = 1;
                 if (conquesters.length > 0) {
