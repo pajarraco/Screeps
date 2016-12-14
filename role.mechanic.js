@@ -2,7 +2,7 @@
 
 var repairing = function(creep) {
   var closestDamagedStructure =
-      creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 25000});
+      creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 10000});
   if (closestDamagedStructure) {
     if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
       creep.moveTo(closestDamagedStructure);
@@ -28,19 +28,19 @@ var roleMechanic = {
     }
 
     if (creep.memory.repairing) {
-      if (creep.memory.source == 0) {
-        if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
-          repairing(creep);
-        } else {
-          creep.moveTo(Game.flags['LeftRoom']);
-        }
-      } else {
-        if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
-          repairing(creep);
-        } else {
-          creep.moveTo(Game.flags['TopRoom']);
-        }
-      }
+      // if (creep.memory.source == 0) {
+      // if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
+      repairing(creep);
+      //   } else {
+      //     creep.moveTo(Game.flags['LeftRoom']);
+      //   }
+      // } else {
+      //   if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+      //     repairing(creep);
+      //   } else {
+      //     creep.moveTo(Game.flags['TopRoom']);
+      //   }
+      // }
     } else {
       var storages = creep.pos.findClosestByRange(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 300});

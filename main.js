@@ -8,15 +8,16 @@ var roleSoldier = require('role.soldier');
 var roleTowerkeeper = require('role.towerkeeper');
 var roleExplorer = require('role.explorer');
 var roleConquest = require('role.conquest');
-var creepsCreation = require('creeps.creation');
-var creepsCreation2 = require('creeps.creation2');
+var spawnsCreation = require('spawn.creation');
 var structureTower = require('structure.tower');
 var structureLink = require('structure.link');
 
 module.exports.loop = function() {
 
-  creepsCreation.run();
-  creepsCreation2.run();
+  for (var spawnName in Game.spawns) {
+    var spawn = Game.spawns[spawnName];
+    spawnsCreation.run(spawn);
+  }
 
   for (var roomName in Game.rooms) {
     var room = Game.rooms[roomName];
