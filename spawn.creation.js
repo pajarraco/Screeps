@@ -55,7 +55,7 @@ var creepsCreation = {
             });
           }
           if (spawn.name == 'Spawn1') {
-            spawn.createCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
+            spawn.createCreep([WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
           } else {
             spawn.createCreep([WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
           }
