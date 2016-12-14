@@ -42,28 +42,26 @@ var creepsCreation = {
         createNewCreep(spawn, name, 'upgrader', upgraders);
       } else {
         //
-        // Tower keeper
-        var towerkeepers =
-            _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-        if (towerkeepers.length < 4) {
-          createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
+        // Miner
+        var miners =
+            _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
+        if (miners.length < 2) {
+          var n = 1;
+          if (miners.length > 0) {
+            miners.forEach(function(m) {
+              if (m.memory.source == 1) {
+                n = 0;
+              }
+            });
+          }
+          spawn.createCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
         } else {
           //
-          // Miner
-          var miners =
-              _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
-          if (miners.length < 2) {
-            var n = 1;
-            if (miners.length > 0) {
-              // if (miners[0].memory.source == 0) {
-              miners.forEach(function(m) {
-                if (m.memory.source == 1) {
-                  n = 0;
-                }
-              });
-              //}
-            }
-            spawn.createCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
+          // Tower keeper
+          var towerkeepers = _.filter(
+              Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
+          if (towerkeepers.length < 4) {
+            createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
           } else {
             //
             // Builder
@@ -73,28 +71,28 @@ var creepsCreation = {
               createNewCreep(spawn, name, 'builder', builders);
             } else {
               //
-              // Delivery
-              var deliveries = _.filter(
-                  Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
-              if (deliveries.length < 2) {
-                var n = 1;
-                if (deliveries.length > 0) {
-                  // if (miners[0].memory.source == 0) {
-                  deliveries.forEach(function(m) {
-                    if (m.memory.source == 1) {
-                      n = 0;
-                    }
-                  });
-                  //}
-                }
-                var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
+              // Mechanic
+              var mechanics = _.filter(
+                  Game.creeps, (creep) => creep.memory.role == 'mechanic' && creep.room.name == spawn.room.name);
+              if (mechanics.length < 2) {
+                createNewCreep(spawn, name, 'mechanic', mechanics);
               } else {
                 //
-                // Mechanic
-                var mechanics = _.filter(
-                    Game.creeps, (creep) => creep.memory.role == 'mechanic' && creep.room.name == spawn.room.name);
-                if (mechanics.length < 2) {
-                  createNewCreep(spawn, name, 'mechanic', mechanics);
+                // Delivery
+                var deliveries = _.filter(
+                    Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
+                if (deliveries.length < 2) {
+                  var n = 1;
+                  if (deliveries.length > 0) {
+                    // if (miners[0].memory.source == 0) {
+                    deliveries.forEach(function(m) {
+                      if (m.memory.source == 1) {
+                        n = 0;
+                      }
+                    });
+                    //}
+                  }
+                  var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
                 } else {
                   //
                   // Soldier
