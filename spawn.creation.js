@@ -88,13 +88,11 @@ var creepsCreation = {
                 if (deliveries.length < 2) {
                   var n = 1;
                   if (deliveries.length > 0) {
-                    // if (miners[0].memory.source == 0) {
                     deliveries.forEach(function(m) {
                       if (m.memory.source == 1) {
                         n = 0;
                       }
                     });
-                    //}
                   }
                   var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
                 } else {
@@ -113,13 +111,11 @@ var creepsCreation = {
                     if (conquesters.length < 2) {
                       var n = 1;
                       if (conquesters.length > 0) {
-                        // if (miners[0].memory.source == 0) {
                         conquesters.forEach(function(m) {
                           if (m.memory.source == 1) {
                             n = 0;
                           }
                         });
-                        //}
                       }
                       spawn.createCreep([CLAIM, MOVE], undefined, {role: 'conquest', source: n});
                     }
