@@ -58,7 +58,7 @@ var creepsCreation = {
         var miners =
             _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
         if (miners.length < 2) {
-          var n = calSource(deliveries);
+          var n = calSource(miners);
           if (spawn.name == 'Spawn1') {
             spawn.createCreep([WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
           } else {
