@@ -35,9 +35,10 @@ var roleSoldier = {
           creep.moveTo(closestHostileStructures);
         }
       } else {
-        rampart = findEmptyRampart(creep);
-        if (rampart) {
-          creep.moveTo(Game.flags['Home']);  // rampart);
+        if (creep.memory.source == 0) {
+          creep.moveTo(Game.flags['Home']);
+        } else if (creep.memory.source == 1) {
+          creep.moveTo(Game.flags['Home2']);
         }
       }
     }
