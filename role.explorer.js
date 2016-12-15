@@ -70,6 +70,15 @@ var roleExplorer = {
             } else {
               creep.moveTo(Game.flags['LeftRoom']);
             }
+          } else if (creep.memory.source == 1) {
+            if (creep.pos.roomName == Game.flags['LeftRoom2'].pos.roomName) {
+              var source = creep.pos.findClosestByRange(FIND_SOURCES);
+              if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(source);
+              }
+            } else {
+              creep.moveTo(Game.flags['LeftRoom2']);
+            }
           } else {
             if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
               var source = creep.pos.findClosestByRange(FIND_SOURCES);

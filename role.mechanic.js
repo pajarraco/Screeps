@@ -2,7 +2,7 @@
 
 var repairing = function(creep) {
   var closestDamagedStructure =
-      creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 10000});
+      creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 5000});
   if (closestDamagedStructure) {
     if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
       creep.moveTo(closestDamagedStructure);

@@ -26,10 +26,12 @@ var roleConquest = {
         creep.moveTo(creep.room.controller);
       }
     } else {
-      if (creep.memory.source == 1) {
-        creep.moveTo(33, 0);
+      if (creep.memory.source == 0) {
+        creep.moveTo(Game.flags['TopRoom']);
+      } else if (creep.memory.source == 1) {
+        creep.moveTo(Game.flags['LeftRoom']);
       } else {
-        creep.moveTo(0, 26);
+        creep.moveTo(Game.flags['LeftRoom2']);
       }
     }
   }

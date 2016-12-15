@@ -3,7 +3,7 @@ var createNewCreep = function(spawn, name, role, creeps) {
   if (spawn.name == 'Spawn1') {
     spawn.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   } else {
-    spawn.createCreep([WORK, CARRY, MOVE], undefined, {role: role, source: n});
+    spawn.createCreep([WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   }
 };
 
@@ -12,6 +12,18 @@ var calSource = function(creeps) {
   if (creeps.length > 0) {
     if (creeps[creeps.length - 1].memory.source == 1) {
       n = 0;
+    }
+  }
+  return n;
+};
+
+var calSourceExtra = function(creeps) {
+  var n = 0;
+  if (creeps.length > 0) {
+    if (creeps[creeps.length - 1].memory.source == 0) {
+      n = 1;
+    } else if (creeps[creeps.length - 1].memory.source == 1) {
+      n = 2;
     }
   }
   return n;
@@ -46,14 +58,7 @@ var creepsCreation = {
         var miners =
             _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
         if (miners.length < 2) {
-          var n = 1;
-          if (miners.length > 0) {
-            miners.forEach(function(m) {
-              if (m.memory.source == 1) {
-                n = 0;
-              }
-            });
-          }
+          var n = calSource(deliveries);
           if (spawn.name == 'Spawn1') {
             spawn.createCreep([WORK, WORK, WORK, WORK, WORK, WORK, MOVE], undefined, {role: 'miner', source: n});
           } else {
@@ -86,44 +91,30 @@ var creepsCreation = {
                 var deliveries = _.filter(
                     Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
                 if (deliveries.length < 2) {
-                  var n = 1;
-                  if (deliveries.length > 0) {
-                    deliveries.forEach(function(m) {
-                      if (m.memory.source == 1) {
-                        n = 0;
-                      }
-                    });
-                  }
+                  var n = calSource(deliveries);
                   var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
                 } else {
                   //
                   // Soldier
-                  var soldiers = _.filter(
-                      Game.creeps, (creep) => creep.memory.role == 'soldier' && creep.room.name == spawn.room.name);
-                  if (soldiers.length < 3) {
+                  var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+                  if (soldiers.length < 4) {
+                    var n = calSource(soldiers);
                     spawn.createCreep(
                         [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
-                        undefined, {role: 'soldier'});
+                        undefined, {role: 'soldier', source: n});
                   } else {
                     //
                     // Conquest
                     var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                    if (conquesters.length < 2) {
-                      var n = 1;
-                      if (conquesters.length > 0) {
-                        conquesters.forEach(function(m) {
-                          if (m.memory.source == 1) {
-                            n = 0;
-                          }
-                        });
-                      }
+                    if (conquesters.length < 3) {
+                      var n = calSourceExtra(conquesters);
                       spawn.createCreep([CLAIM, MOVE], undefined, {role: 'conquest', source: n});
                     }
                     //
                     // Explorer
                     var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                    if (explorers.length < 20) {
-                      var n = calSource(explorers);
+                    if (explorers.length < 9) {
+                      var n = calSourceExtra(explorers);
                       spawn.createCreep(
                           [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
                           {role: 'explorer', source: n});
