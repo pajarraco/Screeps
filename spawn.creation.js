@@ -90,7 +90,7 @@ var creepsCreation = {
                 // Delivery
                 var deliveries = _.filter(
                     Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
-                if (deliveries.length < 2) {
+                if (deliveries.length < 2 && spawn.name == 'Spawn1') {
                   var n = calSource(deliveries);
                   var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
                 } else {
