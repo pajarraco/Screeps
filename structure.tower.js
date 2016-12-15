@@ -8,7 +8,7 @@ var structureTower = {
       towers.forEach(function(tower) {
         var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
         if (closestHostile) {
-          Game.spawns['Spawn1'].room.controller.activateSafeMode();
+          // Game.spawns['Spawn1'].room.controller.activateSafeMode();
           tower.attack(closestHostile);
         } else {
           var closestDamagedStructure = tower.pos.findClosestByRange(
