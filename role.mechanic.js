@@ -1,4 +1,4 @@
-// var roleExplorer = require('role.explorer');
+var roleTowerkeeper = require('role.towerkeeper');
 
 var repairing = function(creep) {
   var closestDamagedStructure =
@@ -28,19 +28,9 @@ var roleMechanic = {
     }
 
     if (creep.memory.repairing) {
-      // if (creep.memory.source == 0) {
-      // if (creep.pos.roomName == Game.flags['LeftRoom'].pos.roomName) {
-      repairing(creep);
-      //   } else {
-      //     creep.moveTo(Game.flags['LeftRoom']);
-      //   }
-      // } else {
-      //   if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
-      //     repairing(creep);
-      //   } else {
-      //     creep.moveTo(Game.flags['TopRoom']);
-      //   }
-      // }
+      if (!repairing(creep)) {
+        roleTowerkeeper.run(creep);
+      }
     } else {
       var storages = creep.pos.findClosestByRange(
           FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 300});

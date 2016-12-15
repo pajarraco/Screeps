@@ -1,4 +1,4 @@
-var roleBuilder = require('role.builder');
+var roleUpgrader = require('role.upgrader');
 
 var roleTowerkeeper = {
 
@@ -26,7 +26,7 @@ var roleTowerkeeper = {
           creep.moveTo(depositTargets[s]);
         }
       } else {
-        roleBuilder.run(creep);
+        roleUpgrader.run(creep);
       }
     } else {
       var storages = creep.pos.findClosestByRange(
