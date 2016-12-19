@@ -1,9 +1,9 @@
 var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   if (spawn.name == 'Spawn1') {
-    spawn.createCreep([WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+    spawn.createCreep([WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   } else {
-    spawn.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+    spawn.createCreep([WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   }
 };
 
@@ -43,14 +43,14 @@ var creepsCreation = {
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-    if (harvesters.length < 2) {
+    if (harvesters.length < 1) {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
       // upgrader
       var upgraders =
           _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-      if (upgraders.length < 2) {
+      if (upgraders.length < 1) {
         createNewCreep(spawn, name, 'upgrader', upgraders);
       } else {
         //
@@ -69,7 +69,7 @@ var creepsCreation = {
           // Tower keeper
           var towerkeepers = _.filter(
               Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-          if (towerkeepers.length < 2) {
+          if (towerkeepers.length < 1) {
             createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
           } else {
             //

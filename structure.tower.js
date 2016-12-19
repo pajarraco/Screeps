@@ -11,10 +11,19 @@ var structureTower = {
           // Game.spawns['Spawn1'].room.controller.activateSafeMode();
           tower.attack(closestHostile);
         } else {
-          var closestDamagedStructure = tower.pos.findClosestByRange(
-              FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax && structure.hits < 50000});
-          if (closestDamagedStructure && tower.energy > 600) {
-            tower.repair(closestDamagedStructure);
+          var closestDamagedStructures =
+              tower.room.find(FIND_STRUCTURES, {filter: (structure) => structure.hits < structure.hitsMax});
+          var minHits = 100000000;
+          var minDamagedStructure;
+          closestDamagedStructures.forEach(function(s) {
+            if (s.hits < minHits) {
+              minHits = s.hits;
+              minDamagedStructure = s;
+            }
+          });
+
+          if (minDamagedStructure && tower.energy > 600) {
+            tower.repair(minDamagedStructure);
           }
         }
       });
