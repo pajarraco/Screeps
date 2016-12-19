@@ -39,14 +39,14 @@ module.exports.loop = function() {
       roleMiner.run(creep);
     } else if (creep.memory.role == 'delivery') {
       roleDelivery.run(creep);
-    } else if (creep.memory.role == 'soldier') {
-      roleSoldier.run(creep);
     } else if (creep.memory.role == 'towerkeeper') {
       roleTowerkeeper.run(creep);
-    } else if (creep.memory.role == 'explorer') {
-      roleExplorer.run(creep);
+    } /*else if (creep.memory.role == 'soldier') {
+      roleSoldier.run(creep);
     } else if (creep.memory.role == 'conquest') {
       roleConquest.run(creep);
-    }
+    } else if (creep.memory.role == 'explorer') {
+      roleExplorer.run(creep);
+    }*/
   }
 }
