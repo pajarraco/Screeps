@@ -1,9 +1,10 @@
 var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   if (spawn.name == 'Spawn1') {
-    spawn.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+    spawn.createCreep(
+        [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {role: role, source: n});
   } else {
-    spawn.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
+    spawn.createCreep([WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   }
 };
 
