@@ -1,4 +1,4 @@
-var roleTowerkeeper = require('role.towerkeeper');
+var roleUpgrader = require('role.upgrader');
 
 var roleHarvester = {
 
@@ -27,7 +27,7 @@ var roleHarvester = {
           creep.moveTo(depositTargets);
         }
       } else {
-        roleTowerkeeper.run(creep);
+        roleUpgrader.run(creep);
       }
     } else {
       var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);

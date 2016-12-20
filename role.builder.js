@@ -1,4 +1,4 @@
-var roleTowerkeeper = require('role.towerkeeper');
+var roleHarvester = require('role.harvester');
 
 var roleBuilder = {
 
@@ -28,7 +28,7 @@ var roleBuilder = {
             creep.moveTo(closestDamagedStructure);
           }
         } else {
-          roleTowerkeeper.run(creep);
+          roleHarvester.run(creep);
         }
       }
     } else {

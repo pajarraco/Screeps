@@ -1,5 +1,3 @@
-var roleUpgrader = require('role.upgrader');
-
 var roleTowerkeeper = {
 
   /** @param {Creep} creep **/
@@ -28,8 +26,6 @@ var roleTowerkeeper = {
         if (creep.transfer(depositTargets[s], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(depositTargets[s]);
         }
-      } else {
-        roleUpgrader.run(creep);
       }
     } else {
       var storages = creep.pos.findClosestByRange(
