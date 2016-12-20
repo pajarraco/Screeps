@@ -24,6 +24,8 @@ var roleDelivery = {
       if (creep.carry.energy < creep.carryCapacity) {
         if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(linkTo);
+        } else {
+          creep.moveTo(31, 26);
         }
       } else {
         var storageTargets = creep.room.find(
