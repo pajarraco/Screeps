@@ -1,7 +1,7 @@
 var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   var newCreep = spawn.createCreep(
-      [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {role: role, source: n});
+      [WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
     spawn.createCreep([WORK, CARRY, MOVE], undefined, {role: role, source: n});
   }
