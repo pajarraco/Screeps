@@ -1,4 +1,4 @@
-var roleMechanic = require('role.mechanic');
+var roleTowerkeeper = require('role.towerkeeper');
 
 var roleBuilder = {
 
@@ -21,7 +21,15 @@ var roleBuilder = {
           creep.moveTo(targets);
         }
       } else {
-        roleMechanic.run(creep);
+        var closestDamagedStructure =
+            creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 5000});
+        if (closestDamagedStructure) {
+          if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(closestDamagedStructure);
+          }
+        } else {
+          roleTowerkeeper.run(creep);
+        }
       }
     } else {
       var storages = creep.pos.findClosestByRange(
