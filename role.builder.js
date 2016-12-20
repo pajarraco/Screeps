@@ -46,7 +46,8 @@ var roleBuilder = {
           }
         } else {
           var containers = creep.pos.findClosestByRange(
-              FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
+              FIND_STRUCTURES,
+              {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 100});
           if (containers) {
             if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(containers);

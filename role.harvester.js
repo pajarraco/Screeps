@@ -37,7 +37,7 @@ var roleHarvester = {
         }
       } else {
         var storages = creep.pos.findClosestByRange(
-            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 300});
+            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
         if (storages) {
           if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
             creep.moveTo(storages);
@@ -45,7 +45,7 @@ var roleHarvester = {
         } else {
           var containers = creep.pos.findClosestByRange(
               FIND_STRUCTURES,
-              {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 100});
+              {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 300});
           if (containers) {
             if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(containers);
