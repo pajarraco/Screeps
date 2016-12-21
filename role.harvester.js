@@ -36,11 +36,10 @@ var roleHarvester = {
           creep.moveTo(target);
         }
       } else {
-        var link = creep.pos.findClosestByRange(
-            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LINK && s.energyAvailable > 100});
-        if (storages) {
-          if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(storages);
+        var link = creep.room.lookForAt('structure', 32, 26)[1];
+        if (link.energyAvailable > 100) {
+          if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(link);
           }
         } else {
           var storages = creep.pos.findClosestByRange(
