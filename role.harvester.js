@@ -5,6 +5,9 @@ var roleHarvester = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
+    var link = creep.room.lookForAt('structure', 32, 26)[1];
+
+
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
       creep.say('harvesting');
@@ -27,7 +30,20 @@ var roleHarvester = {
           creep.moveTo(depositTargets);
         }
       } else {
-        roleUpgrader.run(creep);
+        if (link) {
+          if (link.energy > 0) {
+            if (creep.withdraw(links, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(links);
+            }
+            var storages =
+                creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
+            if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(storages);
+            }
+          }
+        } else {
+          roleUpgrader.run(creep);
+        }
       }
     } else {
       var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
@@ -36,12 +52,10 @@ var roleHarvester = {
           creep.moveTo(target);
         }
       } else {
-        var links = creep.room.lookForAt('structure', 32, 26)[1];
-        console.log(links);
         if (links) {
-          if (links[0].energy > 100) {
-            if (creep.withdraw(links[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(links[0]);
+          if (links.energy > 100) {
+            if (creep.withdraw(links, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(links);
             }
           }
         } else {
