@@ -5,6 +5,16 @@ var roleBuilder = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
+    if (creep.carry.GO) {
+      var targetStorage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+      filter: (s) => (s.structureType == STRUCTURE_STORAGE);
+      if (targetStorage) {
+        if (creep.transfer(targetStorage, RESOURCE_GO) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(targetStorage);
+        }
+      }
+    }
+
     if (creep.memory.building && creep.carry.energy == 0) {
       creep.memory.building = false;
       creep.say('harvesting');
@@ -54,7 +64,7 @@ var roleBuilder = {
         }
       }
     }
-  }
-};
+    }
+  };
 
-module.exports = roleBuilder;
+  module.exports = roleBuilder;
