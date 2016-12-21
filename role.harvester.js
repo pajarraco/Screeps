@@ -36,13 +36,13 @@ var roleHarvester = {
           creep.moveTo(target);
         }
       } else {
-        var link = creep.room.lookForAt('structure', 32, 26)[1];
+        var links = creep.room.lookForAt('structure', 32, 26)[1];
 
-        if (link) {
-          console.log(link);
-          if (link.energyAvailable > 100) {
-            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(link);
+        if (links.length > 0) {
+          console.log(links[0]);
+          if (links[0].energyAvailable > 100) {
+            if (creep.withdraw(links[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(links[0]);
             }
           }
         } else {
