@@ -3,6 +3,10 @@ var harvestSource = function(creep) {
   if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
     creep.moveTo(source);
   }
+  var containers = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
+  if (containers.length > 0) {
+    creep.moveTo(containers[0]);
+  }
 };
 
 var roleExplorerminer = {
