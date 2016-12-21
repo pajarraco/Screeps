@@ -13,8 +13,7 @@ var roleBuilder = {
           creep.moveTo(targetStorage);
         }
       }
-    }
-    els {
+    } else {
       if (creep.memory.building && creep.carry.energy == 0) {
         creep.memory.building = false;
         creep.say('harvesting');
