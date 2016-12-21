@@ -30,16 +30,15 @@ var roleHarvester = {
         }
       } else {
         if (link && creep.memory.role == 'harvester') {
-          if (link.energy > 0) {
+          if (link.energy > 0 && creep.carry.energy < creep.carryCapacity) {
             if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(link);
             }
-            if (creep.carry.energy == creep.carryCapacity) {
-              var storages =
-                  creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
-              if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storages);
-              }
+          } else {
+            var storages =
+                creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
+            if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(storages);
             }
           }
         } else {
