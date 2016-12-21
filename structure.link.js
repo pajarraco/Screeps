@@ -6,7 +6,9 @@ var structureLink = {
     var linkFrom = room.lookForAt('structure', 29, 39)[1];
     var linkTo = room.lookForAt('structure', 32, 26)[1];
     if (linkFrom && linkTo) {
-      linkFrom.transferEnergy(linkTo);
+      if (linkTo.energy < linkTo.energyCapacity) {
+        linkFrom.transferEnergy(linkTo);
+      }
     }
   }
 };
