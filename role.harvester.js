@@ -6,6 +6,9 @@ var roleHarvester = {
   run: function(creep) {
 
     var link = creep.room.lookForAt('structure', 32, 26)[1];
+    if (!link) {
+      link = {};
+    }
 
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
