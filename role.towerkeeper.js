@@ -45,8 +45,6 @@ var roleTowerkeeper = {
       }
     }
   }
-}
-}
-;
+};
 
 module.exports = roleTowerkeeper;
