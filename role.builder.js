@@ -9,7 +9,7 @@ var roleBuilder = {
       var targetStorage =
           creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
       if (targetStorage) {
-        if (creep.transfer(targetStorage, RESOURCE_GO) == ERR_NOT_IN_RANGE) {
+        if (creep.transfer(targetStorage, RESOURCE_GHODIUM_OXIDE) == ERR_NOT_IN_RANGE) {
           creep.moveTo(targetStorage);
         }
       }
