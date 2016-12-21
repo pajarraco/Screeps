@@ -9,7 +9,7 @@ var roleMiner = {
     }
     var links = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_LINK}});
     if (links.length > 0) {
-      console.log(creep.transfer(link[0], RESOURCE_ENERGY));
+      console.log(creep.transfer(links[0], RESOURCE_ENERGY));
       console.log(link);
     }
 
