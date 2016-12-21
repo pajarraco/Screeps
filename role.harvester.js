@@ -31,13 +31,15 @@ var roleHarvester = {
       } else {
         if (link) {
           if (link.energy > 0) {
-            if (creep.withdraw(links, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(links);
+            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(link);
             }
-            var storages =
-                creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
-            if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(storages);
+            if (creep.carry.energy == creep.carryCapacity) {
+              var storages =
+                  creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
+              if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storages);
+              }
             }
           }
         } else {
