@@ -29,7 +29,7 @@ var roleHarvester = {
           creep.moveTo(depositTargets);
         }
       } else {
-        if (link) {
+        if (link && creep.memory.role == 'harvester') {
           if (link.energy > 0) {
             if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(link);
