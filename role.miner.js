@@ -7,9 +7,9 @@ var roleMiner = {
     if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
       creep.moveTo(sources[i]);
     }
-    var link = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_LINK}});
-    if (link) {
-      console.log(creep.transfer(link, RESOURCE_ENERGY));
+    var links = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_LINK}});
+    if (links.length > 0) {
+      console.log(creep.transfer(link[0], RESOURCE_ENERGY));
       console.log(link);
     }
 
