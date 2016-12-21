@@ -7,7 +7,6 @@ var roleHarvester = {
 
     var link = creep.room.lookForAt('structure', 32, 26)[1];
 
-
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
       creep.say('harvesting');
@@ -52,10 +51,10 @@ var roleHarvester = {
           creep.moveTo(target);
         }
       } else {
-        if (links) {
-          if (links.energy > 100) {
-            if (creep.withdraw(links, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(links);
+        if (link) {
+          if (link.energy > 100) {
+            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(link);
             }
           }
         } else {
