@@ -37,9 +37,8 @@ var roleHarvester = {
         }
       } else {
         var links = creep.room.lookForAt('structure', 32, 26)[1];
-
-        if (links.length > 0) {
-          console.log(links[0].energy);
+        console.log(links);
+        if (links) {
           if (links[0].energy > 100) {
             if (creep.withdraw(links[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
               creep.moveTo(links[0]);
