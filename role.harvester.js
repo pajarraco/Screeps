@@ -53,11 +53,9 @@ var roleHarvester = {
           creep.moveTo(target);
         }
       } else {
-        if (link) {
-          if (link.energy > 100) {
-            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(link);
-            }
+        if (link.energy > 100) {
+          if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(link);
           }
         } else {
           var storages = creep.pos.findClosestByRange(
