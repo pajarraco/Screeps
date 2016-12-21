@@ -3,11 +3,11 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleMiner = require('role.miner');
 var roleTowerkeeper = require('role.towerkeeper');
-// var roleDelivery = require('role.delivery');
-// var roleSoldier = require('role.soldier');
-// var roleConquest = require('role.conquest');
-// var roleExplorerminer = require('role.explorerminer');
-// var roleExplorer = require('role.explorer');
+var roleDelivery = require('role.delivery');
+var roleSoldier = require('role.soldier');
+var roleConquest = require('role.conquest');
+var roleExplorerminer = require('role.explorerminer');
+var roleExplorer = require('role.explorer');
 var spawnsCreation = require('spawn.creation');
 var structureTower = require('structure.tower');
 var structureLink = require('structure.link');
@@ -37,16 +37,16 @@ module.exports.loop = function() {
       roleMiner.run(creep);
     } else if (creep.memory.role == 'towerkeeper') {
       roleTowerkeeper.run(creep);
-    } /*else if (creep.memory.role == 'delivery') {
-       roleDelivery.run(creep);
+    } else if (creep.memory.role == 'delivery') {
+      roleDelivery.run(creep);
     } else if (creep.memory.role == 'soldier') {
       roleSoldier.run(creep);
     } else if (creep.memory.role == 'conquest') {
       roleConquest.run(creep);
     } else if (creep.memory.role == 'explorerminer') {
       roleExplorerminer.run(creep);
-    }else if (creep.memory.role == 'explorer') {
+    } else if (creep.memory.role == 'explorer') {
       roleExplorer.run(creep);
-    }*/
+    }
   }
 }
