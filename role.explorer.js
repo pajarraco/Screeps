@@ -70,7 +70,7 @@ var roleExplorer = {
               }
             } else {
               // deposit
-              var depositTargets = Game.flags['Home'].room.find(
+              var depositTargets = Game.flags['Home2'].room.find(
                   FIND_STRUCTURES,
                   {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
               if (depositTargets.length > 0) {
@@ -78,7 +78,7 @@ var roleExplorer = {
                   creep.moveTo(depositTargets[0]);
                 }
               } else {
-                var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                var otherTargets = Game.flags['Home2'].room.find(FIND_STRUCTURES, {
                   filter: (s) => {
                     return (
                         (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
@@ -103,12 +103,6 @@ var roleExplorer = {
               creep.moveTo(Game.flags['LeftRoom']);
             }
           } else if (creep.memory.source == 1) {
-            if (creep.pos.roomName == Game.flags['LeftRoom2'].pos.roomName) {
-              harvestContainer(creep);
-            } else {
-              creep.moveTo(Game.flags['LeftRoom2']);
-            }
-          } else {
             if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
               harvestContainer(creep);
             } else {

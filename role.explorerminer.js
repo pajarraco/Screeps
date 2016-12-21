@@ -31,12 +31,6 @@ var roleExplorerminer = {
             creep.moveTo(Game.flags['LeftRoom']);
           }
         } else if (creep.memory.source == 1) {
-          if (creep.pos.roomName == Game.flags['LeftRoom2'].pos.roomName) {
-            harvestSource(creep);
-          } else {
-            creep.moveTo(Game.flags['LeftRoom2']);
-          }
-        } else {
           if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
             harvestSource(creep);
           } else {
