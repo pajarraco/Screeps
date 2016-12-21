@@ -79,40 +79,40 @@ var creepsCreation = {
             } else {
               //
               // Delivery
-              var deliveries = _.filter(
+              /*var deliveries = _.filter(
                   Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
               if (deliveries.length < 2 && spawn.name == 'Spawn1') {
                 var n = calSource(deliveries);
                 var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
-              } else {
-                //
-                // Soldier
-                //   var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-                //   if (soldiers.length < 2) {
-                //     var n = calSource(soldiers);
-                //     spawn.createCreep(
-                //         [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE,
-                //         MOVE],
-                //         undefined, {role: 'soldier', source: n});
-                //   } else {
-                //     //
-                //     // Conquest
-                //     var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                //     if (conquesters.length < 3) {
-                //       var n = calSourceExtra(conquesters);
-                //       spawn.createCreep([CLAIM, MOVE], undefined, {role: 'conquest', source: n});
-                //     }
-                //     //
-                //     // Explorer
-                //     var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                //     if (explorers.length < 6) {
-                //       var n = calSourceExtra(explorers);
-                //       spawn.createCreep(
-                //           [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
-                //           {role: 'explorer', source: n});
-                //     }
-                //   }
-              }
+              } else {*/
+              //
+              // Soldier
+              //   var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+              //   if (soldiers.length < 2) {
+              //     var n = calSource(soldiers);
+              //     spawn.createCreep(
+              //         [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE,
+              //         MOVE],
+              //         undefined, {role: 'soldier', source: n});
+              //   } else {
+              //     //
+              //     // Conquest
+              //     var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+              //     if (conquesters.length < 3) {
+              //       var n = calSourceExtra(conquesters);
+              //       spawn.createCreep([CLAIM, MOVE], undefined, {role: 'conquest', source: n});
+              //     }
+              //     //
+              //     // Explorer
+              //     var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+              //     if (explorers.length < 6) {
+              //       var n = calSourceExtra(explorers);
+              //       spawn.createCreep(
+              //           [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
+              //           {role: 'explorer', source: n});
+              //     }
+              //   }
+              //  }
             }
           }
         }

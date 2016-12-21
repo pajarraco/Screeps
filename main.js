@@ -35,7 +35,7 @@ module.exports.loop = function() {
     } else if (creep.memory.role == 'miner') {
       roleMiner.run(creep);
     } else if (creep.memory.role == 'delivery') {
-      roleDelivery.run(creep);
+      // roleDelivery.run(creep);
     } else if (creep.memory.role == 'towerkeeper') {
       roleTowerkeeper.run(creep);
     } /*else if (creep.memory.role == 'soldier') {
