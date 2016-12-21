@@ -1,5 +1,25 @@
 var roleUpgrader = require('role.upgrader');
 
+var harvestContainer = function(creep) {
+  var containers = creep.pos.findClosestByRange(
+      FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 300});
+  if (containers) {
+    if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(containers);
+    }
+  } else {
+    harvestSource(creep);
+  }
+};
+
+var harvestSource = function(creep) {
+  var sources = creep.room.find(FIND_SOURCES);
+  var i = 0;  // creep.memory.source;
+  if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+    creep.moveTo(sources[i]);
+  }
+};
+
 var roleHarvester = {
 
   /** @param {Creep} creep **/
@@ -10,6 +30,14 @@ var roleHarvester = {
       link = {};
     }
 
+    var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+      filter: (s) => {
+        return (
+            (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+            s.energy < s.energyCapacity);
+      }
+    });
+
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
       creep.say('harvesting');
@@ -18,15 +46,7 @@ var roleHarvester = {
       creep.memory.transferring = true;
       creep.say('transferring');
     }
-
     if (creep.memory.transferring) {
-      var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-        filter: (s) => {
-          return (
-              (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-              s.energy < s.energyCapacity);
-        }
-      });
       if (depositTargets) {
         if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(depositTargets);
@@ -60,14 +80,7 @@ var roleHarvester = {
             creep.moveTo(link);
           }
         } else {
-          var containers = creep.pos.findClosestByRange(
-              FIND_STRUCTURES,
-              {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 300});
-          if (containers) {
-            if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(containers);
-            }
-          } else {
+          if (depositTargets) {
             var storages = creep.pos.findClosestByRange(
                 FIND_STRUCTURES,
                 {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
@@ -76,12 +89,10 @@ var roleHarvester = {
                 creep.moveTo(storages);
               }
             } else {
-              var sources = creep.room.find(FIND_SOURCES);
-              var i = 0;  // creep.memory.source;
-              if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[i]);
-              }
+              harvestContainer(creep);
             }
+          } else {
+            harvestContainer(creep);
           }
         }
       }
