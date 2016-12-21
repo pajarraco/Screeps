@@ -107,7 +107,7 @@ var creepsCreation = {
                 if (explorerminers.length < 2) {
                   var n = calSourceExtra(explorerminers);
                   spawn.createCreep(
-                      [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
+                      [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
                       {role: 'explorerminer', source: n});
                 }
                 //
@@ -116,7 +116,7 @@ var creepsCreation = {
                 if (explorers.length < 4) {
                   var n = calSourceExtra(explorers);
                   spawn.createCreep(
-                      [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, ATTACK], undefined,
+                      [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
                       {role: 'explorer', source: n});
                 }
               }
