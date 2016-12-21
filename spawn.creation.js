@@ -23,9 +23,9 @@ var calSourceExtra = function(creeps) {
   if (creeps.length > 0) {
     if (creeps[creeps.length - 1].memory.source == 0) {
       n = 1;
-    } else if (creeps[creeps.length - 1].memory.source == 1) {
+    } /*else if (creeps[creeps.length - 1].memory.source == 1) {
       n = 2;
-    }
+    }*/
   }
   return n;
 };
