@@ -34,14 +34,14 @@ var roleExplorer = {
     // attack hostile
     var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
     if (closestHostile) {
-      if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+      if (creep.rangedAttack(closestHostile) == ERR_NOT_IN_RANGE) {
         creep.moveTo(closestHostile);
       }
     } else {
       // attack hostile structure
       var closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
       if (closestHostileStructures) {
-        if (creep.attack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
+        if (creep.rangedAttack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
           creep.moveTo(closestHostileStructures);
         }
       } else {
@@ -70,7 +70,7 @@ var roleExplorer = {
               }
             } else {
               // deposit
-              var depositTargets = Game.flags['Home2'].room.find(
+              var depositTargets = Game.flags['Home'].room.find(
                   FIND_STRUCTURES,
                   {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
               if (depositTargets.length > 0) {
@@ -78,7 +78,7 @@ var roleExplorer = {
                   creep.moveTo(depositTargets[0]);
                 }
               } else {
-                var otherTargets = Game.flags['Home2'].room.find(FIND_STRUCTURES, {
+                var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
                   filter: (s) => {
                     return (
                         (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&

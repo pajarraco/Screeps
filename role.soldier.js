@@ -25,13 +25,13 @@ var roleSoldier = {
 
     var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
     if (closestHostile) {
-      if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+      if (creep.rangedAttack(closestHostile) == ERR_NOT_IN_RANGE) {
         creep.moveTo(closestHostile);
       }
     } else {
       var closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
       if (closestHostileStructures) {
-        if (creep.attack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
+        if (creep.rangedAttack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
           creep.moveTo(closestHostileStructures);
         }
       } else {
