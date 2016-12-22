@@ -22,7 +22,7 @@ var structureTower = {
             }
           });
 
-          if (minDamagedStructure && tower.energy > 500) {
+          if (minDamagedStructure && tower.energy > 600) {
             tower.repair(minDamagedStructure);
           }
         }
