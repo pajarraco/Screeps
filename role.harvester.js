@@ -29,7 +29,6 @@ var roleHarvester = {
     if (!link) {
       link = {};
     }
-
     var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
       filter: (s) => {
         return (
