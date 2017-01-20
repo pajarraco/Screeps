@@ -105,7 +105,8 @@ var roleHarvester = {
         creep.memory.transferring = false;
         creep.say('harvesting');
       }
-      if (!creep.memory.transferring && creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity) {
+      if (!creep.memory.transferring && (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity ||
+                                         creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
         creep.memory.transferring = true;
         creep.say('transferring');
       }
