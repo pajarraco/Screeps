@@ -93,7 +93,7 @@ var creepsCreation = {
                   spawn.createCreep(
                       [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
                       undefined, {role: 'soldier', source: n});
-                } */ else {
+                }  else {
               //
               // Conquest
               var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
@@ -121,9 +121,9 @@ var creepsCreation = {
                     [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
                     {role: 'explorer', source: n});
               }
-            }
-            //  }
-            //}
+              }
+              }
+            }*/
           }
         }
       }
