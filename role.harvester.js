@@ -111,12 +111,12 @@ var roleHarvester = {
         creep.say('transferring');
       }
       if (creep.memory.transferring) {
-        var lab = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
-        if (creep.transfer(lab, RESOURCE_KEANIUM) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(lab);
+        var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
+        if (creep.transfer(labs[0], RESOURCE_KEANIUM) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(labs[0]);
         }
-        if (creep.transfer(lab, RESOURCE_HYDROGEN) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(lab);
+        if (creep.transfer(labs[0], RESOURCE_HYDROGEN) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(labs[0]);
         }
       } else {
         var sources = creep.room.find(FIND_MINERALS);
