@@ -112,7 +112,7 @@ var roleHarvester = {
       }
       if (creep.memory.transferring) {
         var lab = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
-        if (creep.transfer(lab, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        if (creep.transfer(lab, RESOURCE_ALL) == ERR_NOT_IN_RANGE) {
           creep.moveTo(lab);
         }
       } else {
