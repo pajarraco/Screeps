@@ -38,15 +38,16 @@ var roleHarvester = {
       }
     });
 
-    if (creep.memory.transferring && creep.carry.energy == 0) {
-      creep.memory.transferring = false;
-      creep.say('harvesting');
-    }
-    if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
-      creep.memory.transferring = true;
-      creep.say('transferring');
-    }
     if (creep.memory.source == 0) {
+      if (creep.memory.transferring && creep.carry.energy == 0) {
+        creep.memory.transferring = false;
+        creep.say('harvesting');
+      }
+      if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
+        creep.memory.transferring = true;
+        creep.say('transferring');
+      }
+
       if (creep.memory.transferring) {
         if (depositTargets) {
           if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
@@ -100,6 +101,14 @@ var roleHarvester = {
         }
       }
     } else {
+      if (creep.memory.transferring && (creep.carry[RESOURCE_HYDROGEN] == 0 || creep.carry[RESOURCE_KEANIUM] == 0)) {
+        creep.memory.transferring = false;
+        creep.say('harvesting');
+      }
+      if (!creep.memory.transferring && creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity) {
+        creep.memory.transferring = true;
+        creep.say('transferring');
+      }
       if (creep.memory.transferring) {
         var lab = creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
         if (creep.transfer(lab, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
