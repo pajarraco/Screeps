@@ -115,7 +115,7 @@ var roleHarvester = {
         if (creep.transfer(lab, RESOURCE_KEANIUM) == ERR_NOT_IN_RANGE) {
           creep.moveTo(lab);
         }
-        if (creep.transfer(lab, RESOURCE_KEANIUM) == ERR_NOT_IN_RANGE) {
+        if (creep.transfer(lab, RESOURCE_HYDROGEN) == ERR_NOT_IN_RANGE) {
           creep.moveTo(lab);
         }
       } else {
