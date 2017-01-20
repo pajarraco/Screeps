@@ -101,7 +101,7 @@ var roleHarvester = {
         }
       }
     } else {
-      if (creep.memory.transferring && (creep.carry[RESOURCE_HYDROGEN] == 0 && creep.carry[RESOURCE_KEANIUM] == 0)) {
+      if (creep.memory.transferring && (creep.carry[RESOURCE_HYDROGEN] == 0 || creep.carry[RESOURCE_KEANIUM] == 0)) {
         creep.memory.transferring = false;
         creep.say('harvesting');
       }
