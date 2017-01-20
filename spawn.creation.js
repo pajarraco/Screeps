@@ -121,17 +121,11 @@ var creepsCreation = {
                     [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
                     {role: 'explorer', source: n});
               }
-<<<<<<< HEAD
-              }
-              }
-            }*/
-          }
-=======
+
           }
             //  }
             //}
           }*/
->>>>>>> c5dc58d2267bf95edb2b7dfe8f06c6b0b64824b5
         }
       }
     }

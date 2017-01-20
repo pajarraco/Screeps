@@ -28,11 +28,8 @@ var roleHarvester = {
     /*var link = creep.room.lookForAt('structure', 32, 26)[1];
     if (!link) {
       link = {};
-<<<<<<< HEAD
     }*/
-=======
-    }
->>>>>>> c5dc58d2267bf95edb2b7dfe8f06c6b0b64824b5
+
     var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
       filter: (s) => {
         return (
