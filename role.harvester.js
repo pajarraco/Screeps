@@ -38,7 +38,7 @@ var harvestMine = function(creep) {
       creep.moveTo(labs[0]);
     } else if (tk == ERR_FULL) {
       var terminal = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TERMINAL});
-      if (creep.transfer(terminal[0], RESOURCE_KEANIUM) ==) {
+      if (creep.transfer(terminal[0], RESOURCE_KEANIUM) == ERR_NOT_IN_RANGE) {
         creep.moveTo(terminal[0]);
       } else {
         if (terminal.send(RESOURCE_KEANIUM, 100, 'E37S68') == ERR_NOT_ENOUGH_RESOURCES) {
@@ -50,7 +50,7 @@ var harvestMine = function(creep) {
       creep.moveTo(labs[0]);
     } else if (th == ERR_FULL) {
       var terminal = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TERMINAL});
-      if (creep.transfer(terminal[0], RESOURCE_HYDROGEN)) {
+      if (creep.transfer(terminal[0], RESOURCE_HYDROGEN) == ERR_NOT_IN_RANGE) {
         creep.moveTo(terminal[0]);
       }else{
         if (terminal.send(RESOURCE_HYDROGEN, 100, 'E37S69') == ERR_NOT_ENOUGH_RESOURCES) {
