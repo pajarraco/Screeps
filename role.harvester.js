@@ -86,7 +86,7 @@ var roleHarvester = {
       }
     });
 
-    if (creep.memory.source == 0) {
+    if (creep.memory.source == 0 && creep.carry.energy == 0) {
       if (creep.memory.transferring && creep.carry.energy == 0) {
         creep.memory.transferring = false;
         creep.say('harvesting');
