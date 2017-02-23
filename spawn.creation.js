@@ -88,7 +88,7 @@ var creepsCreation = {
               if (deliveries.length < 2 && spawn.name == 'Spawn1') {
                 var n = calSource(deliveries);
                 var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
-             } */ else {
+             }  else {
             //
             // Soldier
             var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
@@ -97,7 +97,7 @@ var creepsCreation = {
               spawn.createCreep(
                   [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
                   undefined, {role: 'soldier', source: n});
-            } /*else {
+            } else {
           //
           // Conquest
           var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
@@ -128,8 +128,8 @@ var creepsCreation = {
 
       }
         //  }
-        //}*/
-          }
+        //}
+      }/*
         }
       }
     }

@@ -4,7 +4,7 @@ var roleBuilder = require('role.builder');
 var roleMiner = require('role.miner');
 var roleTowerkeeper = require('role.towerkeeper');
 // var roleDelivery = require('role.delivery');
-var roleSoldier = require('role.soldier');
+// var roleSoldier = require('role.soldier');
 // var roleConquest = require('role.conquest');
 // var roleExplorerminer = require('role.explorerminer');
 // var roleExplorer = require('role.explorer');
@@ -39,9 +39,9 @@ module.exports.loop = function() {
       roleTowerkeeper.run(creep);
     } /*else if (creep.memory.role == 'delivery') {
       roleDelivery.run(creep);
-    } */ else if (creep.memory.role == 'soldier') {
+    } else if (creep.memory.role == 'soldier') {
       roleSoldier.run(creep);
-    } /*else if (creep.memory.role == 'conquest') {
+    } else if (creep.memory.role == 'conquest') {
       roleConquest.run(creep);
     } else if (creep.memory.role == 'explorerminer') {
       roleExplorerminer.run(creep);
