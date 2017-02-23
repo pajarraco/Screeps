@@ -20,6 +20,53 @@ var harvestSource = function(creep) {
   }
 };
 
+var harvestMine = function(creep) {
+  if (creep.memory.transferring && (!creep.carry[RESOURCE_HYDROGEN] || !creep.carry[RESOURCE_KEANIUM])) {
+    creep.memory.transferring = false;
+    creep.say('harvesting');
+  }
+  if (!creep.memory.transferring &&
+      (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
+    creep.memory.transferring = true;
+    creep.say('transferring');
+  }
+
+  if (creep.memory.transferring) {
+    var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
+    var tk = creep.transfer(labs[0], RESOURCE_KEANIUM);
+    if (tk == ERR_NOT_IN_RANGE) {
+      creep.moveTo(labs[0]);
+    } else if (tk == ERR_FULL) {
+      var terminal = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TERMINAL});
+      if (creep.transfer(terminal[0], RESOURCE_KEANIUM) ==) {
+        creep.moveTo(terminal[0]);
+      } else {
+        if (terminal.send(RESOURCE_KEANIUM, 100, 'E37S68') == ERR_NOT_ENOUGH_RESOURCES) {
+          console.log('wait no RESOURCE_KEANIUM');
+        }
+    }
+    var th = creep.transfer(labs[0], RESOURCE_HYDROGEN);
+    if (th == ERR_NOT_IN_RANGE) {
+      creep.moveTo(labs[0]);
+    } else if (th == ERR_FULL) {
+      var terminal = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TERMINAL});
+      if (creep.transfer(terminal[0], RESOURCE_HYDROGEN)) {
+        creep.moveTo(terminal[0]);
+      }else{
+        if (terminal.send(RESOURCE_HYDROGEN, 100, 'E37S69') == ERR_NOT_ENOUGH_RESOURCES) {
+          console.log('wait no RESOURCE_HYDROGEN');
+        }
+      }
+    }
+  } else {
+    var sources = creep.room.find(FIND_MINERALS);
+    var i = 0;  // creep.memory.source;
+    if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(sources[i]);
+    }
+  }
+};
+
 var roleHarvester = {
 
   /** @param {Creep} creep **/
@@ -38,7 +85,7 @@ var roleHarvester = {
       }
     });
 
-    // if (creep.memory.source == 0) {
+    if (creep.memory.source == 0) {
       if (creep.memory.transferring && creep.carry.energy == 0) {
         creep.memory.transferring = false;
         creep.say('harvesting');
@@ -100,33 +147,9 @@ var roleHarvester = {
           //}
         }
       }
-      // } else {
-      //   if (creep.memory.transferring && (!creep.carry[RESOURCE_HYDROGEN] || !creep.carry[RESOURCE_KEANIUM])) {
-      //     creep.memory.transferring = false;
-      //     creep.say('harvesting');
-      //   }
-      //   if (!creep.memory.transferring &&
-      //       (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity ||
-      //        creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
-      //     creep.memory.transferring = true;
-      //     creep.say('transferring');
-      //   }
-      //   if (creep.memory.transferring) {
-      //     var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
-      //     if (creep.transfer(labs[0], RESOURCE_KEANIUM) == ERR_NOT_IN_RANGE) {
-      //       creep.moveTo(labs[0]);
-      //     }
-      //     if (creep.transfer(labs[0], RESOURCE_HYDROGEN) == ERR_NOT_IN_RANGE) {
-      //       creep.moveTo(labs[0]);
-      //     }
-      //   } else {
-      //     var sources = creep.room.find(FIND_MINERALS);
-      //     var i = 0;  // creep.memory.source;
-      //     if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-      //       creep.moveTo(sources[i]);
-      //     }
-      //   }
-      // }
+    } else {
+      harvestMine(creep);
+    }
   }
 };
 
