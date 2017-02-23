@@ -88,52 +88,52 @@ var creepsCreation = {
               if (deliveries.length < 2 && spawn.name == 'Spawn1') {
                 var n = calSource(deliveries);
                 var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
-              } else {
-                //
-                // Soldier
-                var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-                if (soldiers.length < 2) {
-                  var n = calSource(soldiers);
-                  spawn.createCreep(
-                      [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
-                      undefined, {role: 'soldier', source: n});
-                }  else {
-              //
-              // Conquest
-              var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-              if (conquesters.length < 2) {
-                var n = calSourceExtra(conquesters);
-                spawn.createCreep(
-                    [CLAIM, MOVE, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK], undefined,
-                    {role: 'conquest', source: n});
-              }
-              //
-              // Explorerminer
-              var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-              if (explorerminers.length < 2) {
-                var n = calSourceExtra(explorerminers);
-                spawn.createCreep(
-                    [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
-                    {role: 'explorerminer', source: n});
-              }
-              //
-              // Explorer
-              var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-              if (explorers.length < 4) {
-                var n = calSourceExtra(explorers);
-                spawn.createCreep(
-                    [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
-                    {role: 'explorer', source: n});
-              }
-
+             } */ else {
+            //
+            // Soldier
+            var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+            if (soldiers.length < 2) {
+              var n = calSource(soldiers);
+              spawn.createCreep(
+                  [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
+                  undefined, {role: 'soldier', source: n});
+            } else { /*
+          //
+          // Conquest
+          var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+          if (conquesters.length < 2) {
+            var n = calSourceExtra(conquesters);
+            spawn.createCreep(
+                [CLAIM, MOVE, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK], undefined,
+                {role: 'conquest', source: n});
           }
-            //  }
-            //}
-          }*/
+          //
+          // Explorerminer
+          var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
+          if (explorerminers.length < 2) {
+            var n = calSourceExtra(explorerminers);
+            spawn.createCreep(
+                [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
+                {role: 'explorerminer', source: n});
+          }
+          //
+          // Explorer
+          var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+          if (explorers.length < 4) {
+            var n = calSourceExtra(explorers);
+            spawn.createCreep(
+                [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
+                {role: 'explorer', source: n});
+          }
+
+      }
+        //  }
+        //}*/
+            }
+          }
         }
       }
     }
-  }
-};
+  };
 
-module.exports = creepsCreation;
+  module.exports = creepsCreation;
