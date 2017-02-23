@@ -36,9 +36,9 @@ var roleSoldier = {
         }
       } else {
         if (creep.memory.source == 0) {
-          creep.moveTo(Game.flags['Home']);
+          creep.moveTo(Game.flags['war1']);
         } else if (creep.memory.source == 1) {
-          creep.moveTo(Game.flags['Home2']);
+          creep.moveTo(Game.flags['war1']);
         }
       }
     }
