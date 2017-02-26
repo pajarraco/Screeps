@@ -31,6 +31,7 @@ var transferingMaterial = function(creep, resource, room) {
     }
   } else {
     var terminal = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TERMINAL});
+    console.log(terminal);
     if (creep.transfer(terminal[0], resource) == ERR_NOT_IN_RANGE) {
       creep.moveTo(terminal[0]);
     } else {
