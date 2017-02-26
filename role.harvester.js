@@ -36,7 +36,7 @@ var transferingMaterial =
       creep.moveTo(terminal[0]);
     } else {
       if (terminal.send(resource, 100, room) == ERR_NOT_ENOUGH_RESOURCES) {
-        console.log('wait no ' resource);
+        console.log('wait no ', resource);
       }
     }
   }
