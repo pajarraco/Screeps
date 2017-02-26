@@ -24,6 +24,7 @@ var transferingMaterial =
     function(creep, resource, room) {
 
   if (!creep.memory.terminal) {
+    var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
     var tk = creep.transfer(labs[0], resource);
     if (tk == ERR_NOT_IN_RANGE) {
       creep.moveTo(labs[0]);
@@ -54,7 +55,6 @@ var harvestMine = function(creep) {
     creep.say('transferring');
   }
   if (creep.memory.transferring) {
-    var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
     transferingMaterial(creep, RESOURCE_HYDROGEN, 'E37S69');
     transferingMaterial(creep, RESOURCE_KEANIUM, 'E37S68');
   } else {
