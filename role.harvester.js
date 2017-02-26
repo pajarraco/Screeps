@@ -49,6 +49,11 @@ var harvestMine = function(creep) {
   }
   if (!creep.memory.transferring &&
       (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
+    console.log(creep.memory.transferring);
+    console.log(creep.carry[RESOURCE_HYDROGEN]);
+    console.log(creep.carry[RESOURCE_KEANIUM]);
+    console.log(creep.carryCapacity);
+
     creep.memory.transferring = true;
     creep.say('transferring');
   }
