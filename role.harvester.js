@@ -51,7 +51,7 @@ var harvestMine = function(creep) {
       (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
     console.log(creep.memory.transferring);
     console.log(creep.carry[RESOURCE_HYDROGEN]);
-    console.log(creep.carry[RESOURCE_KEANIUM]);
+    console.log('keanium', creep.carry[RESOURCE_KEANIUM]);
     console.log(creep.carryCapacity);
 
     creep.memory.transferring = true;
