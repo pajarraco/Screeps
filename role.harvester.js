@@ -21,7 +21,6 @@ var harvestSource = function(creep) {
 };
 
 var transferingMaterial = function(creep, resource, room) {
-  console.log(creep, resource, creep.memory.term);
   if (!creep.memory.term) {
     var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
     var tk = creep.transfer(labs[0], resource);
@@ -32,7 +31,6 @@ var transferingMaterial = function(creep, resource, room) {
     }
   } else {
     var terminal = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_TERMINAL});
-    console.log(terminal);
     if (creep.transfer(terminal[0], resource) == ERR_NOT_IN_RANGE) {
       creep.moveTo(terminal[0]);
     } else {
@@ -46,12 +44,12 @@ var transferingMaterial = function(creep, resource, room) {
 var harvestMine = function(creep) {
   if (creep.memory.transferring && (!creep.carry[RESOURCE_HYDROGEN] || !creep.carry[RESOURCE_KEANIUM])) {
     creep.memory.transferring = false;
+    creep.memory.term = false;
     creep.say('harvesting');
   }
   if (!creep.memory.transferring &&
       (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
     creep.memory.transferring = true;
-    creep.memory.term = false;
     creep.say('transferring');
   }
   if (creep.memory.transferring) {
