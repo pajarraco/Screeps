@@ -73,14 +73,14 @@ var creepsCreation = {
               Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
           if (towerkeepers.length < 2) {
             createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
-          } else {
+          } /*else {
             //
             // Builder
             var builders =
                 _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
             if (builders.length < 2) {
               createNewCreep(spawn, name, 'builder', builders);
-            } /*else {
+            } else {
               //
               // Delivery
               var deliveries = _.filter(
@@ -127,8 +127,8 @@ var creepsCreation = {
                   }
                 }
               }
-            }*/
-          }
+            }
+          }*/
         }
       }
     }
