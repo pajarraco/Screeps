@@ -65,8 +65,8 @@ var creepsCreation = {
           var n = calSource(miners);
           spawn.createCreep(
               [
-                WORK, WORK,
-                // WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE,
+                WORK, WORK, WORK,
+                // WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE,
                 MOVE
               ],
               undefined, {role: 'miner', source: n});
