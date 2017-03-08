@@ -88,70 +88,69 @@ var roleHarvester = {
     });
 
     // if (creep.memory.source == 0 || creep.carry.energy != 0) {
-      if (creep.memory.transferring && creep.carry.energy == 0) {
-        creep.memory.transferring = false;
-        creep.say('harvesting');
-      }
-      if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
-        creep.memory.transferring = true;
-        creep.say('transferring');
-      }
+    if (creep.memory.transferring && creep.carry.energy == 0) {
+      creep.memory.transferring = false;
+      creep.say('harvesting');
+    }
+    if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
+      creep.memory.transferring = true;
+      creep.say('transferring');
+    }
 
-      if (creep.memory.transferring) {
-        if (depositTargets) {
-          if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(depositTargets);
-          }
-        } else {
-          // if (link && creep.memory.role == 'harvester') {
-          if (creep.memory.role == 'harvester') {
-            /*if (link.energy > 0 && creep.carry.energy < creep.carryCapacity) {
-              if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(link);
-              }
-            } else {*/
-            var storages =
-                creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
-            if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(storages);
-            }
-            //}
-          } else {
-            roleUpgrader.run(creep);
-          }
+    if (creep.memory.transferring) {
+      if (depositTargets) {
+        if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(depositTargets);
         }
       } else {
-        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
-        if (target) {
-          if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(target);
+        // // if (link && creep.memory.role == 'harvester') {
+        // if (creep.memory.role == 'harvester') {
+        //   /*if (link.energy > 0 && creep.carry.energy < creep.carryCapacity) {
+        //     if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        //       creep.moveTo(link);
+        //     }
+        //   } else {*/
+        //   var storages =
+        //       creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
+        //   if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        //     creep.moveTo(storages);
+        //   }
+        //   //}
+        // } else {
+        roleUpgrader.run(creep);
+        // }
+      }
+    } else {
+      var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+      if (target) {
+        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
+        }
+      } else {
+        /*if (link.energy > 100) {
+          if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(link);
           }
-        } else {
-          /*if (link.energy > 100) {
-            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(link);
-            }
-          } else {*/
-          if (depositTargets) {
-            var storages = creep.pos.findClosestByRange(
-                FIND_STRUCTURES,
-                {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
-            if (storages) {
-              if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storages);
-              }
-            } else {
-              harvestContainer(creep);
+        } else {*/
+        if (depositTargets) {
+          var storages = creep.pos.findClosestByRange(
+              FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
+          if (storages) {
+            if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(storages);
             }
           } else {
             harvestContainer(creep);
           }
-          //}
+        } else {
+          harvestContainer(creep);
         }
+        //}
       }
-      // } else {
-      //   harvestMine(creep);
-      // }
+    }
+    // } else {
+    //   harvestMine(creep);
+    // }
   }
 };
 
