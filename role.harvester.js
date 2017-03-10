@@ -15,8 +15,13 @@ var harvestContainer = function(creep) {
 var harvestSource = function(creep) {
   var sources = creep.room.find(FIND_SOURCES);
   var i = 0;  // creep.memory.source;
-  if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+  var harvest = creep.harvest(sources[i]);
+  if (harvest == ERR_NOT_IN_RANGE) {
     creep.moveTo(sources[i]);
+  } else if (harvest == ERR_NOT_ENOUGH_RESOURCES) {
+    if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(sources[1]);
+    }
   }
 };
 
