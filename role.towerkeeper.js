@@ -30,7 +30,7 @@ var roleTowerkeeper = {
     } else {
       var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-            s.store[RESOURCE_ENERGY] > 300
+            s.store[RESOURCE_ENERGY] > 00
       });
       if (storages) {
         if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
