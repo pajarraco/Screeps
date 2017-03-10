@@ -103,22 +103,22 @@ var roleHarvester = {
           creep.moveTo(depositTargets);
         }
       } else {
-        // // if (link && creep.memory.role == 'harvester') {
-        // if (creep.memory.role == 'harvester') {
-        //   /*if (link.energy > 0 && creep.carry.energy < creep.carryCapacity) {
-        //     if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        //       creep.moveTo(link);
-        //     }
-        //   } else {*/
-        //   var storages =
-        //       creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
-        //   if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        //     creep.moveTo(storages);
-        //   }
-        //   //}
-        // } else {
-        roleUpgrader.run(creep);
-        // }
+        // if (link && creep.memory.role == 'harvester') {
+        if (creep.memory.role == 'harvester') {
+          /*if (link.energy > 0 && creep.carry.energy < creep.carryCapacity) {
+            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(link);
+            }
+          } else {*/
+          var storages =
+              creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
+          if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(storages);
+          }
+          //}
+        } else {
+          roleUpgrader.run(creep);
+        }
       }
     } else {
       var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
