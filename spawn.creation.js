@@ -71,7 +71,7 @@ var creepsCreation = {
           // Tower keeper
           var towerkeepers = _.filter(
               Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-          if (towerkeepers.length < 1) {
+          if (towerkeepers.length < 2) {
             createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
           } else {
             //
