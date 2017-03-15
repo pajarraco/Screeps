@@ -132,11 +132,11 @@ var creepsCreation = {
               }
             }
           }*/
-            //}
           //}
         }
       }
     }
-  };
+  }
+};
 
-  module.exports = creepsCreation;
+module.exports = creepsCreation;
