@@ -59,6 +59,7 @@ var roleBuilder = {
       if (!creep.memory.htarget) {
         var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
         if (target) {
+          console.log(target.id)
           creep.memory.htarget = target.id;
           creep.memory.htype = 1;
         } else {
@@ -67,10 +68,12 @@ var roleBuilder = {
                 s.store[RESOURCE_ENERGY] > 300
           });
           if (storages) {
+            console.log(storages.id)
             creep.memory.htarget = storages.id;
             creep.memory.htype = 2;
           } else {
             var sources = creep.pos.findClosestByRange(FIND_SOURCES);
+            console.log(sources.id)
             creep.memory.htarget = sources.id;
             creep.memory.htype = 3;
           }
