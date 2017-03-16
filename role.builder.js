@@ -59,7 +59,7 @@ var roleBuilder = {
       if (!creep.memory.htarget) {
         var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
         if (target) {
-          creep.memory.htarget = target;
+          // creep.memory.htarget = target;
           creep.memory.htype = 1;
         } else {
           var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -67,11 +67,11 @@ var roleBuilder = {
                 s.store[RESOURCE_ENERGY] > 300
           });
           if (storages) {
-            creep.memory.htarget = storages;
+            // creep.memory.htarget = storages;
             creep.memory.htype = 2;
           } else {
             var sources = creep.pos.findClosestByRange(FIND_SOURCES);
-            creep.memory.htarget = sources;
+            // creep.memory.htarget = sources;
             creep.memory.htype = 3;
           }
         }
