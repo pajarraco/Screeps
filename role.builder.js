@@ -1,7 +1,7 @@
 var roleHarvester = require('role.harvester');
 
 var harvest = function(creep) {
-  var target = Game.getObjectById(creep.memory.htarget);
+  var target = Game.getObjectById(creep.memory.gtarget);
   switch (creep.memory.htype) {
     case 1:
       if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
@@ -38,7 +38,7 @@ var roleBuilder = {
     }
 
     if (creep.memory.building) {
-      creep.memory.htarget = '';
+      creep.memory.gtarget = '';
       var targets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
       if (targets) {
         if (creep.build(targets) == ERR_NOT_IN_RANGE) {
@@ -56,11 +56,11 @@ var roleBuilder = {
         }
       }
     } else {
-      if (!creep.memory.htarget) {
+      if (!creep.memory.gtarget) {
         var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
         if (target) {
           console.log(target.id)
-          creep.memory.htarget = target.id;
+          creep.memory.gtarget = target.id;
           creep.memory.htype = 1;
         } else {
           var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -69,12 +69,12 @@ var roleBuilder = {
           });
           if (storages) {
             console.log(storages.id)
-            creep.memory.htarget = storages.id;
+            creep.memory.gtarget = storages.id;
             creep.memory.htype = 2;
           } else {
             var sources = creep.pos.findClosestByRange(FIND_SOURCES);
             console.log(sources.id)
-            creep.memory.htarget = sources.id;
+            creep.memory.gtarget = sources.id;
             creep.memory.htype = 3;
           }
         }
