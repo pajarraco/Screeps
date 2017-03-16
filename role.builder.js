@@ -57,24 +57,21 @@ var roleBuilder = {
       }
     } else {
       if (!creep.memory.htarget) {
-        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY).id;
+        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
         if (target) {
-          creep.memory.htarget = target;
+          creep.memory.htarget = target.id;
           creep.memory.htype = 1;
         } else {
-          var storages =
-              creep.pos
-                  .findClosestByRange(FIND_STRUCTURES, {
-                    filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-                        s.store[RESOURCE_ENERGY] > 300
-                  })
-                  .id;
+          var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
+                s.store[RESOURCE_ENERGY] > 300
+          });
           if (storages) {
-            creep.memory.htarget = storages;
+            creep.memory.htarget = storages.id;
             creep.memory.htype = 2;
           } else {
-            var sources = creep.pos.findClosestByRange(FIND_SOURCES).id;
-            creep.memory.htarget = sources;
+            var sources = creep.pos.findClosestByRange(FIND_SOURCES);
+            creep.memory.htarget = sources.id;
             creep.memory.htype = 3;
           }
         }
