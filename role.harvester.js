@@ -1,7 +1,7 @@
 var roleUpgrader = require('role.upgrader');
 
 var harvest = function(creep) {
-  var target = Game.getObjectById(creep.memory.gtarget);
+  var target = Game.getObjectById(creep.memory.htarget);
   if (target) {
     switch (creep.memory.htype) {
       case 1:
@@ -17,7 +17,7 @@ var harvest = function(creep) {
       default:
     }
   } else {
-    creep.memory.gtarget = '';
+    creep.memory.htarget = '';
   }
 };
 
@@ -33,7 +33,7 @@ var harvestContainer = function(creep) {
 };
 
 var harvestSource = function(creep) {
-  creep.memory.gtarget = 'xxxxx';
+  creep.memory.htarget = 'xxxxx';
   var sources = creep.room.find(FIND_SOURCES);
   var i = /*0; */ creep.memory.source;
   var harvest = creep.harvest(sources[i]);
