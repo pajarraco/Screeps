@@ -1,18 +1,39 @@
 var roleUpgrader = require('role.upgrader');
 
+var harvest = function(creep) {
+  var target = Game.getObjectById(creep.memory.gtarget);
+  if (target) {
+    switch (creep.memory.htype) {
+      case 1:
+        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
+        }
+        break;
+      case 2:
+        if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
+        }
+        break;
+      default:
+    }
+  } else {
+    creep.memory.gtarget = '';
+  }
+};
+
 var harvestContainer = function(creep) {
   var containers = creep.pos.findClosestByRange(
       FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 300});
   if (containers) {
-    if (creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(containers);
-    }
+    creep.memory.htarget = containers.id;
+    creep.memory.htype = 2;
   } else {
     harvestSource(creep);
   }
 };
 
 var harvestSource = function(creep) {
+  creep.memory.gtarget = 'xxxxx';
   var sources = creep.room.find(FIND_SOURCES);
   var i = /*0; */ creep.memory.source;
   var harvest = creep.harvest(sources[i]);
@@ -54,10 +75,10 @@ var harvestMine = function(creep) {
   }
   if (!creep.memory.transferring &&
       (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
-    console.log(creep.memory.transferring);
-    console.log(creep.carry[RESOURCE_HYDROGEN]);
-    console.log('keanium', creep.carry[RESOURCE_KEANIUM]);
-    console.log(creep.carryCapacity);
+    // console.log(creep.memory.transferring);
+    // console.log(creep.carry[RESOURCE_HYDROGEN]);
+    // console.log('keanium', creep.carry[RESOURCE_KEANIUM]);
+    // console.log(creep.carryCapacity);
 
     creep.memory.transferring = true;
     creep.say('transferring');
@@ -103,6 +124,7 @@ var roleHarvester = {
     }
 
     if (creep.memory.transferring) {
+      creep.memory.htarget = '';
       if (depositTargets) {
         if (creep.transfer(depositTargets, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(depositTargets);
@@ -126,32 +148,34 @@ var roleHarvester = {
         }
       }
     } else {
-      var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
-      if (target) {
-        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(target);
-        }
-      } else {
-        /*if (link.energy > 100) {
-          if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(link);
-          }
-        } else {*/
-        if (depositTargets) {
-          var storages = creep.pos.findClosestByRange(
-              FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
-          if (storages) {
-            if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(storages);
+      if (!creep.memory.htarget) {
+        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+        if (target) {
+          creep.memory.htarget = target.id;
+          creep.memory.htype = 1;
+        } else {
+          /*if (link.energy > 100) {
+            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(link);
+            }
+          } else {*/
+          if (depositTargets) {
+            var storages = creep.pos.findClosestByRange(
+                FIND_STRUCTURES,
+                {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
+            if (storages) {
+              creep.memory.htarget = storages.id;
+              creep.memory.htype = 2;
+            } else {
+              harvestContainer(creep);
             }
           } else {
             harvestContainer(creep);
           }
-        } else {
-          harvestContainer(creep);
+          //}
         }
-        //}
       }
+      harvest(creep);
     }
     // } else {
     //   harvestMine(creep);
