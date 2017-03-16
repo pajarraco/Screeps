@@ -2,24 +2,28 @@ var roleHarvester = require('role.harvester');
 
 var harvest = function(creep) {
   var target = Game.getObjectById(creep.memory.gtarget);
-  switch (creep.memory.htype) {
-    case 1:
-      if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(target);
-      }
-      break;
-    case 2:
-      if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(target);
-      }
-      break;
+  if (target) {
+    switch (creep.memory.htype) {
+      case 1:
+        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
+        }
+        break;
+      case 2:
+        if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
+        }
+        break;
 
-    case 3:
-      if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(target);
-      }
-      break;
-    default:
+      case 3:
+        if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
+        }
+        break;
+      default:
+    }
+  } else {
+    creep.memory.gtarget = '';
   }
 };
 
