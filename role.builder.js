@@ -1,26 +1,26 @@
 var roleHarvester = require('role.harvester');
 
 var harvest = function(creep) {
-  // var target = creep.memory.htarget;
-  // switch (creep.memory.htype) {
-  //   case 1:
-  //     if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-  //       creep.moveTo(target);
-  //     }
-  //     break;
-  //   case 2:
-  //     if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-  //       creep.moveTo(target);
-  //     }
-  //     break;
-  //
-  //   case 3:
-  //     if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
-  //       creep.moveTo(target);
-  //     }
-  //     break;
-  //   default:
-  // }
+  var target = Game.getObjectById(creep.memory.htarget);
+  switch (creep.memory.htype) {
+    case 1:
+      if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(target);
+      }
+      break;
+    case 2:
+      if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(target);
+      }
+      break;
+
+    case 3:
+      if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(target);
+      }
+      break;
+    default:
+  }
 };
 
 var roleBuilder = {
@@ -57,21 +57,24 @@ var roleBuilder = {
       }
     } else {
       if (!creep.memory.htarget) {
-        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY).id;
         if (target) {
-          // creep.memory.htarget = target;
+          creep.memory.htarget = target;
           creep.memory.htype = 1;
         } else {
-          var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-                s.store[RESOURCE_ENERGY] > 300
-          });
+          var storages =
+              creep.pos
+                  .findClosestByRange(FIND_STRUCTURES, {
+                    filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
+                        s.store[RESOURCE_ENERGY] > 300
+                  })
+                  .id;
           if (storages) {
-            // creep.memory.htarget = storages;
+            creep.memory.htarget = storages;
             creep.memory.htype = 2;
           } else {
-            var sources = creep.pos.findClosestByRange(FIND_SOURCES);
-            // creep.memory.htarget = sources;
+            var sources = creep.pos.findClosestByRange(FIND_SOURCES).id;
+            creep.memory.htarget = sources;
             creep.memory.htype = 3;
           }
         }
