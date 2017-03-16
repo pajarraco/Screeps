@@ -1,8 +1,8 @@
 var roleHarvester = require('role.harvester');
 
 var harvest = function(creep) {
-  var target = creep.memory.target;
-  switch (creep.memory.type) {
+  var target = creep.memory.htarget;
+  switch (creep.memory.htype) {
     case 1:
       if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
         creep.moveTo(target);
@@ -38,7 +38,7 @@ var roleBuilder = {
     }
 
     if (creep.memory.building) {
-      creep.memory.target = '';
+      creep.memory.htarget = '';
       var targets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
       if (targets) {
         if (creep.build(targets) == ERR_NOT_IN_RANGE) {
@@ -56,23 +56,23 @@ var roleBuilder = {
         }
       }
     } else {
-      if (!creep.memory.target) {
+      if (!creep.memory.htarget) {
         var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
         if (target) {
-          creep.memory.target = target;
-          creep.memory.type = 1;
+          creep.memory.htarget = target;
+          creep.memory.htype = 1;
         } else {
           var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
             filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
                 s.store[RESOURCE_ENERGY] > 300
           });
           if (storages) {
-            creep.memory.target = storages;
-            creep.memory.type = 2;
+            creep.memory.htarget = storages;
+            creep.memory.htype = 2;
           } else {
             var sources = creep.pos.findClosestByRange(FIND_SOURCES);
-            creep.memory.target = sources;
-            creep.memory.type = 3;
+            creep.memory.htarget = sources;
+            creep.memory.htype = 3;
           }
         }
       }
