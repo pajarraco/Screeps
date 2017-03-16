@@ -1,26 +1,26 @@
 var roleHarvester = require('role.harvester');
 
 var harvest = function(creep) {
-  var target = creep.memory.htarget;
-  switch (creep.memory.htype) {
-    case 1:
-      if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(target);
-      }
-      break;
-    case 2:
-      if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(target);
-      }
-      break;
-
-    case 3:
-      if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(target);
-      }
-      break;
-    default:
-  }
+  // var target = creep.memory.htarget;
+  // switch (creep.memory.htype) {
+  //   case 1:
+  //     if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+  //       creep.moveTo(target);
+  //     }
+  //     break;
+  //   case 2:
+  //     if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+  //       creep.moveTo(target);
+  //     }
+  //     break;
+  //
+  //   case 3:
+  //     if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
+  //       creep.moveTo(target);
+  //     }
+  //     break;
+  //   default:
+  // }
 };
 
 var roleBuilder = {
