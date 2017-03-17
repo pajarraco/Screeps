@@ -2,8 +2,10 @@ var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   var newCreep = spawn.createCreep(
       [
-        WORK,  WORK,  WORK,  WORK,  WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY,
-        CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE,  MOVE,  MOVE,  MOVE,  MOVE
+        WORK, WORK, WORK, WORK,      // WORK, WORK, WORK,
+        CARRY, CARRY, CARRY, CARRY,  // CARRY,
+        // CARRY, CARRY, CARRY, CARRY,
+        MOVE, MOVE, MOVE, MOVE,  // MOVE,  MOVE,  MOVE,  MOVE
       ],
       undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
@@ -47,7 +49,7 @@ var creepsCreation = {
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-    if (harvesters.length < 4) {
+    if (harvesters.length < 2) {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
@@ -65,74 +67,73 @@ var creepsCreation = {
           var n = calSource(miners);
           spawn.createCreep(
               [
-                WORK, WORK, WORK,
-                // WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE,
+                WORK, WORK, WORK, WORK, WORK,  // WORK, WORK, WORK, WORK, WORK, MOVE,
                 MOVE
               ],
               undefined, {role: 'miner', source: n});
         } else {
           //
           // Tower keeper
-          /*  var towerkeepers = _.filter(
-                Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-            if (towerkeepers.length < 2) {
-              createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
-            } else {*/
-          //
-          // Builder
-          var builders =
-              _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-          if (builders.length < 8) {
-            createNewCreep(spawn, name, 'builder', builders);
-          } /*else {
+          var towerkeepers = _.filter(
+              Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
+          if (towerkeepers.length < 2) {
+            createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
+          } else {
             //
-            // Delivery
-            var deliveries = _.filter(
-                Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
-            if (deliveries.length < 2 && spawn.name == 'Spawn1') {
-              var n = calSource(deliveries);
-              var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
-            } else {
+            // Builder
+            var builders =
+                _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
+            if (builders.length < 2) {
+              createNewCreep(spawn, name, 'builder', builders);
+            } /*else {
               //
-              // Soldier
-              var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-              if (soldiers.length < 6) {
-                var n = calSource(soldiers);
-                spawn.createCreep(
-                    [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
-                    undefined, {role: 'soldier', source: n});
+              // Delivery
+              var deliveries = _.filter(
+                  Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
+              if (deliveries.length < 2 && spawn.name == 'Spawn1') {
+                var n = calSource(deliveries);
+                var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
               } else {
                 //
-                // Conquest
-                var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                if (conquesters.length < 2) {
-                  var n = calSourceExtra(conquesters);
+                // Soldier
+                var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+                if (soldiers.length < 6) {
+                  var n = calSource(soldiers);
                   spawn.createCreep(
-                      [CLAIM, MOVE, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK], undefined,
-                      {role: 'conquest', source: n});
-                }
-                //
-                // Explorerminer
-                var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                if (explorerminers.length < 2) {
-                  var n = calSourceExtra(explorerminers);
-                  spawn.createCreep(
-                      [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
-                      {role: 'explorerminer', source: n});
-                }
-                //
-                // Explorer
-                var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                if (explorers.length < 4) {
-                  var n = calSourceExtra(explorers);
-                  spawn.createCreep(
-                      [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
-                      {role: 'explorer', source: n});
+                      [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
+                      undefined, {role: 'soldier', source: n});
+                } else {
+                  //
+                  // Conquest
+                  var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+                  if (conquesters.length < 2) {
+                    var n = calSourceExtra(conquesters);
+                    spawn.createCreep(
+                        [CLAIM, MOVE, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK], undefined,
+                        {role: 'conquest', source: n});
+                  }
+                  //
+                  // Explorerminer
+                  var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
+                  if (explorerminers.length < 2) {
+                    var n = calSourceExtra(explorerminers);
+                    spawn.createCreep(
+                        [WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
+                        {role: 'explorerminer', source: n});
+                  }
+                  //
+                  // Explorer
+                  var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+                  if (explorers.length < 4) {
+                    var n = calSourceExtra(explorers);
+                    spawn.createCreep(
+                        [WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
+                        {role: 'explorer', source: n});
+                  }
                 }
               }
-            }
-          }*/
-          //}
+            }*/
+          }
         }
       }
     }
