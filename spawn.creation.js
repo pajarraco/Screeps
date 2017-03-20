@@ -2,10 +2,8 @@ var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   var newCreep = spawn.createCreep(
       [
-        WORK, WORK, WORK, WORK,      // WORK, WORK, WORK,
-        CARRY, CARRY, CARRY, CARRY,  // CARRY,
-        // CARRY, CARRY, CARRY, CARRY,
-        MOVE, MOVE, MOVE, MOVE,  // MOVE,  MOVE,  MOVE,  MOVE
+        WORK,  WORK,  WORK,  WORK,  WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY,
+        CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE,  MOVE,  MOVE,  MOVE,  MOVE
       ],
       undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
@@ -49,7 +47,7 @@ var creepsCreation = {
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-    if (harvesters.length < 3) {
+    if (harvesters.length < 2) {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
@@ -66,11 +64,8 @@ var creepsCreation = {
         if (miners.length < 2) {
           var n = calSource(miners);
           spawn.createCreep(
-              [
-                WORK, WORK, WORK, WORK, WORK,  // WORK, WORK, WORK, WORK, WORK, MOVE,
-                MOVE
-              ],
-              undefined, {role: 'miner', source: n});
+              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE], undefined,
+              {role: 'miner', source: n});
         } else {
           //
           // Tower keeper
@@ -83,7 +78,7 @@ var creepsCreation = {
             // Builder
             var builders =
                 _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-            if (builders.length < 4) {
+            if (builders.length < 2) {
               createNewCreep(spawn, name, 'builder', builders);
             } /*else {
               //
