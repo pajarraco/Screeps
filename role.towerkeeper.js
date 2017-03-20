@@ -28,10 +28,10 @@ var roleTowerkeeper = {
         }
       }
     } else {
-      var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
-      if (target) {
-        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(target);
+      var targets = creep.room.find(FIND_DROPPED_RESOURCES);
+      if (targets.length) {
+        if (creep.pickup(targets[0]) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(targets[0]);
         }
       } else {
         var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
