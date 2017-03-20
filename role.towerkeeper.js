@@ -19,9 +19,9 @@ var roleTowerkeeper = {
         }
       });
       if (depositTargets.length > 0) {
-        var s = creep.memory.source;
+        // var s = creep.memory.source;
         // if (creep.room.name == 'E37S68') {
-        // s = 0;
+        s = 0;
         // }
         if (creep.transfer(depositTargets[s], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(depositTargets[s]);
