@@ -149,9 +149,9 @@ var roleHarvester = {
       }
     } else {
       if (!creep.memory.htarget) {
-        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
-        if (target) {
-          creep.memory.htarget = target.id;
+        var target = creep.room.find(FIND_DROPPED_ENERGY);
+        if (target.length) {
+          creep.memory.htarget = target[0].id;
           creep.memory.htype = 1;
         } else {
           /*if (link.energy > 100) {
