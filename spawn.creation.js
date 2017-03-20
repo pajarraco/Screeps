@@ -2,8 +2,10 @@ var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   var newCreep = spawn.createCreep(
       [
-        WORK,  WORK,  WORK,  WORK,  WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY,
-        CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE,  MOVE,  MOVE,  MOVE,  MOVE
+        WORK, WORK, WORK, WORK, WORK, WORK,  // WORK,
+        CARRY, CARRY, CARRY, CARRY, CARRY,
+        CARRY,                              // CARRY, CARRY, CARRY,
+        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE  //,  MOVE,  MOVE
       ],
       undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
@@ -64,8 +66,11 @@ var creepsCreation = {
         if (miners.length < 2) {
           var n = calSource(miners);
           spawn.createCreep(
-              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE], undefined,
-              {role: 'miner', source: n});
+              [
+                WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,  // WORK, WORK,
+                MOVE, MOVE
+              ],
+              undefined, {role: 'miner', source: n});
         } else {
           //
           // Tower keeper
