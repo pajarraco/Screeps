@@ -28,19 +28,26 @@ var roleTowerkeeper = {
         }
       }
     } else {
-      var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-            s.store[RESOURCE_ENERGY] > 00
-      });
-      if (storages) {
-        if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(storages);
+      var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+      if (target) {
+        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(target);
         }
       } else {
-        var sources = creep.room.find(FIND_SOURCES);
-        var i = 0;  // creep.memory.source;
-        if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(sources[i]);
+        var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+          filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
+              s.store[RESOURCE_ENERGY] > 00
+        });
+        if (storages) {
+          if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(storages);
+          }
+        } else {
+          var sources = creep.room.find(FIND_SOURCES);
+          var i = 0;  // creep.memory.source;
+          if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(sources[i]);
+          }
         }
       }
     }
