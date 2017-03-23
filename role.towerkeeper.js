@@ -44,7 +44,7 @@ var roleTowerkeeper = {
           }
         } else {
           var sources = creep.room.find(FIND_SOURCES);
-          var /*i = 0;*/ creep.memory.source;
+          var i = /*0;*/ creep.memory.source;
           if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
             creep.moveTo(sources[i]);
           }
