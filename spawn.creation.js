@@ -49,7 +49,7 @@ var creepsCreation = {
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-    if (harvesters.length < 4) {
+    if (harvesters.length < 3) {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
@@ -67,7 +67,7 @@ var creepsCreation = {
           var n = calSource(miners);
           spawn.createCreep(
               [
-                WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,  // WORK, WORK,
+                WORK, WORK, WORK, WORK, WORK, WORK, WORK,  // WORK,   WORK, WORK,
                 MOVE, MOVE
               ],
               undefined, {role: 'miner', source: n});
@@ -83,7 +83,7 @@ var creepsCreation = {
             // Builder
             var builders =
                 _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-            if (builders.length < 4) {
+            if (builders.length < 2) {
               createNewCreep(spawn, name, 'builder', builders);
             } /*else {
               //
