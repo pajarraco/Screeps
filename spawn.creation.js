@@ -126,15 +126,14 @@ var creepsCreation = {
                   [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
                   {role: 'explorer', source: n});
             }
+            /* }
+             }
+            }*/
           }
-          /*  }
-          }*/
         }
       }
     }
   }
-}
-}
-;
+};
 
 module.exports = creepsCreation;
