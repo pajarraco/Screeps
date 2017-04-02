@@ -64,16 +64,9 @@ var creepsCreation = {
         if (miners.length < 2) {
           var n = calSource(miners);
           spawn.createCreep(
-<<<<<<< HEAD
+
               [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE], undefined,
               {role: 'miner', source: n});
-=======
-              [
-                WORK, WORK, WORK, WORK, WORK, WORK, WORK,  // WORK,   WORK, WORK,
-                MOVE, MOVE
-              ],
-              undefined, {role: 'miner', source: n});
->>>>>>> bbf7a4697d513791637517da9f0a7b86b3cabecc
         } else {
           //
           // Tower keeper
