@@ -150,8 +150,15 @@ var roleHarvester = {
     } else {
       if (!creep.memory.htarget) {
         var target = creep.room.find(FIND_DROPPED_ENERGY);
-        if (target.length) {
-          creep.memory.htarget = target[1].id;
+        var x = target.filter((e, i, a) => {
+          for (j = 0; j < a.length; j++) {
+            if (e.amount > a[j].amount) {
+              return true;
+            }
+          }
+        });
+        if (x[0]) {
+          creep.memory.htarget = x[0].id;
           creep.memory.htype = 1;
         } else {
           /*if (link.energy > 100) {
