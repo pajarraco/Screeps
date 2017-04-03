@@ -2,8 +2,8 @@ var harvestSource = function(creep) {
   // var source = creep.pos.findClosestByRange(FIND_SOURCES);
   var sources = creep.room.find(FIND_SOURCES);
   var i = /*0; */ creep.memory.source;
-  if (creep.harvest(source[i]) == ERR_NOT_IN_RANGE) {
-    creep.moveTo(source[i]);
+  if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+    creep.moveTo(sources[i]);
   }
   var containers = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
   if (containers.length > 0) {
