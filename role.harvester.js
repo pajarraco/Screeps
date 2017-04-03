@@ -157,6 +157,7 @@ var roleHarvester = {
             }
           }
         });
+        console.log(x[0]);
         if (x[0]) {
           creep.memory.htarget = x[0].id;
           creep.memory.htype = 1;
