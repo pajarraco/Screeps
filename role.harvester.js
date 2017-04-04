@@ -153,11 +153,11 @@ var roleHarvester = {
         var x = target.filter((e, i, a) => {
           for (j = 0; j < a.length; j++) {
             if (e.amount > a[j].amount) {
-              return true;
+              return e;
             }
           }
         });
-        console.log(x[0]);
+        // console.log(x);
         if (x[0]) {
           creep.memory.htarget = x[0].id;
           creep.memory.htype = 1;
