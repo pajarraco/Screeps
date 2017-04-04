@@ -75,11 +75,6 @@ var harvestMine = function(creep) {
   }
   if (!creep.memory.transferring &&
       (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
-    // console.log(creep.memory.transferring);
-    // console.log(creep.carry[RESOURCE_HYDROGEN]);
-    // console.log('keanium', creep.carry[RESOURCE_KEANIUM]);
-    // console.log(creep.carryCapacity);
-
     creep.memory.transferring = true;
     creep.say('transferring');
   }
@@ -136,7 +131,14 @@ var roleHarvester = {
       }
     } else {
       if (depositTargets) {
-        harvestContainer(creep);
+        var storages = creep.pos.findClosestByRange(
+            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
+        if (storages) {
+          creep.memory.htarget = storages.id;
+          creep.memory.htype = 2;
+        } else {
+          harvestContainer(creep);
+        }
       } else {
         if (!creep.memory.htarget) {
           var target = creep.room.find(FIND_DROPPED_ENERGY);
@@ -151,15 +153,7 @@ var roleHarvester = {
             creep.memory.htarget = x[0].id;
             creep.memory.htype = 1;
           } else {
-            var storages = creep.pos.findClosestByRange(
-                FIND_STRUCTURES,
-                {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
-            if (storages) {
-              creep.memory.htarget = storages.id;
-              creep.memory.htype = 2;
-            } else {
-              harvestSource(creep);
-            }
+            harvestContainer(creep);
           }
         }
       }
