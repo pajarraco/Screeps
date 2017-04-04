@@ -100,11 +100,6 @@ var roleHarvester = {
   /** @param {Creep} creep **/
   run: function(creep) {
 
-    /*var link = creep.room.lookForAt('structure', 32, 26)[1];
-    if (!link) {
-      link = {};
-    }*/
-
     var depositTargets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
       filter: (s) => {
         return (
@@ -113,7 +108,6 @@ var roleHarvester = {
       }
     });
 
-    // if (creep.memory.source == 0 || creep.carry.energy != 0) {
     if (creep.memory.transferring && creep.carry.energy == 0) {
       creep.memory.transferring = false;
       creep.say('harvesting');
@@ -130,44 +124,33 @@ var roleHarvester = {
           creep.moveTo(depositTargets);
         }
       } else {
-        // if (link && creep.memory.role == 'harvester') {
         if (creep.memory.role == 'harvester') {
-          /*if (link.energy > 0 && creep.carry.energy < creep.carryCapacity) {
-            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(link);
-            }
-          } else {*/
           var storages =
               creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
           if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
             creep.moveTo(storages);
           }
-          //}
         } else {
           roleUpgrader.run(creep);
         }
       }
     } else {
-      if (!creep.memory.htarget) {
-        var target = creep.room.find(FIND_DROPPED_ENERGY);
-        var x = target.filter((e, i, a) => {
-          for (j = 0; j < a.length; j++) {
-            if (e.amount > a[j].amount) {
-              return e;
+      if (depositTargets) {
+        harvestContainer(creep);
+      } else {
+        if (!creep.memory.htarget) {
+          var target = creep.room.find(FIND_DROPPED_ENERGY);
+          var x = target.filter((e, i, a) => {
+            for (j = 0; j < a.length; j++) {
+              if (e.amount > a[j].amount) {
+                return e;
+              }
             }
-          }
-        });
-        // console.log(x);
-        if (x[0]) {
-          creep.memory.htarget = x[0].id;
-          creep.memory.htype = 1;
-        } else {
-          /*if (link.energy > 100) {
-            if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(link);
-            }
-          } else {*/
-          if (depositTargets) {
+          });
+          if (x[0]) {
+            creep.memory.htarget = x[0].id;
+            creep.memory.htype = 1;
+          } else {
             var storages = creep.pos.findClosestByRange(
                 FIND_STRUCTURES,
                 {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
@@ -175,19 +158,13 @@ var roleHarvester = {
               creep.memory.htarget = storages.id;
               creep.memory.htype = 2;
             } else {
-              harvestContainer(creep);
+              harvestSource(creep);
             }
-          } else {
-            harvestContainer(creep);
           }
-          //}
         }
       }
       harvest(creep);
     }
-    // } else {
-    //   harvestMine(creep);
-    // }
   }
 };
 
