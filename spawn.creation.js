@@ -2,9 +2,8 @@ var createNewCreep = function(spawn, name, role, creeps) {
   var n = calSource(creeps);
   var newCreep = spawn.createCreep(
       [
-        WORK, WORK, WORK, WORK, WORK, WORK,        // WORK, WORK,
-        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,  // CARRY, CARRY,
-        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE         //,  MOVE,  MOVE
+        WORK,  WORK,  WORK,  WORK,  WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY,
+        CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE,  MOVE,  MOVE,  MOVE
       ],
       undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
@@ -48,14 +47,14 @@ var creepsCreation = {
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-    if (harvesters.length < 4) {
+    if (harvesters.length < 3) {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
       // upgrader
       var upgraders =
           _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-      if (upgraders.length < 2) {
+      if (upgraders.length < 1) {
         createNewCreep(spawn, name, 'upgrader', upgraders);
       } else {
         //
@@ -66,7 +65,7 @@ var creepsCreation = {
           var n = calSource(miners);
           spawn.createCreep(
 
-              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, /*WORK, WORK,*/ MOVE, MOVE], undefined,
+              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE], undefined,
               {role: 'miner', source: n});
         } else {
           //
@@ -115,13 +114,13 @@ var creepsCreation = {
               if (explorerminers.length < 2) {
                 var n = calSourceExtra(explorerminers);
                 spawn.createCreep(
-                    [WORK, WORK, WORK, WORK, WORK, WORK, /*WORK, WORK,*/ MOVE, MOVE, RANGED_ATTACK], undefined,
+                    [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, RANGED_ATTACK], undefined,
                     {role: 'explorerminer', source: n});
               }
               //
               // Explorer
               var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-              if (explorers.length < 4) {
+              if (explorers.length < 6) {
                 var n = calSourceExtra(explorers);
                 spawn.createCreep(
                     [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK],
