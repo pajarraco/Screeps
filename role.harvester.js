@@ -148,7 +148,6 @@ var roleHarvester = {
               x = target[j];
             }
           }
-          console.log(x);
           if (x) {
             creep.memory.htarget = x.id;
             creep.memory.htype = 1;
