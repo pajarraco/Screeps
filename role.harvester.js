@@ -142,15 +142,15 @@ var roleHarvester = {
       } else {
         if (!creep.memory.htarget) {
           var target = creep.room.find(FIND_DROPPED_ENERGY);
-          var x = target.filter((e, i, a) => {
-            for (j = 0; j < a.length; j++) {
-              if (e.amount > a[j].amount) {
-                return e;
-              }
+          var x = target[0];
+          for (j = 0; j < target.length; j++) {
+            if (target[j].amount > x.amount) {
+              x = target[j];
             }
-          });
-          if (x[0]) {
-            creep.memory.htarget = x[0].id;
+          }
+          console.log(x);
+          if (x) {
+            creep.memory.htarget = x.id;
             creep.memory.htype = 1;
           } else {
             harvestContainer(creep);
