@@ -124,8 +124,8 @@ var creepsCreation = {
               if (explorers.length < 4) {
                 var n = calSourceExtra(explorers);
                 spawn.createCreep(
-                    [WORK, CARRY, CARRY, CARRY, CARRY, /*CARRY, MOVE,*/ MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
-                    {role: 'explorer', source: n});
+                    [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK],
+                    undefined, {role: 'explorer', source: n});
               }
             }
             /* }
