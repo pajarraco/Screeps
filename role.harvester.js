@@ -147,22 +147,19 @@ var roleHarvester = {
       }
     } else {
       if (depositTargets) {
-        var storages = creep.pos.findClosestByRange(
-            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
-        if (storages) {
-          creep.memory.htarget = storages.id;
-          creep.memory.htype = 2;
-        } else {
-          harvestDrop(creep);
-        }
-      } else {
         if (!creep.memory.htarget) {
-          harvestDrop(creep);
+          var storages = creep.pos.findClosestByRange(
+              FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
+          if (storages) {
+            creep.memory.htarget = storages.id;
+            creep.memory.htype = 2;
+          } else {
+            harvestDrop(creep);
+          }
         }
+        harvest(creep);
       }
-      harvest(creep);
     }
-  }
-};
+  };
 
-module.exports = roleHarvester;
+  module.exports = roleHarvester;
