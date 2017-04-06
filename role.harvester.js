@@ -160,6 +160,7 @@ var roleHarvester = {
         harvest(creep);
       }
     }
-  };
+  }
+};
 
-  module.exports = roleHarvester;
+module.exports = roleHarvester;
