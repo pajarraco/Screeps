@@ -125,9 +125,13 @@ var creepsCreation = {
               var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
               if (explorers.length < 6) {
                 var n = calSourceExtra(explorers);
+                var memory = {role: 'explorer', source: n};
+                if (n === 3) {
+                  memory.role2 = 'mechanic';
+                }
                 spawn.createCreep(
                     [WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK],
-                    undefined, {role: 'explorer', source: n});
+                    undefined, memory);
               }
             }
             /* }

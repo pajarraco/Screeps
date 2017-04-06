@@ -64,57 +64,60 @@ var roleExplorer = {
               creep.moveTo(contructionSite);
             }
           } else {
-            // var closestDamagedStructure =
-            //     creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 1000});
-            // if (closestDamagedStructure) {
-            //   if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
-            //     creep.moveTo(closestDamagedStructure);
-            //   }
-            // } else {
-            // deposit
-            var depositTargets = Game.flags['Home'].room.find(
-                FIND_STRUCTURES,
-                {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
-            if (depositTargets.length > 0) {
-              if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(depositTargets[0]);
+            if (creep.memory.role2 === 'mechanic') {
+              var closestDamagedStructure =
+                  creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.hits < s.hitsMax && s.hits < 1000});
+            }
+            if (closestDamagedStructure) {
+              if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(closestDamagedStructure);
               }
             } else {
-              var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-                filter: (s) => {
-                  return (
-                      (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-                      s.energy < s.energyCapacity);
-                }
-              });
-              if (otherTargets.length > 0) {
-                if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                  creep.moveTo(otherTargets[0]);
+              // deposit
+              var depositTargets = Game.flags['Home'].room.find(
+                  FIND_STRUCTURES,
+                  {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+              if (depositTargets.length > 0) {
+                if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                  creep.moveTo(depositTargets[0]);
                 }
               } else {
-                roleTowerkeeper.run(creep);
+                var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                  filter: (s) => {
+                    return (
+                        (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                        s.energy < s.energyCapacity);
+                  }
+                });
+                if (otherTargets.length > 0) {
+                  if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(otherTargets[0]);
+                  }
+                } else {
+                  roleTowerkeeper.run(creep);
+                }
+                // }
               }
-              // }
             }
           }
-        } else {
-          if (creep.memory.source == 0) {
-            if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
-              harvestContainer(creep);
-            } else {
-              creep.moveTo(Game.flags['TopRoom']);
-            }
-          } else if (creep.memory.source == 1) {
-            if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
-              harvestContainer(creep);
-            } else {
-              creep.moveTo(Game.flags['TopRoom']);
+          else {
+            if (creep.memory.source == 0) {
+              if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+                harvestContainer(creep);
+              } else {
+                creep.moveTo(Game.flags['TopRoom']);
+              }
+            } else if (creep.memory.source == 1) {
+              if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+                harvestContainer(creep);
+              } else {
+                creep.moveTo(Game.flags['TopRoom']);
+              }
             }
           }
         }
       }
     }
-  }
-};
+  };
 
-module.exports = roleExplorer;
+  module.exports = roleExplorer;
