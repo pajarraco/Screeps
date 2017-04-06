@@ -126,7 +126,7 @@ var creepsCreation = {
               if (explorers.length < 6) {
                 var n = calSourceExtra(explorers);
                 var memory = {role: 'explorer', source: n};
-                if (n === 3) {
+                if (n === 1) {
                   memory.role2 = 'mechanic';
                 }
                 spawn.createCreep(
