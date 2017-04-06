@@ -96,28 +96,27 @@ var roleExplorer = {
                 } else {
                   roleTowerkeeper.run(creep);
                 }
-                // }
               }
             }
           }
-          else {
-            if (creep.memory.source == 0) {
-              if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
-                harvestContainer(creep);
-              } else {
-                creep.moveTo(Game.flags['TopRoom']);
-              }
-            } else if (creep.memory.source == 1) {
-              if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
-                harvestContainer(creep);
-              } else {
-                creep.moveTo(Game.flags['TopRoom']);
-              }
+        } else {
+          if (creep.memory.source == 0) {
+            if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+              harvestContainer(creep);
+            } else {
+              creep.moveTo(Game.flags['TopRoom']);
+            }
+          } else if (creep.memory.source == 1) {
+            if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+              harvestContainer(creep);
+            } else {
+              creep.moveTo(Game.flags['TopRoom']);
             }
           }
         }
       }
     }
-  };
+  }
+};
 
-  module.exports = roleExplorer;
+module.exports = roleExplorer;
