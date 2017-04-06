@@ -7,7 +7,7 @@ var createNewCreep = function(spawn, name, role, creeps) {
       ],
       undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
-    spawn.createCreep([WORK, CARRY, MOVE], undefined, {role: role, source: n});
+    // spawn.createCreep([WORK, CARRY, MOVE], undefined, {role: role, source: n});
   }
 };
 
