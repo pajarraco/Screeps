@@ -156,9 +156,13 @@ var roleHarvester = {
           } else {
             harvestDrop(creep);
           }
+        } else {
+          harvestDrop(creep);
         }
-        harvest(creep);
+      } else {
+        harvestDrop(creep);
       }
+      harvest(creep);
     }
   }
 };
