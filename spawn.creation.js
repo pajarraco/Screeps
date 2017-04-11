@@ -93,7 +93,7 @@ var creepsCreation = {
               //
               // Soldier
               var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-              if (soldiers.length < 2) {
+              if (soldiers.length < 5) {
                 var n = calSource(soldiers);
                 spawn.createCreep(
                     [
