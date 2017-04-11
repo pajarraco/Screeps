@@ -48,14 +48,14 @@ var creepsCreation = {
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-    if (harvesters.length < 4) {
+    if (harvesters.length < 6) {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
       // upgrader
       var upgraders =
           _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-      if (upgraders.length < 2) {
+      if (upgraders.length < 4) {
         createNewCreep(spawn, name, 'upgrader', upgraders);
       } else {
         //
@@ -79,7 +79,7 @@ var creepsCreation = {
             // Builder
             var builders =
                 _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-            if (builders.length < 0) {
+            if (builders.length < 2) {
               createNewCreep(spawn, name, 'builder', builders);
             } /*else {
               //
@@ -123,7 +123,7 @@ var creepsCreation = {
                 //
                 // Explorer
                 var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                if (explorers.length < 6) {
+                if (explorers.length < 8) {
                   var n = calSourceExtra(explorers);
                   var memory = {role: 'explorer', source: n};
                   if (n === 1) {
