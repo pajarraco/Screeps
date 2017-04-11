@@ -65,11 +65,8 @@ var creepsCreation = {
         if (miners.length < 2) {
           var n = calSource(miners);
           spawn.createCreep(
-              [
-                WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,  // WORK, WORK,
-                MOVE, MOVE
-              ],
-              undefined, {role: 'miner', source: n});
+              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE], undefined,
+              {role: 'miner', source: n});
         } else {
           //
           // Tower keeper
@@ -120,7 +117,7 @@ var creepsCreation = {
                 if (explorerminers.length < 2) {
                   var n = calSourceExtra(explorerminers);
                   spawn.createCreep(
-                      [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, RANGED_ATTACK], undefined,
+                      [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
                       {role: 'explorerminer', source: n});
                 }
                 //
@@ -134,8 +131,8 @@ var creepsCreation = {
                   }
                   spawn.createCreep(
                       [
-                        WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
-                        RANGED_ATTACK
+                        WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE,
+                        MOVE, RANGED_ATTACK
                       ],
                       undefined, memory);
                 }
