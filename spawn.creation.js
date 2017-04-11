@@ -105,7 +105,7 @@ var creepsCreation = {
               //
               // Conquest
               var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-              if (conquesters.length < 2) {
+              if (conquesters.length < 1) {
                 var n = calSource(conquesters);
                 spawn.createCreep(
                     [CLAIM, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined,
@@ -114,7 +114,7 @@ var creepsCreation = {
               //
               // Explorerminer
               var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-              if (explorerminers.length < 3) {
+              if (explorerminers.length < 2) {
                 var n = calSourceExtra(explorerminers);
                 spawn.createCreep(
                     [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
