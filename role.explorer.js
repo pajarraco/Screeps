@@ -70,7 +70,7 @@ var roleExplorer = {
             }
             if (closestDamagedStructure) {
               if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(closestDamagedStructure);
+                // creep.moveTo(closestDamagedStructure);
               }
             } else {
               // deposit
