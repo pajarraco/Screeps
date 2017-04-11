@@ -8,13 +8,7 @@ var createNewCreep = function(spawn, name, role, creeps) {
       ],
       undefined, {role: role, source: n});
   if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
-    spawn.createCreep(
-        [
-          WORK,   // WORK,
-          CARRY,  // CARRY,
-          MOVE,   // MOVE
-        ],
-        undefined, {role: role, source: n});
+    spawn.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: role, source: n});
   }
 };
 
@@ -50,7 +44,7 @@ var creepsCreation = {
         delete Memory.creeps[name];
       }
     }
-
+    //
     // Harvester
     var harvesters =
         _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
@@ -105,7 +99,10 @@ var creepsCreation = {
               if (soldiers.length < 6) {
                 var n = calSource(soldiers);
                 spawn.createCreep(
-                    [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE],
+                    [
+                      TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
+                      RANGED_ATTACK, MOVE, MOVE, MOVE
+                    ],
                     undefined, {role: 'soldier', source: n});
               } else {
                 //
