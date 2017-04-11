@@ -72,25 +72,32 @@ var roleBuilder = {
         }
       }
     } else {
-      if (!creep.memory.htarget) {
-        var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
-        if (target) {
-          creep.memory.htarget = target.id;
-          creep.memory.htype = 1;
-        } else {
-          var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-                s.store[RESOURCE_ENERGY] > 200
-          });
-          if (storages) {
-            creep.memory.htarget = storages.id;
-            creep.memory.htype = 2;
+      var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
+      if (linkTo.energy >= (linkTo.energyCapacity - 100)) {
+        if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(linkTo);
+        }
+      } else {
+        if (!creep.memory.htarget) {
+          var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+          if (target) {
+            creep.memory.htarget = target.id;
+            creep.memory.htype = 1;
           } else {
-            harvestSource(creep);
+            var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+              filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
+                  s.store[RESOURCE_ENERGY] > 200
+            });
+            if (storages) {
+              creep.memory.htarget = storages.id;
+              creep.memory.htype = 2;
+            } else {
+              harvestSource(creep);
+            }
           }
         }
+        harvest(creep);
       }
-      harvest(creep);
     }
   }
 };
