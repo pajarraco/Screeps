@@ -93,12 +93,12 @@ var creepsCreation = {
               //
               // Soldier
               var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-              if (soldiers.length < 1) {
+              if (soldiers.length < 2) {
                 var n = calSource(soldiers);
                 spawn.createCreep(
                     [
                       TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
-                      RANGED_ATTACK, MOVE, MOVE, MOVE
+                      RANGED_ATTACK, HEAL, HEAL, HEAL, MOVE, MOVE, MOVE
                     ],
                     undefined, {role: 'soldier', source: n});
               }
