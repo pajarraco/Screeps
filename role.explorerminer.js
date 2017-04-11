@@ -31,10 +31,10 @@ var roleExplorerminer = {
         }
       } else {
         if (creep.memory.source == 0) {
-          if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+          if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
             harvestSource(creep);
           } else {
-            creep.moveTo(Game.flags['TopRoom']);
+            creep.moveTo(Game.flags['Room2']);
           }
         } else if (creep.memory.source == 1) {
           if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
