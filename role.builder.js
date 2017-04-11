@@ -72,13 +72,12 @@ var roleBuilder = {
         }
       }
     } else {
-      var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
-      if (linkTo.energy >= (linkTo.energyCapacity - 100)) {
-        if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(linkTo);
-        }
-      } else {
-        if (!creep.memory.htarget) {
+      if (!creep.memory.htarget) {
+        var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
+        if (linkTo.energy >= (linkTo.energyCapacity - 200)) {
+          creep.memory.htarget = linkTo.id;
+          creep.memory.htype = 2;
+        } else {
           var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
           if (target) {
             creep.memory.htarget = target.id;
@@ -96,8 +95,8 @@ var roleBuilder = {
             }
           }
         }
-        harvest(creep);
       }
+      harvest(creep);
     }
   }
 };
