@@ -3,11 +3,17 @@ var structureLink = {
   /** @param  {Room} room  **/
   run: function(room) {
 
-    var linkFrom = room.lookForAt('structure', 29, 39)[1];
-    var linkTo = room.lookForAt('structure', 32, 26)[1];
-    if (linkFrom && linkTo) {
+    var linkFrom1 = room.lookForAt('structure', 5, 3)[1];
+    var linkFrom2 = room.lookForAt('structure', 23, 32)[1];
+    var linkTo = room.lookForAt('structure', 12, 30)[1];
+    if (linkFrom1 && linkTo) {
       if (linkTo.energy < (linkTo.energyCapacity - 100)) {
-        linkFrom.transferEnergy(linkTo);
+        linkFrom1.transferEnergy(linkTo);
+      }
+    }
+    if (linkFrom2 && linkTo) {
+      if (linkTo.energy < (linkTo.energyCapacity - 100)) {
+        linkFrom2.transferEnergy(linkTo);
       }
     }
   }
