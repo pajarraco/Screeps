@@ -65,7 +65,7 @@ var creepsCreation = {
         if (miners.length < 2) {
           var n = calSource(miners);
           spawn.createCreep(
-              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE, MOVE], undefined,
+              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE, MOVE], undefined,
               {role: 'miner', source: n});
         } else {
           //
