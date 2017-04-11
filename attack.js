@@ -19,6 +19,7 @@ const attack = {
         return false;
       }
     }
-  };
+  }
+};
 
-  module.exports = attack;
+module.exports = attack;
