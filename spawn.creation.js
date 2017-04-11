@@ -55,7 +55,7 @@ var creepsCreation = {
       // upgrader
       var upgraders =
           _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-      if (upgraders.length < 3) {
+      if (upgraders.length < 1) {
         createNewCreep(spawn, name, 'upgrader', upgraders);
       } else {
         //
@@ -93,7 +93,7 @@ var creepsCreation = {
               //
               // Soldier
               var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-              if (soldiers.length < 6) {
+              if (soldiers.length < 0) {
                 var n = calSource(soldiers);
                 spawn.createCreep(
                     [
@@ -101,41 +101,40 @@ var creepsCreation = {
                       RANGED_ATTACK, MOVE, MOVE, MOVE
                     ],
                     undefined, {role: 'soldier', source: n});
-              } else {
-                //
-                // Conquest
-                var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                if (conquesters.length < 1) {
-                  var n = calSourceExtra(conquesters);
-                  spawn.createCreep(
-                      [CLAIM, MOVE, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK], undefined,
-                      {role: 'conquest', source: n});
+              }
+              //
+              // Conquest
+              var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+              if (conquesters.length < 1) {
+                var n = calSourceExtra(conquesters);
+                spawn.createCreep(
+                    [CLAIM, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined,
+                    {role: 'conquest', source: n});
+              }
+              //
+              // Explorerminer
+              var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
+              if (explorerminers.length < 2) {
+                var n = calSourceExtra(explorerminers);
+                spawn.createCreep(
+                    [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
+                    {role: 'explorerminer', source: n});
+              }
+              //
+              // Explorer
+              var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+              if (explorers.length < 8) {
+                var n = calSourceExtra(explorers);
+                var memory = {role: 'explorer', source: n};
+                if (n === 1) {
+                  memory.role2 = 'mechanic';
                 }
-                //
-                // Explorerminer
-                var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                if (explorerminers.length < 2) {
-                  var n = calSourceExtra(explorerminers);
-                  spawn.createCreep(
-                      [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
-                      {role: 'explorerminer', source: n});
-                }
-                //
-                // Explorer
-                var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                if (explorers.length < 8) {
-                  var n = calSourceExtra(explorers);
-                  var memory = {role: 'explorer', source: n};
-                  if (n === 1) {
-                    memory.role2 = 'mechanic';
-                  }
-                  spawn.createCreep(
-                      [
-                        WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE,
-                        MOVE, RANGED_ATTACK
-                      ],
-                      undefined, memory);
-                }
+                spawn.createCreep(
+                    [
+                      WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
+                      RANGED_ATTACK
+                    ],
+                    undefined, memory);
               }
               /* }*/
             }
