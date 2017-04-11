@@ -150,7 +150,7 @@ var roleHarvester = {
         }
       }
     } else {
-      var linkTo = room.lookForAt('structure', 12, 30)[1];
+      var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
       if (linkTo.energy >= (linkTo.energyCapacity - 100)) {
         if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(linkTo);
