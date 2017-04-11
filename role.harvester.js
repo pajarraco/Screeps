@@ -150,21 +150,29 @@ var roleHarvester = {
         }
       }
     } else {
-      if (depositTargets) {
-        if (!creep.memory.htarget) {
-          var storages = creep.pos.findClosestByRange(
-              FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
-          if (storages) {
-            creep.memory.htarget = storages.id;
-            creep.memory.htype = 2;
-          } else {
-            harvestDrop(creep);
-          }
+      var linkTo = room.lookForAt('structure', 12, 30)[1];
+      if (linkTo.energy >= (linkTo.energyCapacity - 100)) {
+        if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+          creep.moveTo(linkTo);
         }
       } else {
-        harvestDrop(creep);
+        if (depositTargets) {
+          if (!creep.memory.htarget) {
+            var storages = creep.pos.findClosestByRange(
+                FIND_STRUCTURES,
+                {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
+            if (storages) {
+              creep.memory.htarget = storages.id;
+              creep.memory.htype = 2;
+            } else {
+              harvestDrop(creep);
+            }
+          }
+        } else {
+          harvestDrop(creep);
+        }
+        harvest(creep);
       }
-      harvest(creep);
     }
   }
 };
