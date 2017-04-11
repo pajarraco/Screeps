@@ -126,9 +126,9 @@ var creepsCreation = {
               if (explorers.length < 8) {
                 var n = calSourceExtra(explorers);
                 var memory = {role: 'explorer', source: n};
-                if (n === 1) {
-                  memory.role2 = 'mechanic';
-                }
+                // if (n === 1) {
+                memory.role2 = 'mechanic';
+                //}
                 spawn.createCreep(
                     [
                       WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE,
