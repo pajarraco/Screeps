@@ -60,8 +60,8 @@ var harvestSource = function(creep) {
   if (harvest == ERR_NOT_IN_RANGE) {
     creep.moveTo(sources[i]);
   } else if (harvest == ERR_NOT_ENOUGH_RESOURCES) {
-    if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(sources[1]);
+    if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(sources[i]);
     }
   }
 };

@@ -18,17 +18,24 @@ var harvest = function(creep) {
           creep.memory.htarget = '';
         }
         break;
-      case 3:
-        if (creep.harvest(target) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(target);
-        } else if (creep.harvest(target) == ERR_NOT_ENOUGH_RESOURCES) {
-          creep.memory.htarget = '';
-        }
-        break;
       default:
     }
   } else {
     creep.memory.htarget = '';
+  }
+};
+
+var harvestSource = function(creep) {
+  creep.memory.htarget = 'xxxxx';
+  var sources = creep.room.find(FIND_SOURCES);
+  var i = /*0; */ creep.memory.source;
+  var harvest = creep.harvest(sources[i]);
+  if (harvest == ERR_NOT_IN_RANGE) {
+    creep.moveTo(sources[i]);
+  } else if (harvest == ERR_NOT_ENOUGH_RESOURCES) {
+    if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
+      creep.moveTo(sources[i]);
+    }
   }
 };
 
@@ -79,9 +86,7 @@ var roleBuilder = {
             creep.memory.htarget = storages.id;
             creep.memory.htype = 2;
           } else {
-            var sources = creep.pos.findClosestByRange(FIND_SOURCES);
-            creep.memory.htarget = sources.id;
-            creep.memory.htype = 3;
+            harvestSource(creep);
           }
         }
       }
