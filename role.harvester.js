@@ -7,11 +7,15 @@ var harvest = function(creep) {
       case 1:
         if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
           creep.moveTo(target);
+        } else if (creep.pickup(target) == ERR_NOT_ENOUGH_RESOURCES) {
+          creep.memory.htarget = '';
         }
         break;
       case 2:
         if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(target);
+        } else if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_ENOUGH_RESOURCES) {
+          creep.memory.htarget = '';
         }
         break;
       default:
