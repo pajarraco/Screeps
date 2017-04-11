@@ -10,7 +10,7 @@ var roleExplorerminer = require('role.explorerminer');
 var roleExplorer = require('role.explorer');
 var spawnsCreation = require('spawn.creation');
 var structureTower = require('structure.tower');
-// var structureLink = require('structure.link');
+var structureLink = require('structure.link');
 
 module.exports.loop = function() {
 
@@ -22,7 +22,7 @@ module.exports.loop = function() {
   for (var roomName in Game.rooms) {
     var room = Game.rooms[roomName];
     structureTower.run(room);
-    // structureLink.run(room);
+    structureLink.run(room);
   }
 
   for (var name in Game.creeps) {
