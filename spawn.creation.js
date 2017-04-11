@@ -131,8 +131,8 @@ var creepsCreation = {
                 }
                 spawn.createCreep(
                     [
-                      WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
-                      RANGED_ATTACK
+                      WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE,
+                      MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK
                     ],
                     undefined, memory);
               }
