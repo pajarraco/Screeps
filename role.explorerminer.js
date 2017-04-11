@@ -2,6 +2,9 @@ var harvestSource = function(creep) {
   // var source = creep.pos.findClosestByRange(FIND_SOURCES);
   var sources = creep.room.find(FIND_SOURCES);
   var i = /*0; */ creep.memory.source;
+  if (i == 2) {
+    i = 0;
+  }
   if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
     creep.moveTo(sources[i]);
   }
@@ -30,13 +33,13 @@ var roleExplorerminer = {
           creep.moveTo(closestHostileStructures);
         }
       } else {
-        if (creep.memory.source == 0) {
+        if (creep.memory.source == 0 || creep.memory.source == 1) {
           if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
             harvestSource(creep);
           } else {
             creep.moveTo(Game.flags['TopRoom']);
           }
-        } else if (creep.memory.source == 1) {
+        } else if (creep.memory.source == 2) {
           if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
             harvestSource(creep);
           } else {

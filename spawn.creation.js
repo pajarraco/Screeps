@@ -27,9 +27,9 @@ var calSourceExtra = function(creeps) {
   if (creeps.length > 0) {
     if (creeps[creeps.length - 1].memory.source == 0) {
       n = 1;
-    } /*else if (creeps[creeps.length - 1].memory.source == 1) {
+    } else if (creeps[creeps.length - 1].memory.source == 1) {
       n = 2;
-    }*/
+    }
   }
   return n;
 };
@@ -106,7 +106,7 @@ var creepsCreation = {
               // Conquest
               var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
               if (conquesters.length < 2) {
-                var n = calSourceExtra(conquesters);
+                var n = calSource(conquesters);
                 spawn.createCreep(
                     [CLAIM, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined,
                     {role: 'conquest', source: n});
@@ -124,7 +124,7 @@ var creepsCreation = {
               // Explorer
               var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
               if (explorers.length < 8) {
-                var n = calSourceExtra(explorers);
+                var n = calSource(explorers);
                 var memory = {role: 'explorer', source: n};
                 // if (n === 1) {
                 memory.role2 = 'mechanic';
