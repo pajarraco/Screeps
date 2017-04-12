@@ -20,7 +20,9 @@ const attack = {
           creep.moveTo(Game.flags['Flag1']);
         }
       } else {
-        if (creep.rangedAttack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
+        let wall = Game.getObjectById(creep.memory.htarget);
+
+        if (creep.rangedAttack(wall) == ERR_NOT_IN_RANGE) {
           //       creep.moveTo(closestHostileStructures);
           creep.moveTo(Game.flags['Flag1']);
         }
