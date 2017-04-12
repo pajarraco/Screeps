@@ -91,7 +91,7 @@ var roleBuilder = {
               creep.memory.htarget = storages.id;
               creep.memory.htype = 2;
             } else {
-              harvestSource(creep);
+              // harvestSource(creep);
             }
           }
         }

@@ -17,25 +17,25 @@ var roleUpgrader = {
         creep.moveTo(creep.room.controller);
       }
     } else {
-      var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-        filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-            s.store[RESOURCE_ENERGY] > 0
-      });
+      var storages =
+          creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
       if (storages) {
         if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(storages);
         }
       } else {
-        var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
-        if (linkTo.energy >= (linkTo.energyCapacity - 500)) {
-          if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(linkTo);
+        var container = creep.pos.findClosestByRange(
+            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
+        if (container) {
+          if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(container);
           }
         } else {
-          var sources = creep.room.find(FIND_SOURCES);
-          var i = creep.memory.source;
-          if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(sources[i]);
+          var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
+          if (linkTo.energy >= (linkTo.energyCapacity - 500)) {
+            if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(linkTo);
+            }
           }
         }
       }

@@ -52,21 +52,20 @@ var creepsCreation = {
       createNewCreep(spawn, name, 'harvester', harvesters);
     } else {
       //
-      // upgrader
-      var upgraders =
-          _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-      if (upgraders.length < 1) {
-        createNewCreep(spawn, name, 'upgrader', upgraders);
+      // Miner
+      var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
+      if (miners.length < 2) {
+        var n = calSource(miners);
+        spawn.createCreep(
+            [WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE, MOVE], undefined,
+            {role: 'miner', source: n});
       } else {
         //
-        // Miner
-        var miners =
-            _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
-        if (miners.length < 2) {
-          var n = calSource(miners);
-          spawn.createCreep(
-              [WORK, WORK, WORK, WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE, MOVE], undefined,
-              {role: 'miner', source: n});
+        // upgrader
+        var upgraders =
+            _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
+        if (upgraders.length < 1) {
+          createNewCreep(spawn, name, 'upgrader', upgraders);
         } else {
           //
           // Tower keeper
@@ -81,31 +80,23 @@ var creepsCreation = {
                 _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
             if (builders.length < 1) {
               createNewCreep(spawn, name, 'builder', builders);
-            } /*else {
-              //
-              // Delivery
-              var deliveries = _.filter(
-                  Game.creeps, (creep) => creep.memory.role == 'delivery' && creep.room.name == spawn.room.name);
-              if (deliveries.length < 2 && spawn.name == 'Spawn1') {
-                var n = calSource(deliveries);
-                var newName = spawn.createCreep([CARRY, MOVE], undefined, {role: 'delivery', source: n});
-              } */ else {
+            } else {
               //
               // Soldier
               var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-              if (soldiers.length < 5) {
+              if (soldiers.length < 6) {
                 var n = calSource(soldiers);
                 spawn.createCreep(
                     [
                       TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
-                      RANGED_ATTACK, HEAL, HEAL, HEAL, MOVE, MOVE, MOVE
+                      RANGED_ATTACK, HEAL, HEAL, HEAL, HEAL, MOVE, MOVE, MOVE, MOVE, MOVE
                     ],
                     undefined, {role: 'soldier', source: n});
               }
               //
               // Conquest
               var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-              if (conquesters.length < 0) {
+              if (conquesters.length < 1) {
                 var n = calSource(conquesters);
                 spawn.createCreep(
                     [CLAIM, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined,
@@ -114,7 +105,7 @@ var creepsCreation = {
               //
               // Explorerminer
               var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-              if (explorerminers.length < 0) {
+              if (explorerminers.length < 2) {
                 var n = calSourceExtra(explorerminers);
                 spawn.createCreep(
                     [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined,
@@ -123,7 +114,7 @@ var creepsCreation = {
               //
               // Explorer
               var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-              if (explorers.length < 0) {
+              if (explorers.length < 4) {
                 var n = calSource(explorers);
                 var memory = {role: 'explorer', source: n};
                 // if (n === 1) {
@@ -136,7 +127,6 @@ var creepsCreation = {
                     ],
                     undefined, memory);
               }
-              /* }*/
             }
           }
         }
