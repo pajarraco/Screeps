@@ -1,4 +1,4 @@
-const harvest{
+const harvest = {
   run: (creep) => {
     const target = Game.getObjectById(creep.memory.htarget);
     if (target) {
