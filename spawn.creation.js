@@ -89,7 +89,7 @@ var creepsCreation = {
                 spawn.createCreep(
                     [
                       TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
-                      RANGED_ATTACK, HEAL, HEAL, HEAL, HEAL, MOVE, MOVE, MOVE, MOVE, MOVE
+                      RANGED_ATTACK, HEAL, HEAL, HEAL, HEAL, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
                     ],
                     undefined, {role: 'soldier', source: n});
               }
