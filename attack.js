@@ -1,6 +1,6 @@
 const attack = {
   run: (creep) => {
-    var target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {filter: (object) => object.hits < object.hitsMax});
+    var target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {filter: (o) => o.hits < o.hitsMax});
     console.log(target);
     if (target) {
       if (creep.heal(target) == ERR_NOT_IN_RANGE) {
