@@ -2,6 +2,7 @@ const harvest = require('harvest');
 const harvestContainer = require('harvest.container');
 const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
+const harvestSource = require('harvest.source');
 
 const roleUpgrader = {
 
@@ -26,7 +27,8 @@ const roleUpgrader = {
       if (!creep.memory.htarget) {
         if (!harvestStorage.run(creep, 0)) {
           if (!harvestContainer.run(creep, 0)) {
-            harvestLink.run(creep, 500);
+            //harvestLink.run(creep, 500);
+            harvestSource.run(creep);
           }
         }
       }
