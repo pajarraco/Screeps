@@ -16,6 +16,7 @@ const harvestDrop = {
     } else {
       return false;
     }
-  };
+  }
 };
+
 module.exports = harvestDrop;

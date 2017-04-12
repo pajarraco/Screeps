@@ -13,5 +13,7 @@ const harvestLink = {
     } else {
       return false;
     }
-  };
-  module.exports = harvestLink;
+  }
+};
+
+module.exports = harvestLink;

@@ -15,4 +15,5 @@ const harvestStorage = {
     }
   }
 };
+
 module.exports = harvestStorage;

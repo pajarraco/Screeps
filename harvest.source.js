@@ -14,7 +14,7 @@ const harvestSource = {
         creep.moveTo(sources[i]);
       }
     }
-  };
-
+  }
 };
+
 module.exports = harvestSource;
