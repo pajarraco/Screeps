@@ -1,6 +1,6 @@
 const attack = {
   run: (creep) => {
-    var target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {filter: (object) => object.hits < object.hitsMax});
+    var target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {filter: object => object.hits < object.hitsMax});
     if (target) {
       if (creep.heal(target) == ERR_NOT_IN_RANGE) {
         creep.moveTo(target);
@@ -24,9 +24,9 @@ const attack = {
     creep.moveTo(Game.flags['Flag1']);
     //     }
     //   }
-    return true;
+    // return true;
     // } else {
-    // return false;
+    return false;
     // }
   }
 };
