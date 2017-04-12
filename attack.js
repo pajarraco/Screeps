@@ -24,9 +24,9 @@ const attack = {
     creep.moveTo(Game.flags['Flag1']);
     //     }
     //   }
-    // return true;
+    return true;
     // } else {
-    return false;
+    // return false;
     // }
   }
 };
