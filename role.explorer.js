@@ -60,30 +60,29 @@ var roleExplorer = {
           if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
             // creep.moveTo(closestDamagedStructure);
           }
+        }
+        // deposit
+        var depositTargets = Game.flags['Home'].room.find(
+            FIND_STRUCTURES,
+            {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
+        if (depositTargets.length > 0) {
+          if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(depositTargets[0]);
+          }
         } else {
-          // deposit
-          var depositTargets = Game.flags['Home'].room.find(
-              FIND_STRUCTURES,
-              {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity});
-          if (depositTargets.length > 0) {
-            if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(depositTargets[0]);
+          var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+            filter: (s) => {
+              return (
+                  (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                  s.energy < s.energyCapacity);
+            }
+          });
+          if (otherTargets.length > 0) {
+            if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(otherTargets[0]);
             }
           } else {
-            var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-              filter: (s) => {
-                return (
-                    (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-                    s.energy < s.energyCapacity);
-              }
-            });
-            if (otherTargets.length > 0) {
-              if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(otherTargets[0]);
-              }
-            } else {
-              roleTowerkeeper.run(creep);
-            }
+            roleTowerkeeper.run(creep);
           }
         }
       }
