@@ -6,7 +6,6 @@ const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
 const harvestSource = require('harvest.source');
 
-
 var transferingMaterial = function(creep, resource, room) {
   if (!creep.memory.term) {
     var labs = creep.room.find(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_LAB});
