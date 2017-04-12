@@ -3,8 +3,8 @@ var createNewCreep = function(spawn, name, role, creeps) {
     var newCreep = spawn.createCreep(
         [
             WORK, WORK, WORK, WORK, // WORK, WORK, WORK, WORK,
-            CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,  CARRY,
-            MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,  MOVE
+            CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+            MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
         ],
         undefined, {
             role: role,
@@ -93,11 +93,11 @@ var creepsCreation = {
                                 var n = calSource(soldiers);
                                 spawn.createCreep(
                                     [
-                                        TOUGH, TOUGH,
+                                        TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
                                         RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
                                         RANGED_ATTACK, //RANGED_ATTACK, //RANGED_ATTACK, RANGED_ATTACK,
-                                        HEAL, HEAL, HEAL, HEAL, HEAL, //HEAL, //HEAL, HEAL,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
+                                        HEAL, HEAL, HEAL, HEAL, //HEAL, HEAL, HEAL, HEAL,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
                                     ],
                                     undefined, {
                                         role: 'soldier',
