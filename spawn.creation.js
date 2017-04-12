@@ -93,11 +93,11 @@ var creepsCreation = {
                                 var n = calSource(soldiers);
                                 spawn.createCreep(
                                     [
-                                        TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
-                                        RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, HEAL, HEAL,
-                                        HEAL, HEAL, HEAL, HEAL, HEAL, HEAL,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
-                                        MOVE, MOVE
+                                        TOUGH, TOUGH,
+                                        RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
+                                        RANGED_ATTACK, RANGED_ATTACK, //RANGED_ATTACK, RANGED_ATTACK,
+                                        HEAL, HEAL, HEAL, HEAL, HEAL, HEAL, //HEAL, HEAL,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
                                     ],
                                     undefined, {
                                         role: 'soldier',
@@ -121,7 +121,11 @@ var creepsCreation = {
                             if (explorerminers.length < 2) {
                                 var n = calSourceExtra(explorerminers);
                                 spawn.createCreep(
-                                    [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK], undefined, {
+                                    [
+                                        WORK, WORK, WORK, WORK, WORK, WORK,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
+                                        RANGED_ATTACK
+                                    ], undefined, {
                                         role: 'explorerminer',
                                         source: n
                                     });
@@ -140,8 +144,11 @@ var creepsCreation = {
                                 //}
                                 spawn.createCreep(
                                     [
-                                        WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
-                                        CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, RANGED_ATTACK
+                                        WORK,
+                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+                                        CARRY, CARRY,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
+                                        RANGED_ATTACK
                                     ],
                                     undefined, memory);
                             }
@@ -154,3 +161,4 @@ var creepsCreation = {
 };
 
 module.exports = creepsCreation;
+ß
