@@ -10,7 +10,7 @@ const attack = {
         creep.moveTo(target);
       }
     }
-    creep.heal(creep);
+    // creep.heal(creep);
     // attack hostile
     // const closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
     // const closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
@@ -26,9 +26,9 @@ const attack = {
     creep.moveTo(Game.flags['Flag1']);
     //     }
     //   }
-    return true;
+    // return true;
     // } else {
-    //   return false;
+    return false;
     // }
   }
 };
