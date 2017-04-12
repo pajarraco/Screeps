@@ -10,6 +10,7 @@ const attack = {
         creep.moveTo(target);
       }
     }
+    creep.heal(creep);
     // attack hostile
     // const closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
     // const closestHostileStructures = creep.pos.findClosestByRange(FIND_HOSTILE_STRUCTURES);
