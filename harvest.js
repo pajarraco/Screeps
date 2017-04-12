@@ -1,4 +1,6 @@
 const harvest = {
+
+  /** @param {Creep} creep **/
   run: (creep) => {
     const target = Game.getObjectById(creep.memory.htarget);
     if (target) {

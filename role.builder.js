@@ -1,6 +1,8 @@
 const roleHarvester = require('role.harvester');
 const harvest = require('harvest');
-
+const harvestDrop = require('harvest.drop');
+const harvestContainer = require('harvest.container');
+const harvestStorage = require('harvest.storage');
 
 var roleBuilder = {
 
@@ -36,24 +38,9 @@ var roleBuilder = {
       }
     } else {
       if (!creep.memory.htarget) {
-        var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
-        if (linkTo.energy >= (linkTo.energyCapacity - 200)) {
-          creep.memory.htarget = linkTo.id;
-          creep.memory.htype = 2;
-        } else {
-          var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
-          if (target) {
-            creep.memory.htarget = target.id;
-            creep.memory.htype = 1;
-          } else {
-            var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-              filter: (s) => (s.structureType == STRUCTURE_STORAGE || s.structureType == STRUCTURE_CONTAINER) &&
-                  s.store[RESOURCE_ENERGY] > 200
-            });
-            if (storages) {
-              creep.memory.htarget = storages.id;
-              creep.memory.htype = 2;
-            }
+        if (!harvestStorage.run(creep, 300)) {
+          if (!harvestDrop.run(creep)) {
+            harvestContainer.run(creep, 300);
           }
         }
       }

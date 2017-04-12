@@ -1,3 +1,8 @@
+const harvest = require('harvest');
+const harvestContainer = require('harvest.container');
+const harvestStorage = require('harvest.storage');
+const harvestLink = require('harvest.link');
+
 var roleUpgrader = {
 
   /** @param {Creep} creep **/
@@ -13,32 +18,19 @@ var roleUpgrader = {
     }
 
     if (creep.memory.upgrading) {
+      creep.memory.htarget = '';
       if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
         creep.moveTo(creep.room.controller);
       }
     } else {
-      var storages =
-          creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
-      if (storages) {
-        if (creep.withdraw(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-          creep.moveTo(storages);
-        }
-      } else {
-        var container = creep.pos.findClosestByRange(
-            FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 0});
-        if (container) {
-          if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(container);
-          }
-        } else {
-          var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
-          if (linkTo.energy >= (linkTo.energyCapacity - 500)) {
-            if (creep.withdraw(linkTo, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-              creep.moveTo(linkTo);
-            }
+      if (!creep.memory.htarget) {
+        if (!harvestStorage.run(creep, 0)) {
+          if (!harvestContainer.run(creep, 0)) {
+            harvestLink.run(creep, 500);
           }
         }
       }
+      harvest.run(creep);
     }
   }
 };

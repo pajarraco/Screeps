@@ -1,47 +1,11 @@
 const roleUpgrader = require('role.upgrader');
 const harvest = require('harvest');
+const harvestDrop = require('harvest.drop');
+const harvestContainer = require('harvest.container');
+const harvestStorage = require('harvest.storage');
+const harvestLink = require('harvest.link');
+const harvestSource = require('harvest.source');
 
-
-var harvestDrop = function(creep) {
-  var target = creep.room.find(FIND_DROPPED_ENERGY);
-  var x = target[0];
-  for (j = 0; j < target.length; j++) {
-    if (target[j].amount > x.amount) {
-      x = target[j];
-    }
-  }
-  if (x) {
-    creep.memory.htarget = x.id;
-    creep.memory.htype = 1;
-  } else {
-    harvestContainer(creep);
-  }
-};
-
-var harvestContainer = function(creep) {
-  var containers = creep.pos.findClosestByRange(
-      FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] > 300});
-  if (containers) {
-    creep.memory.htarget = containers.id;
-    creep.memory.htype = 2;
-  } else {
-    harvestSource(creep);
-  }
-};
-
-var harvestSource = function(creep) {
-  creep.memory.htarget = 'xxxxx';
-  var sources = creep.room.find(FIND_SOURCES);
-  var i = /*0; */ creep.memory.source;
-  var harvest = creep.harvest(sources[i]);
-  if (harvest == ERR_NOT_IN_RANGE) {
-    creep.moveTo(sources[i]);
-  } else if (harvest == ERR_NOT_ENOUGH_RESOURCES) {
-    if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(sources[i]);
-    }
-  }
-};
 
 var transferingMaterial = function(creep, resource, room) {
   if (!creep.memory.term) {
@@ -128,23 +92,21 @@ var roleHarvester = {
       }
     } else {
       if (!creep.memory.htarget) {
-        var linkTo = creep.room.lookForAt('structure', 12, 30)[1];
-        if (linkTo.energy >= (linkTo.energyCapacity - 500)) {
-          creep.memory.htarget = linkTo.id;
-          creep.memory.htype = 2;
-        } else {
+        if (!harvestLink.run(creep, 500)) {
           if (depositTargets) {
-            var storages = creep.pos.findClosestByRange(
-                FIND_STRUCTURES,
-                {filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] > 100});
-            if (storages) {
-              creep.memory.htarget = storages.id;
-              creep.memory.htype = 2;
-            } else {
-              harvestDrop(creep);
+            if (!harvestStorage.run(creep, 100)) {
+              if (!harvestDrop.run(creep)) {
+                if (!harvestContainer.run(creep, 100)) {
+                  harvestSource.run(creep);
+                }
+              }
             }
           } else {
-            harvestDrop(creep);
+            if (!harvestDrop.run(creep)) {
+              if (!harvestContainer.run(creep, 300)) {
+                harvestSource.run(creep);
+              }
+            }
           }
         }
       }
