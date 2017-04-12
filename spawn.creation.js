@@ -147,7 +147,7 @@ var creepsCreation = {
                                         WORK,
                                         CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
                                         CARRY, CARRY,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,MOVE,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
                                         RANGED_ATTACK
                                     ],
                                     undefined, memory);
@@ -160,4 +160,4 @@ var creepsCreation = {
     }
 };
 
-module.exports = creepsCreation;ß
+module.exports = creepsCreation;
