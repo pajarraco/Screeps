@@ -1,7 +1,7 @@
 const harvestDrop = {
 
   /** @param {Creep} creep **/
-  run: (creep) {
+  run: (creep) => {
     const target = creep.room.find(FIND_DROPPED_ENERGY);
     let x = target[0];
     for (let j = 0; j < target.length; j++) {
