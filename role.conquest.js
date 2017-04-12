@@ -3,7 +3,7 @@ const attack = require('attack');
 const roleConquest = {
 
   /** @param {Creep} creep **/
-  run: function(creep) {
+  run: (creep) => {
 
     if (!attack.run(creep)) {
       // reserve controler
