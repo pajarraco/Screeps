@@ -25,10 +25,12 @@ const attack = {
           creep.moveTo(Game.flags['Flag1']);
         }
       }
-      return true;
-    } else {
-      return false;
+      // return true;
+      // } else {
+      //   return false;
+      // }
     }
+    return true;
   }
 };
 
