@@ -25,20 +25,6 @@ var harvest = function(creep) {
   }
 };
 
-var harvestSource = function(creep) {
-  creep.memory.htarget = 'xxxxx';
-  var sources = creep.room.find(FIND_SOURCES);
-  var i = /*0; */ creep.memory.source;
-  var harvest = creep.harvest(sources[i]);
-  if (harvest == ERR_NOT_IN_RANGE) {
-    creep.moveTo(sources[i]);
-  } else if (harvest == ERR_NOT_ENOUGH_RESOURCES) {
-    if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-      creep.moveTo(sources[i]);
-    }
-  }
-};
-
 var roleBuilder = {
 
   /** @param {Creep} creep **/
@@ -90,8 +76,6 @@ var roleBuilder = {
             if (storages) {
               creep.memory.htarget = storages.id;
               creep.memory.htype = 2;
-            } else {
-              // harvestSource(creep);
             }
           }
         }

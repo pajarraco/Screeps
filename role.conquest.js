@@ -8,7 +8,6 @@ const roleConquest = {
     if (!attack.run(creep)) {
       // reserve controler
       if (!creep.room.controller.my) {
-        // console.log(creep.reserveController(creep.room.controller));
         if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller);
         }
