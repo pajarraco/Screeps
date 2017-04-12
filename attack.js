@@ -22,12 +22,12 @@ const attack = {
     //   } else {
     //     if (creep.rangedAttack(closestHostileStructures) == ERR_NOT_IN_RANGE) {
     //       creep.moveTo(closestHostileStructures);
-    //       // creep.moveTo(Game.flags['Flag1']);
+    creep.moveTo(Game.flags['Flag1']);
     //     }
     //   }
-    //   return true;
+    return true;
     // } else {
-    return false;
+    // return false;
     // }
   }
 };
