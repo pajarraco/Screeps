@@ -3,10 +3,10 @@ const harvestContainer = require('harvest.container');
 const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
 
-var roleUpgrader = {
+const roleUpgrader = {
 
   /** @param {Creep} creep **/
-  run: function(creep) {
+  run: (creep) => {
 
     if (creep.memory.upgrading && creep.carry.energy == 0) {
       creep.memory.upgrading = false;
