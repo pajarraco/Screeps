@@ -129,13 +129,13 @@ var creepsCreation = {
                             //
                             // Explorerminer
                             var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                            if (explorerminers.length < 0) {
+                            if (explorerminers.length < 2) {
                                 var n = calSourceExtra(explorerminers);
                                 spawn.createCreep(
                                     [
-                                        WORK, WORK, WORK, WORK, WORK, WORK,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
-                                        RANGED_ATTACK
+                                        WORK, WORK, WORK, //WORK, WORK, WORK,
+                                        MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE,
+                                        // RANGED_ATTACK
                                     ], undefined, {
                                         role: 'explorerminer',
                                         source: n
