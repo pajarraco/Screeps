@@ -88,9 +88,8 @@ var roleExplorer = {
                         }
                     } else {
                         var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-                            filter: {
-                                (s) => s.structureType == STRUCTURE_CONTAINER
-                            }
+                            filter: (s) => s.structureType == STRUCTURE_CONTAINER
+
                         });
                         if (containers.length > 0) {
                             if (creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
