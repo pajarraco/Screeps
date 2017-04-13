@@ -80,7 +80,7 @@ var creepsCreation = {
                 // upgrader
                 var upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-                if (upgraders.length < 1) {
+                if (upgraders.length < 4) {
                     createNewCreep(spawn, name, 'upgrader', upgraders);
                 } else {
                     //
@@ -94,7 +94,7 @@ var creepsCreation = {
                         // Builder
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 4) {
+                        if (builders.length < 1) {
                             createNewCreep(spawn, name, 'builder', builders);
                         } else {
                             //
