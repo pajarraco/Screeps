@@ -32,6 +32,16 @@ var calSource = function(creeps) {
     return n;
 };
 
+var calRoom = function(creeps) {
+    var n = 1;
+    if (creeps.length > 1) {
+        if (creeps[creeps.length - 2].memory.room == 1) {
+            n = 2;
+        }
+    }
+    return n;
+};
+
 var calSourceExtra = function(creeps) {
     var n = 0;
     if (creeps.length > 0) {
@@ -120,10 +130,12 @@ var creepsCreation = {
                             var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
                             if (conquesters.length < 0) {
                                 var n = calSource(conquesters);
+                                var r = calRoom(explorers);
                                 spawn.createCreep(
                                     [CLAIM, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined, {
                                         role: 'conquest',
-                                        source: n
+                                        source: n,
+                                        room: r
                                     });
                             }
                             //
@@ -131,6 +143,7 @@ var creepsCreation = {
                             var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
                             if (explorerminers.length < 2) {
                                 var n = calSourceExtra(explorerminers);
+                                var r = calRoom(explorers);
                                 spawn.createCreep(
                                     [
                                         WORK, WORK, WORK, //WORK, WORK, WORK,
@@ -138,7 +151,8 @@ var creepsCreation = {
                                         // RANGED_ATTACK
                                     ], undefined, {
                                         role: 'explorerminer',
-                                        source: n
+                                        source: n,
+                                        room: r
                                     });
                             }
                             //
@@ -146,9 +160,11 @@ var creepsCreation = {
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
                             if (explorers.length < 4) {
                                 var n = calSource(explorers);
+                                var r = calRoom(explorers);
                                 var memory = {
                                     role: 'explorer',
-                                    source: n
+                                    source: n,
+                                    room: r
                                 };
                                 // if (n === 1) {
                                 memory.role2 = 'mechanic';

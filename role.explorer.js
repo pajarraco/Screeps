@@ -102,17 +102,17 @@ var roleExplorer = {
                 }
             }
         } else {
-            if (creep.memory.source == 0) {
+            if (creep.memory.room == 1) {
                 if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
                     harvestContainer(creep);
                 } else {
                     creep.moveTo(Game.flags['Room1']);
                 }
-            } else if (creep.memory.source == 1) {
-                if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
+            } else if (creep.memory.room == 2) {
+                if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
                     harvestContainer(creep);
                 } else {
-                    creep.moveTo(Game.flags['Room1']);
+                    creep.moveTo(Game.flags['Room2']);
                 }
             }
         }
