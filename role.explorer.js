@@ -1,5 +1,6 @@
 const roleTowerkeeper = require('role.towerkeeper');
 const attack = require('attack');
+const harvestSource = require('harvest.source');
 
 var harvestContainer = function(creep) {
     var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
@@ -17,17 +18,8 @@ var harvestContainer = function(creep) {
                 creep.moveTo(container);
             }
         } else {
-            harvestSource(creep);
+            harvestSource.run(creep);
         }
-    }
-};
-
-var harvestSource = function(creep) {
-    // var source = creep.pos.findClosestByRange(FIND_SOURCES);
-    var sources = creep.room.find(FIND_SOURCES);
-    var i = /*0; */ creep.memory.source;
-    if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[i]);
     }
 };
 
