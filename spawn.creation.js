@@ -104,7 +104,7 @@ var creepsCreation = {
                         // Builder
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1) {
+                        if (builders.length < 4) {
                             createNewCreep(spawn, name, 'builder', builders);
                         } else {
                             //
@@ -158,7 +158,7 @@ var creepsCreation = {
                             //
                             // Explorer
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 6) {
+                            if (explorers.length < 8) {
                                 var n = calSource(explorers);
                                 var r = calRoom(explorers);
                                 var memory = {
