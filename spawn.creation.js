@@ -142,7 +142,7 @@ var creepsCreation = {
                             // Explorerminer
                             var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
                             if (explorerminers.length < 2) {
-                                var n = calSourceExtra(explorerminers);
+                                var n = calSource(explorerminers);
                                 var r = calRoom(explorerminers);
                                 spawn.createCreep(
                                     [
