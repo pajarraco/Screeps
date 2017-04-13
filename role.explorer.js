@@ -87,7 +87,18 @@ var roleExplorer = {
                             creep.moveTo(otherTargets[0]);
                         }
                     } else {
-                        roleTowerkeeper.run(creep);
+                        var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                            filter: {
+                                (s) => s.structureType == STRUCTURE_CONTAINER
+                            }
+                        });
+                        if (containers.length > 0) {
+                            if (creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(containers[0]);
+                            }
+                        } else {
+                            roleTowerkeeper.run(creep);
+                        }
                     }
                 }
             }
