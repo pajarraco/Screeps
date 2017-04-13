@@ -93,16 +93,16 @@ var roleExplorer = {
             }
         } else {
             if (creep.memory.source == 0) {
-                if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+                if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
                     harvestContainer(creep);
                 } else {
-                    creep.moveTo(Game.flags['TopRoom']);
+                    creep.moveTo(Game.flags['Room1']);
                 }
             } else if (creep.memory.source == 1) {
-                if (creep.pos.roomName == Game.flags['TopRoom'].pos.roomName) {
+                if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
                     harvestContainer(creep);
                 } else {
-                    creep.moveTo(Game.flags['TopRoom']);
+                    creep.moveTo(Game.flags['Room1']);
                 }
             }
         }

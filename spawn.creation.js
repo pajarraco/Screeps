@@ -144,7 +144,7 @@ var creepsCreation = {
                             //
                             // Explorer
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 0) {
+                            if (explorers.length < 4) {
                                 var n = calSource(explorers);
                                 var memory = {
                                     role: 'explorer',
@@ -156,10 +156,10 @@ var creepsCreation = {
                                 spawn.createCreep(
                                     [
                                         WORK,
-                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
-                                        CARRY, CARRY,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
-                                        RANGED_ATTACK
+                                        CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+                                        //CARRY, CARRY,
+                                        MOVE, MOVE, //MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
+                                        //RANGED_ATTACK
                                     ],
                                     undefined, memory);
                             }
