@@ -84,8 +84,8 @@ var roleExplorer = {
 
                         });
                         if (containers.length > 0) {
-                            if (creep.transfer(containers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(containers[0]);
+                            if (creep.transfer(containers[4], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(containers[4]);
                             }
                         } else {
                             roleTowerkeeper.run(creep);
