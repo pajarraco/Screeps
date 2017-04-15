@@ -146,9 +146,9 @@ var creepsCreation = {
                                 var r = calRoom(explorerminers);
                                 spawn.createCreep(
                                     [
-                                        WORK, WORK, WORK, WORK, WORK, WORK,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
-                                        // RANGED_ATTACK
+                                        WORK, WORK, WORK, WORK, //WORK, WORK,
+                                        MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE,
+                                         RANGED_ATTACK
                                     ], undefined, {
                                         role: 'explorerminer',
                                         source: n,
@@ -174,8 +174,8 @@ var creepsCreation = {
                                         WORK,
                                         CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY,
                                         //CARRY, CARRY,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, MOVE,
-                                        //RANGED_ATTACK
+                                        MOVE, MOVE, MOVE, MOVE, MOVE,// MOVE, //MOVE, MOVE, MOVE, MOVE,
+                                        RANGED_ATTACK
                                     ],
                                     undefined, memory);
                             }
