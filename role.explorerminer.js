@@ -22,22 +22,22 @@ const roleExplorerminer = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        // if (!attack.run(creep)) {
-        // movet to room
-        if (creep.memory.room == 1) {
-            if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
-                harvestSource(creep);
-            } else {
-                creep.moveTo(Game.flags['Room1']);
-            }
-        } else if (creep.memory.room == 2) {
-            if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
-                harvestSource(creep);
-            } else {
-                creep.moveTo(Game.flags['Room1']);
+        if (!attack.run(creep)) {
+            // movet to room
+            if (creep.memory.room == 1) {
+                if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
+                    harvestSource(creep);
+                } else {
+                    creep.moveTo(Game.flags['Room1']);
+                }
+            } else if (creep.memory.room == 2) {
+                if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
+                    harvestSource(creep);
+                } else {
+                    creep.moveTo(Game.flags['Room2']);
+                }
             }
         }
-        // }
     }
 };
 

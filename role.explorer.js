@@ -28,87 +28,87 @@ var roleExplorer = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        // if (!attack.run(creep)) {
-        // find resources
-        if (creep.memory.transferring && creep.carry.energy == 0) {
-            creep.memory.transferring = false;
-            creep.say('harvesting');
-        }
-        if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
-            creep.memory.transferring = true;
-            creep.say('transferring');
-        }
+        if (!attack.run(creep)) {
+            // find resources
+            if (creep.memory.transferring && creep.carry.energy == 0) {
+                creep.memory.transferring = false;
+                creep.say('harvesting');
+            }
+            if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
+                creep.memory.transferring = true;
+                creep.say('transferring');
+            }
 
-        if (creep.memory.transferring) {
-            var contructionSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
-            if (contructionSite) {
-                if (creep.build(contructionSite) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(contructionSite);
-                }
-            } else {
-                if (creep.memory.role2 === 'mechanic') {
-                    var closestDamagedStructure =
-                        creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                            filter: (s) => s.hits < s.hitsMax && s.hits < 1000
-                        });
-                }
-                if (closestDamagedStructure) {
-                    if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
-                        // creep.moveTo(closestDamagedStructure);
-                    }
-                }
-                // deposit
-                var depositTargets = Game.flags['Home'].room.find(
-                    FIND_STRUCTURES, {
-                        filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity
-                    });
-                if (depositTargets.length > 0) {
-                    if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(depositTargets[0]);
+            if (creep.memory.transferring) {
+                var contructionSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                if (contructionSite) {
+                    if (creep.build(contructionSite) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(contructionSite);
                     }
                 } else {
-                    var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-                        filter: (s) => {
-                            return (
-                                (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-                                s.energy < s.energyCapacity);
+                    if (creep.memory.role2 === 'mechanic') {
+                        var closestDamagedStructure =
+                            creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                                filter: (s) => s.hits < s.hitsMax && s.hits < 1000
+                            });
+                    }
+                    if (closestDamagedStructure) {
+                        if (creep.repair(closestDamagedStructure) == ERR_NOT_IN_RANGE) {
+                            // creep.moveTo(closestDamagedStructure);
                         }
-                    });
-                    if (otherTargets.length > 0) {
-                        if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(otherTargets[0]);
+                    }
+                    // deposit
+                    var depositTargets = Game.flags['Home'].room.find(
+                        FIND_STRUCTURES, {
+                            filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity
+                        });
+                    if (depositTargets.length > 0) {
+                        if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(depositTargets[0]);
                         }
                     } else {
-                        var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-                            filter: (s) => s.structureType == STRUCTURE_CONTAINER
-
+                        var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                            filter: (s) => {
+                                return (
+                                    (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                                    s.energy < s.energyCapacity);
+                            }
                         });
-                        if (containers.length > 0) {
-                            if (creep.transfer(containers[4], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(containers[4]);
+                        if (otherTargets.length > 0) {
+                            if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(otherTargets[0]);
                             }
                         } else {
-                            roleTowerkeeper.run(creep);
+                            var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                                filter: (s) => s.structureType == STRUCTURE_CONTAINER
+
+                            });
+                            if (containers.length > 0) {
+                                if (creep.transfer(containers[4], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                    creep.moveTo(containers[4]);
+                                }
+                            } else {
+                                roleTowerkeeper.run(creep);
+                            }
                         }
                     }
                 }
-            }
-        } else {
-            if (creep.memory.room == 1) {
-                if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
-                    harvestContainer(creep);
-                } else {
-                    creep.moveTo(Game.flags['Room1']);
-                }
-            } else if (creep.memory.room == 2) {
-                if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
-                    harvestContainer(creep);
-                } else {
-                    creep.moveTo(Game.flags['Room2']);
+            } else {
+                if (creep.memory.room == 1) {
+                    if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
+                        harvestContainer(creep);
+                    } else {
+                        creep.moveTo(Game.flags['Room1']);
+                    }
+                } else if (creep.memory.room == 2) {
+                    if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
+                        harvestContainer(creep);
+                    } else {
+                        creep.moveTo(Game.flags['Room2']);
+                    }
                 }
             }
         }
-        // }
     }
 };
 
