@@ -80,7 +80,7 @@ var creepsCreation = {
                     [
                         WORK, WORK, WORK, WORK, WORK, WORK, WORK,
                         //CARRY,
-                        MOVE, MOVE, MOVE, MOVE
+                        MOVE, MOVE,// MOVE, MOVE
                     ], undefined, {
                         role: 'miner',
                         source: n
