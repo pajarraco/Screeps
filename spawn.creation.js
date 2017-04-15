@@ -80,7 +80,7 @@ var creepsCreation = {
                     [
                         WORK, WORK, WORK, WORK, WORK, WORK, WORK,
                         //CARRY,
-                        MOVE,  MOVE, MOVE, MOVE
+                        MOVE, MOVE, MOVE, MOVE
                     ], undefined, {
                         role: 'miner',
                         source: n
@@ -90,7 +90,7 @@ var creepsCreation = {
                 // upgrader
                 var upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-                if (upgraders.length < 4) {
+                if (upgraders.length < 2) {
                     createNewCreep(spawn, name, 'upgrader', upgraders);
                 } else {
                     //
