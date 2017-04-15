@@ -2,9 +2,9 @@ var createNewCreep = function(spawn, name, role, creeps) {
     var n = calSource(creeps);
     var newCreep = spawn.createCreep(
         [
-            WORK, WORK, WORK, WORK, // WORK, WORK, WORK, WORK,
-            CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
-            MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
+            WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
+            CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
+            MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
         ],
         undefined, {
             role: role,
@@ -78,9 +78,9 @@ var creepsCreation = {
                 var n = calSource(miners);
                 spawn.createCreep(
                     [
-                        WORK, WORK, WORK, WORK, WORK, //WORK, WORK,
+                        WORK, WORK, WORK, WORK, WORK, WORK, WORK,
                         //CARRY,
-                        MOVE, // MOVE, MOVE, MOVE
+                        MOVE,  MOVE, MOVE, MOVE
                     ], undefined, {
                         role: 'miner',
                         source: n
@@ -146,8 +146,8 @@ var creepsCreation = {
                                 var r = calRoom(explorerminers);
                                 spawn.createCreep(
                                     [
-                                        WORK, WORK, WORK, //WORK, WORK, WORK,
-                                        MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE,
+                                        WORK, WORK, WORK, WORK, WORK, WORK,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
                                         // RANGED_ATTACK
                                     ], undefined, {
                                         role: 'explorerminer',
@@ -172,9 +172,9 @@ var creepsCreation = {
                                 spawn.createCreep(
                                     [
                                         WORK,
-                                        CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY,
                                         //CARRY, CARRY,
-                                        MOVE, MOVE, //MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, MOVE,
                                         //RANGED_ATTACK
                                     ],
                                     undefined, memory);

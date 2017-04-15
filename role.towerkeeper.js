@@ -27,7 +27,7 @@ var roleTowerkeeper = {
         }
       });
       if (depositTargets.length > 0) {
-        var s = creep.memory.source;
+        var s = 0;// creep.memory.source;
         if (creep.transfer(depositTargets[s], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
           creep.moveTo(depositTargets[s]);
         }
