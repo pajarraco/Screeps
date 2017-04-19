@@ -80,7 +80,7 @@ var creepsCreation = {
                     [
                         WORK, WORK, WORK, WORK, WORK, WORK, WORK,
                         //CARRY,
-                        MOVE, MOVE,// MOVE, MOVE
+                        MOVE, MOVE, // MOVE, MOVE
                     ], undefined, {
                         role: 'miner',
                         source: n
@@ -105,7 +105,16 @@ var creepsCreation = {
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
                         if (builders.length < 2) {
-                            createNewCreep(spawn, name, 'builder', builders);
+                            var n = calSource(builders);
+                            spawn.createCreep(
+                                [
+                                    WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
+                                    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
+                                    MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
+                                ], undefined, {
+                                    role: 'builder',
+                                    source: n
+                                });
                         } else {
                             //
                             // Soldier
@@ -148,7 +157,7 @@ var creepsCreation = {
                                     [
                                         WORK, WORK, WORK, WORK, //WORK, WORK,
                                         MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE,
-                                         RANGED_ATTACK
+                                        RANGED_ATTACK
                                     ], undefined, {
                                         role: 'explorerminer',
                                         source: n,
