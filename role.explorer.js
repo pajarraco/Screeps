@@ -59,10 +59,14 @@ var roleExplorer = {
                     }
                     // deposit
                     var links = creep.pos.findInRange(FIND_STRUCTURES, 3, {
-                        filter: {structureType: STRUCTURE_LINK}
+                        filter: {
+                            structureType: STRUCTURE_LINK
+                        }
                     });
                     if (links.length > 0) {
-                        creep.transfer(links[0], RESOURCE_ENERGY);
+                        if (creep.transfer(links[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(links[0]);
+                        }
                     } else {
                         var depositTargets = Game.flags['Home'].room.find(
                             FIND_STRUCTURES, {
