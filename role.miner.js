@@ -11,7 +11,7 @@ var roleMiner = {
       if (links.length > 0) {
         creep.transfer(links[0], RESOURCE_ENERGY);
       }
-      var containers = creep.pos.findInRange(FIND_STRUCTURES, 1, {filter: {structureType: STRUCTURE_CONTAINER}});
+      var containers = creep.pos.findInRange(FIND_STRUCTURES, 2, {filter: {structureType: STRUCTURE_CONTAINER}});
       if (containers.length > 0) {
         creep.moveTo(containers[0]);
       }
