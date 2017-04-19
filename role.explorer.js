@@ -58,37 +58,45 @@ var roleExplorer = {
                         }
                     }
                     // deposit
-                    var depositTargets = Game.flags['Home'].room.find(
-                        FIND_STRUCTURES, {
-                            filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity
-                        });
-                    if (depositTargets.length > 0) {
-                        if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(depositTargets[0]);
-                        }
+                    var links = creep.pos.findInRange(FIND_STRUCTURES, 3, {
+                        filter: structureType: STRUCTURE_LINK
+
+                    });
+                    if (links.length > 0) {
+                        creep.transfer(links[0], RESOURCE_ENERGY);
                     } else {
-                        var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-                            filter: (s) => {
-                                return (
-                                    (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
-                                    s.energy < s.energyCapacity);
-                            }
-                        });
-                        if (otherTargets.length > 0) {
-                            if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(otherTargets[0]);
+                        var depositTargets = Game.flags['Home'].room.find(
+                            FIND_STRUCTURES, {
+                                filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity
+                            });
+                        if (depositTargets.length > 0) {
+                            if (creep.transfer(depositTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(depositTargets[0]);
                             }
                         } else {
-                            var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
-                                filter: (s) => s.structureType == STRUCTURE_CONTAINER
-
+                            var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                                filter: (s) => {
+                                    return (
+                                        (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
+                                        s.energy < s.energyCapacity);
+                                }
                             });
-                            if (containers.length > 0) {
-                                if (creep.transfer(containers[4], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                    creep.moveTo(containers[4]);
+                            if (otherTargets.length > 0) {
+                                if (creep.transfer(otherTargets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                    creep.moveTo(otherTargets[0]);
                                 }
                             } else {
-                                roleTowerkeeper.run(creep);
+                                var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
+                                    filter: (s) => s.structureType == STRUCTURE_CONTAINER
+
+                                });
+                                if (containers.length > 0) {
+                                    if (creep.transfer(containers[4], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                        creep.moveTo(containers[4]);
+                                    }
+                                } else {
+                                    roleTowerkeeper.run(creep);
+                                }
                             }
                         }
                     }
