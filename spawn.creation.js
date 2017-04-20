@@ -4,7 +4,7 @@ var createNewCreep = function(spawn, name, role, creeps) {
         [
             WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
             CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY,
-            MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
+            MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
         ],
         undefined, {
             role: role,
@@ -104,7 +104,7 @@ var creepsCreation = {
                         // Builder
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 0) {
+                        if (builders.length < 1) {
                             var n = calSource(builders);
                             spawn.createCreep(
                                 [
