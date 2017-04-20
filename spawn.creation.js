@@ -23,10 +23,10 @@ var createNewCreep = function(spawn, name, role, creeps) {
 };
 
 var calSource = function(creeps) {
-    var n = 1;
+    var n = 0;
     if (creeps.length > 0) {
-        if (creeps[creeps.length - 1].memory.source == 1) {
-            n = 0;
+        if (creeps[creeps.length - 1].memory.source == 0) {
+            n = 1;
         }
     }
     return n;
