@@ -3,7 +3,7 @@ var createNewCreep = function(spawn, name, role, creeps) {
     var newCreep = spawn.createCreep(
         [
             WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
-            CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+            CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY,
             MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
         ],
         undefined, {
@@ -104,7 +104,7 @@ var creepsCreation = {
                         // Builder
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1) {
+                        if (builders.length < 0) {
                             var n = calSource(builders);
                             spawn.createCreep(
                                 [
@@ -119,7 +119,7 @@ var creepsCreation = {
                             //
                             // Soldier
                             var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-                            if (soldiers.length < 2) {
+                            if (soldiers.length < 0) {
                                 var n = calSource(soldiers);
                                 spawn.createCreep(
                                     [
@@ -181,7 +181,7 @@ var creepsCreation = {
                                 spawn.createCreep(
                                     [
                                         WORK,
-                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
                                         MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
                                         RANGED_ATTACK
                                     ],
