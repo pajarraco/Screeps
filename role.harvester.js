@@ -91,9 +91,9 @@ var roleHarvester = {
       }
     } else {
       if (!creep.memory.htarget) {
-        if (!harvestLink.run(creep, 500)) {
+        if (!harvestLink.run(creep, 600)) {
           if (depositTargets) {
-            if (!harvestStorage.run(creep, 100)) {
+            if (!harvestStorage.run(creep, 500)) {
               if (!harvestDrop.run(creep)) {
                 if (!harvestContainer.run(creep, 100)) {
                   harvestSource.run(creep);
@@ -102,7 +102,7 @@ var roleHarvester = {
             }
           } else {
             if (!harvestDrop.run(creep)) {
-              if (!harvestContainer.run(creep, 300)) {
+              if (!harvestContainer.run(creep, 100)) {
                 harvestSource.run(creep);
               }
             }
