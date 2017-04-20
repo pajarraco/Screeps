@@ -3,7 +3,7 @@ var createNewCreep = function(spawn, name, role, creeps) {
     var newCreep = spawn.createCreep(
         [
             WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
-            CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+            CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY,
             MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
         ],
         undefined, {
@@ -181,7 +181,7 @@ var creepsCreation = {
                                 spawn.createCreep(
                                     [
                                         WORK,
-                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
                                         MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
                                         RANGED_ATTACK
                                     ],
