@@ -123,11 +123,11 @@ var creepsCreation = {
                                 var n = calSource(soldiers);
                                 console.log(spawn.createCreep(
                                     [
-                                        TOUGH, TOUGH, //TOUGH, TOUGH, //TOUGH, TOUGH,
+                                        TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
                                         RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
                                         RANGED_ATTACK, //RANGED_ATTACK, //RANGED_ATTACK, RANGED_ATTACK,
-                                        HEAL, HEAL, HEAL, HEAL, //HEAL, HEAL, HEAL, HEAL,
-                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
+                                        HEAL, HEAL, HEAL, //HEAL, //HEAL, HEAL, HEAL, HEAL,
+                                        MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE, //MOVE, MOVE
                                     ],
                                     undefined, {
                                         role: 'soldier',
