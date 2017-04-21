@@ -104,7 +104,7 @@ var creepsCreation = {
                         // Builder
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1) {
+                        if (builders.length < 0) {
                             var n = calSource(builders);
                             spawn.createCreep(
                                 [
