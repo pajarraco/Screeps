@@ -121,7 +121,8 @@ var creepsCreation = {
                             var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
                             if (soldiers.length < 2) {
                                 var n = calSource(soldiers);
-                                console.log(spawn.createCreep(
+
+                                var a = spawn.createCreep(
                                     [
                                         TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
                                         RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
@@ -132,7 +133,8 @@ var creepsCreation = {
                                     undefined, {
                                         role: 'soldier',
                                         source: n
-                                    }));
+                                    });
+                                    console.log('new soldier: ', a);
                             }
                             //
                             // Conquest
