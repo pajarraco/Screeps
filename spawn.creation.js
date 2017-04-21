@@ -126,7 +126,7 @@ var creepsCreation = {
                                         TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
                                         RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
                                         RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
-                                        HEAL, HEAL, HEAL, HEAL, HEAL, HEAL, HEAL, HEAL,
+                                        HEAL, HEAL, HEAL, HEAL, //HEAL, HEAL, HEAL, HEAL,
                                         MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
                                     ],
                                     undefined, {
