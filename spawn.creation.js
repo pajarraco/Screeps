@@ -37,9 +37,9 @@ var calRoom = function(creeps) {
     if (creeps.length > 1) {
         if (creeps[creeps.length - 2].memory.room == 1) {
             n = 2;
-        } else if (creeps[creeps.length - 2].memory.source == 2) {
-            n = 3;
-        }
+        } //else if (creeps[creeps.length - 2].memory.source == 2) {
+          //  n = 3;
+        //}
     }
     return n;
 };
@@ -154,7 +154,7 @@ var creepsCreation = {
                             //
                             // Explorerminer
                             var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                            if (explorerminers.length < 5) {
+                            if (explorerminers.length < 3) {
                                 var n = calSource(explorerminers);
                                 var r = calRoom(explorerminers);
                                 spawn.createCreep(
@@ -171,7 +171,7 @@ var creepsCreation = {
                             //
                             // Explorer
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 8) {
+                            if (explorers.length < 4) {
                                 var n = calSource(explorers);
                                 var r = calRoom(explorers);
                                 var memory = {
