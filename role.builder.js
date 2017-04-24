@@ -4,6 +4,7 @@ const harvestDrop = require('harvest.drop');
 const harvestContainer = require('harvest.container');
 const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
+const harvestSource = require('harvest.source');
 
 var roleBuilder = {
 
@@ -42,7 +43,11 @@ var roleBuilder = {
         if (!harvestStorage.run(creep, 300)) {
           if (!harvestDrop.run(creep)) {
             if (!harvestContainer.run(creep, 300)) {
-              harvestLink.run(creep, 100);
+              if (!harvestLink.run(creep, 100)){
+
+                    harvestSource.run(creep);
+
+              };
             }
           }
         }
