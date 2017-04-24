@@ -37,6 +37,13 @@ const roleExplorerminer = {
                     creep.moveTo(Game.flags['Room2']);
                 }
             }
+            else if (creep.memory.room == 3) {
+                if (creep.pos.roomName == Game.flags['Home2'].pos.roomName) {
+                    harvestSource(creep);
+                } else {
+                    creep.moveTo(Game.flags['Home2']);
+                }
+            }
         }
     }
 };
