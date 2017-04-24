@@ -7,9 +7,9 @@ const roleConquest = {
 
         // if (!attack.run(creep)) {
             // reserve controler
-            if (!creep.room.controller.my) {
-                if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller);
+            if (!Game.flags['Home2'].room.controller.my) {
+                if (creep.claimController(Game.flags['Home2'].room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Game.flags['Home2'].room.controller);
                 }
             } else {
                 // if (creep.memory.room == 1) {
