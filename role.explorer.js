@@ -68,7 +68,7 @@ var roleExplorer = {
                             creep.moveTo(links[0]);
                         }
                     } else {
-                        var depositTargets = Game.flags['Home2'].room.find(
+                        var depositTargets = Game.flags['Home'].room.find(
                             FIND_STRUCTURES, {
                                 filter: (s) => s.structureType == STRUCTURE_STORAGE && s.store[RESOURCE_ENERGY] < s.storeCapacity
                             });
@@ -77,7 +77,7 @@ var roleExplorer = {
                                 creep.moveTo(depositTargets[0]);
                             }
                         } else {
-                            var otherTargets = Game.flags['Home2'].room.find(FIND_STRUCTURES, {
+                            var otherTargets = Game.flags['Home'].room.find(FIND_STRUCTURES, {
                                 filter: (s) => {
                                     return (
                                         (s.structureType == STRUCTURE_EXTENSION || s.structureType == STRUCTURE_SPAWN) &&
@@ -89,7 +89,7 @@ var roleExplorer = {
                                     creep.moveTo(otherTargets[0]);
                                 }
                             } else {
-                                var containers = Game.flags['Home2'].room.find(FIND_STRUCTURES, {
+                                var containers = Game.flags['Home'].room.find(FIND_STRUCTURES, {
                                     filter: (s) => s.structureType == STRUCTURE_CONTAINER
 
                                 });
