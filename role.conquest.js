@@ -15,7 +15,7 @@ const roleConquest = {
                 // if (creep.memory.room == 1) {
                 //     creep.moveTo(Game.flags['Room2']);
                 // } else if (creep.memory.room == 2) {
-                    creep.moveTo(Game.flags['Room2']);
+                    creep.moveTo(Game.flags['Home2']);
                 // }
             // }
         }
