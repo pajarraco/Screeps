@@ -5,7 +5,7 @@ const roleConquest = {
     /** @param {Creep} creep **/
     run: (creep) => {
 
-        if (!attack.run(creep)) {
+        // if (!attack.run(creep)) {
             // reserve controler
             // if (!creep.room.controller.my) {
             //     if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
@@ -18,7 +18,7 @@ const roleConquest = {
                     creep.moveTo(Game.flags['Home2']);
                 // }
             // }
-        }
+        // }
     }
 };
 
