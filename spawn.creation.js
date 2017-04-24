@@ -12,9 +12,9 @@ var createNewCreep = function(spawn, name, role, creeps) {
         });
     if (newCreep == ERR_NOT_ENOUGH_ENERGY) {
         spawn.createCreep([
-            WORK, WORK,
-            CARRY, CARRY,
-            MOVE, MOVE
+            WORK, //WORK,
+            CARRY, //CARRY,
+            MOVE, //MOVE
         ], undefined, {
             role: role,
             source: n
@@ -70,13 +70,13 @@ var creepsCreation = {
         // Harvester
         var harvesters =
             _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
-        if (harvesters.length < 2) {
+        if (harvesters.length < 4) {
             createNewCreep(spawn, name, 'harvester', harvesters);
         } else {
             //
             // Miner
             var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
-            if (miners.length < 2) {
+            if (miners.length < 4) {
                 var n = calSource(miners);
                 spawn.createCreep(
                     [
