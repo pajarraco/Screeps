@@ -37,6 +37,8 @@ var calRoom = function(creeps) {
     if (creeps.length > 1) {
         if (creeps[creeps.length - 2].memory.room == 1) {
             n = 2;
+        } else if (creeps[creeps.length - 2].memory.source == 2) {
+            n = 3;
         }
     }
     return n;
@@ -137,12 +139,12 @@ var creepsCreation = {
                             //
                             // Conquest
                             var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                            if (conquesters.length < 1) {
+                            if (conquesters.length < 0) {
                                 var n = calSource(conquesters);
                                 var r = calRoom(conquesters);
                                 spawn.createCreep(
                                     [CLAIM, //RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
-                                      MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
                                     ], undefined, {
                                         role: 'conquest',
                                         source: n,
@@ -169,7 +171,7 @@ var creepsCreation = {
                             //
                             // Explorer
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 4) {
+                            if (explorers.length < 6) {
                                 var n = calSource(explorers);
                                 var r = calRoom(explorers);
                                 var memory = {
