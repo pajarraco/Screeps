@@ -141,7 +141,9 @@ var creepsCreation = {
                                 var n = calSource(conquesters);
                                 var r = calRoom(conquesters);
                                 spawn.createCreep(
-                                    [CLAIM, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE], undefined, {
+                                    [CLAIM, //RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
+                                      MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
+                                    ], undefined, {
                                         role: 'conquest',
                                         source: n,
                                         room: r
