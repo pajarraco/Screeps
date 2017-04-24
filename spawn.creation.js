@@ -137,7 +137,7 @@ var creepsCreation = {
                             //
                             // Conquest
                             var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                            if (conquesters.length < 0) {
+                            if (conquesters.length < 1) {
                                 var n = calSource(conquesters);
                                 var r = calRoom(conquesters);
                                 spawn.createCreep(
