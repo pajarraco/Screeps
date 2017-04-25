@@ -38,7 +38,7 @@ var calRoom = function(creeps) {
         if (creeps[creeps.length - 2].memory.room == 1) {
             n = 2;
         } //else if (creeps[creeps.length - 2].memory.source == 2) {
-          //  n = 3;
+        //  n = 3;
         //}
     }
     return n;
@@ -60,6 +60,8 @@ var creepsCreation = {
 
     /** @param  {Spawn} spawn  **/
     run: function(spawn) {
+        const home1 = 'E17N93';
+        const home2 = 'E19N94';
         // clear memory
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
@@ -78,26 +80,26 @@ var creepsCreation = {
             var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
             if (miners.length < 2) {
                 var n = calSource(miners);
-                var aa = spawn.createCreep(
-                    [
-                        WORK, WORK, WORK, WORK, WORK, WORK, WORK,
-                        //CARRY,
-                        MOVE, MOVE, // MOVE, MOVE
-                    ], undefined, {
-                        role: 'miner',
-                        source: n
-                    });
-
-                    if (aa == ERR_NOT_ENOUGH_ENERGY) {
-                        spawn.createCreep([
-                            WORK, WORK,
-                            //CARRY, //CARRY,
-                            MOVE, //MOVE
+                if (cree.room.name === home1) {
+                    spawn.createCreep(
+                        [
+                            WORK, WORK, WORK, WORK, WORK, WORK, WORK,
+                            //CARRY,
+                            MOVE, MOVE, // MOVE, MOVE
                         ], undefined, {
                             role: 'miner',
                             source: n
                         });
-                    }
+                } else {
+                    spawn.createCreep([
+                        WORK, WORK,
+                        //CARRY, //CARRY,
+                        MOVE, //MOVE
+                    ], undefined, {
+                        role: 'miner',
+                        source: n
+                    });
+                }
             } else {
                 //
                 // upgrader
@@ -110,24 +112,36 @@ var creepsCreation = {
                     // Tower keeper
                     var towerkeepers = _.filter(
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-                    if (towerkeepers.length < 2) {
+                    if (towerkeepers.length < 2 && creep.room.name === home1) {
                         createNewCreep(spawn, name, 'towerkeeper', towerkeepers);
                     } else {
                         //
                         // Builder
                         var builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 0) {
+                        if (builders.length < 2 && cree.room.name === home2) {
                             var n = calSource(builders);
-                            spawn.createCreep(
-                                [
-                                    WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
-                                    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
-                                    MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
-                                ], undefined, {
-                                    role: 'builder',
-                                    source: n
-                                });
+                            if (cree.room.name === home1) {
+                                spawn.createCreep(
+                                    [
+                                        WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
+                                        CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
+                                        MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
+                                    ], undefined, {
+                                        role: 'builder',
+                                        source: n
+                                    });
+                            } else {
+                                spawn.createCreep(
+                                    [
+                                        WORK, //WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
+                                        CARRY, //CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
+                                        MOVE, //MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
+                                    ], undefined, {
+                                        role: 'builder',
+                                        source: n
+                                    });
+                            }
                         } else {
                             //
                             // Soldier
@@ -165,7 +179,7 @@ var creepsCreation = {
                             //
                             // Explorerminer
                             var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                            if (explorerminers.length < 3) {
+                            if (explorerminers.length < 3 && cree.room.name === home1) {
                                 var n = calSource(explorerminers);
                                 var r = calRoom(explorerminers);
                                 spawn.createCreep(
@@ -182,7 +196,7 @@ var creepsCreation = {
                             //
                             // Explorer
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 4) {
+                            if (explorers.length < 4 cree.room.name === home1) {
                                 var n = calSource(explorers);
                                 var r = calRoom(explorers);
                                 var memory = {
