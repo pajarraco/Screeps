@@ -196,7 +196,7 @@ var creepsCreation = {
                             //
                             // Explorer
                             var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 4 cree.room.name === home1) {
+                            if (explorers.length < 4 && cree.room.name === home1) {
                                 var n = calSource(explorers);
                                 var r = calRoom(explorers);
                                 var memory = {
