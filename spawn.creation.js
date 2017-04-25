@@ -78,15 +78,26 @@ var creepsCreation = {
             var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
             if (miners.length < 2) {
                 var n = calSource(miners);
-                spawn.createCreep(
+                var aa = spawn.createCreep(
                     [
-                        WORK, WORK,// WORK, WORK, WORK, WORK, WORK,
+                        WORK, WORK, WORK, WORK, WORK, WORK, WORK,
                         //CARRY,
-                        MOVE, //MOVE, // MOVE, MOVE
+                        MOVE, MOVE, // MOVE, MOVE
                     ], undefined, {
                         role: 'miner',
                         source: n
                     });
+
+                    if (aa == ERR_NOT_ENOUGH_ENERGY) {
+                        spawn.createCreep([
+                            WORK, WORK,
+                            //CARRY, //CARRY,
+                            MOVE, //MOVE
+                        ], undefined, {
+                            role: 'miner',
+                            source: n
+                        });
+                    }
             } else {
                 //
                 // upgrader
