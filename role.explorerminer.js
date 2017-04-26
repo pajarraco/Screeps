@@ -22,7 +22,7 @@ const roleExplorerminer = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if (!attack.run(creep)) {
+        // if (!attack.run(creep)) {
             // movet to room
             if (creep.memory.room == 1) {
                 if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
@@ -43,7 +43,7 @@ const roleExplorerminer = {
                     creep.moveTo(Game.flags['Home2']);
                 }
             }
-        }
+        // }
     }
 };
 
