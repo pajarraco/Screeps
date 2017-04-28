@@ -84,6 +84,8 @@ var roleHarvester = {
               creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_STORAGE});
           if (creep.transfer(storages, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
             creep.moveTo(storages);
+          }else{
+            creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {filter: (s) => s.structureType == STRUCTURE_SPAWN});)
           }
         } else {
           roleUpgrader.run(creep);
