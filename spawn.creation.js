@@ -134,7 +134,7 @@ const creepsCreation = {
 
 const createNewCreep = function(spawn, name, body, role, creeps) {
     const s = calSource(creeps);
-    const r = calRoom(conquesters);
+    const r = calRoom(creeps);
     let memory = {
         role: role,
         source: s,
