@@ -64,34 +64,34 @@ const creepsCreation = {
         }
         //
         // Harvester
-        var harvesters =
+        const harvesters =
             _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester' && creep.room.name == spawn.room.name);
         if (harvesters.length < 2) {
             createNewCreep(spawn, name, harvesterBody, 'harvester', harvesters);
         } else {
             //
             // Miner
-            var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
+            const miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
             if (miners.length < 2) {
                 createNewCreep(spawn, name, minerBody, 'miner', miners);
             } else {
                 //
                 // upgrader
-                var upgraders =
+                const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
                 if (upgraders.length < 1) {
                     createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
                 } else {
                     //
                     // Tower keeper
-                    var towerkeepers = _.filter(
+                    const towerkeepers = _.filter(
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
                     if ((towerkeepers.length < 2 && spawn.room.name === home1) || (towerkeepers.length < 1 && spawn.room.name === home2)) {
                         createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
                     } else {
                         //
                         // Builder
-                        var builders =
+                        const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
                         if (builders.length < 1 && spawn.room.name === home2) {
                             if (spawn.room.name === home1) {
@@ -102,25 +102,25 @@ const creepsCreation = {
                         } else {
                             //
                             // Soldier
-                            var soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
+                            const soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
                             if (soldiers.length < 1) {
                                 createNewCreep(spawn, name, soldierBody, 'soldier', soldiers);
                             }
                             //
                             // Conquest
-                            var conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
+                            const conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
                             if (conquesters.length < 0) {
                                 createNewCreep(spawn, name, conquesterBody, 'conquest', conquesters);
                             }
                             //
                             // Explorerminer
-                            var explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
+                            const explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
                             if (explorerminers.length < 3 && spawn.room.name === home1) {
                                 createNewCreep(spawn, name, explorerminerBody, 'explorerminer', explorerminers);
                             }
                             //
                             // Explorer
-                            var explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
+                            const explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
                             if (explorers.length < 4 && spawn.room.name === home1) {
                                 createNewCreep(spawn, name, explorerBody, 'explorer', explorers);
                             }
