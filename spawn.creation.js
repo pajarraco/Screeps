@@ -14,7 +14,7 @@ const minerBody = [
 ];
 const upgraderBody = [
     WORK, WORK, WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY
+    CARRY, CARRY, CARRY, CARRY,
     MOVE, MOVE, MOVE, MOVE
 ];
 const builderBody = [
