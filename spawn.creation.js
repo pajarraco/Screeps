@@ -56,6 +56,7 @@ const creepsCreation = {
     run: function(spawn) {
         const home1 = 'E17N93';
         const home2 = 'E19N94';
+        const home3 = 'E18N95';
         // clear memory
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
@@ -93,7 +94,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1 && spawn.room.name === home2) {
+                        if (builders.length < 2 && spawn.room.name === home2 && spawn.room.name === home3) {
                             if (spawn.room.name === home1) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
