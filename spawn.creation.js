@@ -110,7 +110,7 @@ const creepsCreation = {
                             //
                             // Conquest
                             const conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                            if (conquesters.length < 1) {
+                            if (conquesters.length < 0) {
                                 createNewCreep(spawn, name, conquesterBody, 'conquest', conquesters);
                             }
                             //
