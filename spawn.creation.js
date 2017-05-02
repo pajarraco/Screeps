@@ -3,9 +3,9 @@ const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
     MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
 ];
 const harvesterBodyLow = [
-    WORK, WORK,
-    CARRY, CARRY,
-    MOVE, MOVE
+    WORK,// WORK,
+    CARRY, //CARRY,
+    MOVE, //MOVE
 ];
 const minerBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, WORK,
