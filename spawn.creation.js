@@ -23,7 +23,7 @@ const builderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
-    WORK, WORK, WORK,// WORK, //WORK, WORK, // WORK, WORK,
+    WORK, WORK, WORK, // WORK, //WORK, WORK, // WORK, WORK,
     CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
     MOVE, MOVE, //MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
@@ -122,7 +122,7 @@ const creepsCreation = {
                             //
                             // Explorer
                             const explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 8 && spawn.room.name === home1) {
+                            if (explorers.length < 4) {
                                 createNewCreep(spawn, name, explorerBody, 'explorer', explorers);
                             }
                         }
@@ -161,9 +161,9 @@ const calRoom = function(creeps) {
     if (creeps.length > 1) {
         if (creeps[creeps.length - 2].memory.room == 1) {
             n = 2;
-        } else if (creeps[creeps.length - 2].memory.source == 2) {
+        } /*else if (creeps[creeps.length - 2].memory.source == 2) {
             n = 3;
-        }
+        }*/
     }
     return n;
 };
