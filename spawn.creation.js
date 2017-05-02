@@ -116,13 +116,13 @@ const creepsCreation = {
                             //
                             // Explorerminer
                             const explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                            if (explorerminers.length < 5 && spawn.room.name === home1) {
+                            if (explorerminers.length < 3 && spawn.room.name === home1) {
                                 createNewCreep(spawn, name, explorerminerBody, 'explorerminer', explorerminers);
                             }
                             //
                             // Explorer
                             const explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 4) {
+                            if (explorers.length < 4 && spawn.room.name === home1) {
                                 createNewCreep(spawn, name, explorerBody, 'explorer', explorers);
                             }
                         }
