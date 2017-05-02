@@ -8,7 +8,12 @@ const harvesterBodyLow = [
     MOVE, MOVE
 ];
 const minerBody = [
-    WORK, WORK, WORK, WORK, WORK, //WORK, //WORK,
+    WORK, WORK, WORK, WORK, WORK, WORK, WORK,
+    //CARRY,
+    MOVE, MOVE, // MOVE, MOVE
+];
+const minerBodyLow = [
+    WORK, WORK, WORK, WORK, //WORK, //WORK, //WORK,
     //CARRY,
     MOVE, MOVE, // MOVE, MOVE
 ];
@@ -19,7 +24,7 @@ const upgraderBody = [
 ];
 const builderBody = [
     WORK, WORK, WORK, WORK, //WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY,// CARRY, CARRY, //CARRY, CARRY,
+    CARRY, CARRY, CARRY, CARRY, // CARRY, CARRY, //CARRY, CARRY,
     MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
@@ -74,7 +79,11 @@ const creepsCreation = {
             // Miner
             const miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
             if (miners.length < 2) {
-                createNewCreep(spawn, name, minerBody, 'miner', miners);
+                if (spawn.room.name === home1 || spawn.room.name === home2) {
+                    createNewCreep(spawn, name, minerBody, 'miner', miners);
+                } else {
+                    createNewCreep(spawn, name, minerBodyLow, 'miner', miners);
+                }
             } else {
                 //
                 // upgrader
@@ -162,9 +171,10 @@ const calRoom = function(creeps) {
     if (creeps.length > 1) {
         if (creeps[creeps.length - 2].memory.room == 1) {
             n = 2;
-        } /*else if (creeps[creeps.length - 2].memory.source == 2) {
-            n = 3;
-        }*/
+        }
+        /*else if (creeps[creeps.length - 2].memory.source == 2) {
+                   n = 3;
+               }*/
     }
     return n;
 };
