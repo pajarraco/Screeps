@@ -23,9 +23,9 @@ const builderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
-    WORK, WORK, WORK, WORK, //WORK, WORK, // WORK, WORK,
+    WORK, WORK, WORK,// WORK, //WORK, WORK, // WORK, WORK,
     CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
+    MOVE, MOVE, //MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const soldierBody = [
     TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
@@ -95,7 +95,7 @@ const creepsCreation = {
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
                         if ((builders.length < 2 && spawn.room.name === home2) || (builders.length < 3 && spawn.room.name === home3)) {
-                            if (spawn.room.name === home1) {
+                            if (spawn.room.name === home2) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
                                 createNewCreep(spawn, name, builderBodyLow, 'builder', builders);
