@@ -109,19 +109,19 @@ const creepsCreation = {
                             //
                             // Conquest
                             const conquesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'conquest');
-                            if (conquesters.length < 0) {
+                            if (conquesters.length < 1) {
                                 createNewCreep(spawn, name, conquesterBody, 'conquest', conquesters);
                             }
                             //
                             // Explorerminer
                             const explorerminers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorerminer');
-                            if (explorerminers.length < 3 && spawn.room.name === home1) {
+                            if (explorerminers.length < 5 && spawn.room.name === home1) {
                                 createNewCreep(spawn, name, explorerminerBody, 'explorerminer', explorerminers);
                             }
                             //
                             // Explorer
                             const explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-                            if (explorers.length < 4 && spawn.room.name === home1) {
+                            if (explorers.length < 8 && spawn.room.name === home1) {
                                 createNewCreep(spawn, name, explorerBody, 'explorer', explorers);
                             }
                         }
