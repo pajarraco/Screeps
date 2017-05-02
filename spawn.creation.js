@@ -162,9 +162,9 @@ const calRoom = function(creeps) {
         if (creeps[creeps.length - 2].memory.room == 1) {
             n = 2;
         }
-        /*else if (creeps[creeps.length - 2].memory.source == 2) {
+        else if (creeps[creeps.length - 2].memory.source == 2) {
                  n = 3;
-               }*/
+               }
     }
     return n;
 };
