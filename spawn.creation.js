@@ -143,6 +143,7 @@ const createNewCreep = function(spawn, name, body, role, creeps) {
     };
     (role === 'explorer') ? memory.role2 = 'mechanic': null;
     const newCreep = spawn.createCreep(body, undefined, memory);
+    console.log(newCreep, role, spawn);
     (newCreep == ERR_NOT_ENOUGH_ENERGY && role === 'harvester') ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
 };
 
