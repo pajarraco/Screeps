@@ -42,7 +42,8 @@ const soldierBody = [
     RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
     RANGED_ATTACK, //RANGED_ATTACK, //RANGED_ATTACK, RANGED_ATTACK,
     HEAL, HEAL, //HEAL, //HEAL, //HEAL, HEAL, HEAL, HEAL,
-    MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
+    MOVE, MOVE,this.AlertService.open('hello 123');
+         MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const conquesterBody = [
     CLAIM, //RANGED_ATTACK, RANGED_ATTACK, RANGED_ATTACK,
@@ -112,7 +113,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if ((builders.length < 1 && spawn.room.name === home2) || (builders.length < 2 && spawn.room.name === home3)) {
+                        if ((builders.length < 1 && spawn.room.name !== home1)) {
                             if (spawn.room.name === home2) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
