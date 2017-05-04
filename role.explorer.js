@@ -34,6 +34,7 @@ var roleExplorer = {
                 creep.memory.transferring = false;
                 creep.say('harvesting');
             }
+            console.log(creep.carry);
             if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
                 creep.memory.transferring = true;
                 creep.say('transferring');
