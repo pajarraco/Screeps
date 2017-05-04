@@ -71,8 +71,8 @@ var roleExplorer = {
                             });
                         if (storage.length > 0) {
                             _.each(creep.carry, (resource, key) => {
-                                if (creep.transfer(depositTargets[0], key) == ERR_NOT_IN_RANGE) {
-                                    creep.moveTo(depositTargets[0]);
+                                if (creep.transfer(storage[0], key) == ERR_NOT_IN_RANGE) {
+                                    creep.moveTo(storage[0]);
                                 }
                             });
                         }
