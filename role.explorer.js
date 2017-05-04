@@ -63,6 +63,8 @@ var roleExplorer = {
                             // creep.moveTo(closestDamagedStructure);
                         }
                     }
+                    console.log(creep.carry.indexOf(energy));
+
                     // deposit
                     var links = creep.pos.findInRange(FIND_STRUCTURES, 3, {
                         filter: {
