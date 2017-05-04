@@ -60,13 +60,15 @@ const explorerBody = [
     RANGED_ATTACK
 ]
 
+const home1 = 'E17N93';
+const home2 = 'E19N94';
+const home3 = 'E18N95';
+
 const creepsCreation = {
 
     /** @param  {Spawn} spawn  **/
     run: function(spawn) {
-        const home1 = 'E17N93';
-        const home2 = 'E19N94';
-        const home3 = 'E18N95';
+
         // clear memory
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
@@ -162,7 +164,7 @@ const createNewCreep = function(spawn, name, body, role, creeps) {
     (role === 'explorer') ? memory.role2 = 'mechanic': null;
     const newCreep = spawn.createCreep(body, undefined, memory);
     console.log(newCreep, role, spawn);
-    (newCreep == ERR_NOT_ENOUGH_ENERGY && role === 'harvester') ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
+    (newCreep == ERR_NOT_ENOUGH_ENERGY && role === 'harvester' && spawn.room.name === home3) ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
 };
 
 const calSource = function(creeps) {
