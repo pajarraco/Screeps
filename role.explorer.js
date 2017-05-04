@@ -30,12 +30,7 @@ var roleExplorer = {
 
         if (!attack.run(creep)) {
             // find resources
-            let sum = _.sum([
-                creep.carry.KO,
-                creep.carry.ZH,
-                creep.carry.GO,
-                creep.carry.energy
-            ]);
+            let sum = _.sum(creep.carry);
             if (creep.memory.transferring && sum == 0) {
                 creep.memory.transferring = false;
                 creep.say('harvesting');
