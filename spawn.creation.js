@@ -1,11 +1,11 @@
 const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY,
+    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
     MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
 ];
 const harvesterBodyLow = [
-    WORK, WORK,
-    CARRY, CARRY,
-    MOVE, MOVE
+    WORK, //WORK,
+    CARRY, //CARRY,
+    MOVE, //MOVE
 ];
 const minerBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, WORK,
@@ -18,9 +18,9 @@ const minerBodyLow = [
     MOVE, MOVE, // MOVE, MOVE
 ];
 const upgraderBody = [
-    WORK, WORK, WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY,
-    MOVE, MOVE, MOVE, MOVE
+    WORK, WORK, WORK, WORK, WORK,
+    CARRY, CARRY, CARRY, CARRY, CARRY,
+    MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const upgraderBodyLow = [
     WORK, WORK, //WORK, WORK,
@@ -60,13 +60,15 @@ const explorerBody = [
     RANGED_ATTACK
 ]
 
+const home1 = 'E17N93';
+const home2 = 'E19N94';
+const home3 = 'E18N95';
+
 const creepsCreation = {
 
     /** @param  {Spawn} spawn  **/
     run: function(spawn) {
-        const home1 = 'E17N93';
-        const home2 = 'E19N94';
-        const home3 = 'E18N95';
+
         // clear memory
         for (var name in Memory.creeps) {
             if (!Game.creeps[name]) {
@@ -94,7 +96,7 @@ const creepsCreation = {
                 // upgrader
                 const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-                if (upgraders.length < 1) {
+                if ((upgraders.length < 1 && spawn.room.name !== home3) || (upgraders.length < 3 && spawn.room.name === home3)) {
                     if (spawn.room.name === home3) {
                         createNewCreep(spawn, name, upgraderBodyLow, 'upgrader', upgraders);
                     } else {
@@ -116,7 +118,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if ((builders.length < 1 && spawn.room.name !== home1)) {
+                        if ((builders.length < 1 && spawn.room.name === home3)) {
                             if (spawn.room.name === home2) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
@@ -166,7 +168,7 @@ const createNewCreep = function(spawn, name, body, role, creeps) {
     (role === 'explorer') ? memory.role2 = 'mechanic': null;
     const newCreep = spawn.createCreep(body, undefined, memory);
     console.log(newCreep, role, spawn);
-    (newCreep == ERR_NOT_ENOUGH_ENERGY && role === 'harvester') ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
+    (newCreep == ERR_NOT_ENOUGH_ENERGY && role === 'harvester' && spawn.room.name === home3) ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
 };
 
 const calSource = function(creeps) {
