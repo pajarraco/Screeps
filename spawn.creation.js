@@ -96,7 +96,7 @@ const creepsCreation = {
                 // upgrader
                 const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-                if ((upgraders.length < 1 && spawn.room.name !== home3) || (upgraders.length < 3 && spawn.room.name === home3)) {
+                if (upgraders.length < 1) {
                     if (spawn.room.name === home3) {
                         createNewCreep(spawn, name, upgraderBodyLow, 'upgrader', upgraders);
                     } else {
