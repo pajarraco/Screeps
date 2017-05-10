@@ -137,7 +137,7 @@ var roleExplorer = {
                     if (creep.pos.roomName == Game.flags['Home3'].pos.roomName) {
                         harvestContainer(creep);
                     } else {
-                        creep.moveTo(Game.flags['Home3']);
+                        creep.moveTo(Game.flags['Home4']);
                     }
                 }
             }

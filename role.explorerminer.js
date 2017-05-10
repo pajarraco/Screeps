@@ -40,7 +40,7 @@ const roleExplorerminer = {
             if (creep.pos.roomName == Game.flags['Home3'].pos.roomName) {
                 harvestSource(creep);
             } else {
-                creep.moveTo(Game.flags['Home3']);
+                creep.moveTo(Game.flags['Home4']);
             }
         }
         // }
