@@ -34,8 +34,8 @@ const builderBody = [
 ];
 const builderBodyLow = [
     WORK, WORK, WORK, WORK, //WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, //CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, //MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
+    CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const soldierBody = [
     TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
@@ -89,7 +89,7 @@ const creepsCreation = {
                 if (spawn.room.name === home1 || spawn.room.name === home2) {
                     createNewCreep(spawn, name, minerBody, 'miner', miners);
                 } else {
-                    createNewCreep(spawn, name, minerBodyLow, 'miner', miners);
+                    createNewCreep(spawn, name, minerBody, 'miner', miners);
                 }
             } else {
                 //
@@ -109,7 +109,7 @@ const creepsCreation = {
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
                     if ((towerkeepers.length < 2 && spawn.room.name === home1) || (towerkeepers.length < 1 && spawn.room.name !== home1)) {
                         if (spawn.room.name === home3) {
-                            createNewCreep(spawn, name, harvesterBodyLow, 'towerkeeper', towerkeepers);
+                            createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
                         } else {
                             createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
                         }
