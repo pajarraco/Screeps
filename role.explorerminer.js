@@ -25,10 +25,10 @@ const roleExplorerminer = {
         // if (!attack.run(creep)) {
         // movet to room
         if (creep.memory.room == 1) {
-            if (creep.pos.roomName == Game.flags['Room1'].pos.roomName) {
+            if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
                 harvestSource(creep);
             } else {
-                creep.moveTo(Game.flags['Room1']);
+                creep.moveTo(Game.flags['Room2']);
             }
         } else if (creep.memory.room == 2) {
             if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
@@ -37,10 +37,10 @@ const roleExplorerminer = {
                 creep.moveTo(Game.flags['Room2']);
             }
         } else if (creep.memory.room == 3) {
-            if (creep.pos.roomName == Game.flags['Home4'].pos.roomName) {
+            if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
                 harvestSource(creep);
             } else {
-                creep.moveTo(Game.flags['Home4']);
+                creep.moveTo(Game.flags['Room2']);
             }
         }
         // }
