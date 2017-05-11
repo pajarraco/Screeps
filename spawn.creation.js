@@ -13,9 +13,9 @@ const minerBody = [
     MOVE, MOVE, // MOVE, MOVE
 ];
 const minerBodyLow = [
-    WORK, WORK, WORK, WORK, //WORK, //WORK, //WORK,
+    WORK, WORK, WORK, //WORK, //WORK, //WORK, //WORK,
     //CARRY,
-    MOVE, MOVE, // MOVE, MOVE
+    MOVE, //MOVE, // MOVE, MOVE
 ];
 const upgraderBody = [
     WORK, WORK, WORK, WORK, WORK,
@@ -23,9 +23,9 @@ const upgraderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const upgraderBodyLow = [
-    WORK, WORK, //WORK, WORK,
-    CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, //MOVE, MOVE
+    WORK, //WORK, //WORK, WORK,
+    CARRY, //CARRY, //CARRY, CARRY,
+    MOVE, //MOVE, //MOVE, MOVE
 ];
 const builderBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
@@ -33,9 +33,9 @@ const builderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
-    WORK, WORK, WORK, WORK, //WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
+    WORK, //WORK, WORK, WORK, //WORK, WORK, // WORK, WORK,
+    CARRY, //CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, //MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const soldierBody = [
     TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
@@ -87,10 +87,10 @@ const creepsCreation = {
             // Miner
             const miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
             if (miners.length < 2) {
-                if (spawn.room.name === home1 || spawn.room.name === home2) {
+                if (spawn.room.name !== home4) {
                     createNewCreep(spawn, name, minerBody, 'miner', miners);
                 } else {
-                    createNewCreep(spawn, name, minerBody, 'miner', miners);
+                    createNewCreep(spawn, name, minerBodyLow, 'miner', miners);
                 }
             } else {
                 //
@@ -98,17 +98,17 @@ const creepsCreation = {
                 const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
                 if (upgraders.length < 1 ) {
-                    if (spawn.room.name === home3) {
+                    if (spawn.room.name !== home4) {
                         createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
                     } else {
-                        createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
+                        createNewCreep(spawn, name, upgraderBodyLow, 'upgrader', upgraders);
                     }
                 } else {
                     //
                     // Tower keeper
                     const towerkeepers = _.filter(
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-                    if ((towerkeepers.length < 2 && spawn.room.name === home1) || (towerkeepers.length < 1 && spawn.room.name !== home1)) {
+                    if ((towerkeepers.length < 2 && spawn.room.name === home1) || (towerkeepers.length < 1 && spawn.room.name !== home1 && spawn.room.name !== home4)) {
                         if (spawn.room.name === home3) {
                             createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
                         } else {
@@ -119,8 +119,8 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if ((builders.length < 1 && spawn.room.name === home3)) {
-                            if (spawn.room.name === home2) {
+                        if (builders.length < 1 && (spawn.room.name === home3 || spawn.room.name === home4)) {
+                            if (spawn.room.name !== home4) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
                                 createNewCreep(spawn, name, builderBodyLow, 'builder', builders);
