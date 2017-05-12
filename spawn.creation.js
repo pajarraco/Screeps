@@ -8,7 +8,7 @@ const harvesterBodyLow = [
     MOVE, MOVE
 ];
 const minerBody = [
-    WORK, WORK, WORK, WORK, WORK, WORK, WORK,
+    WORK, WORK, WORK, WORK, WORK, WORK,
     //CARRY,
     MOVE, MOVE, // MOVE, MOVE
 ];
@@ -29,7 +29,7 @@ const upgraderBodyLow = [
 ];
 const builderBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY,  CARRY, CARRY, //CARRY, CARRY,
+    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
@@ -97,7 +97,7 @@ const creepsCreation = {
                 // upgrader
                 const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-                if (upgraders.length < 1 ) {
+                if (upgraders.length < 1) {
                     if (spawn.room.name !== home4) {
                         createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
                     } else {
@@ -119,7 +119,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1 && (spawn.room.name === home3 || spawn.room.name === home4)) {
+                        if (builders.length < 1 && spawn.room.name === home4) {
                             if (spawn.room.name !== home4) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
@@ -129,7 +129,7 @@ const creepsCreation = {
                             //
                             // Soldier
                             const soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-                            if (soldiers.length < 1) {
+                            if (soldiers.length < 0) {
                                 createNewCreep(spawn, name, soldierBody, 'soldier', soldiers);
                             }
                             //
