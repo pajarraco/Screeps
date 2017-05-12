@@ -13,7 +13,7 @@ var roleTowerkeeper = {
         if (creep.memory.transferring && creep.carry.energy == 0) {
             creep.memory.transferring = false;
             creep.say('harvesting');
-            creep.memory.depositTarget = null;
+            creep.memory.depositTarget = false;
         }
         if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
             creep.memory.transferring = true;
