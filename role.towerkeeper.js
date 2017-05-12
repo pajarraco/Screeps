@@ -18,7 +18,7 @@ var roleTowerkeeper = {
         if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
             creep.memory.transferring = true;
             creep.say('transferring');
-            creep.memory.depositTarget = lessEnergy(creep).id;
+            creep.memory.depositTarget = lessEnergy(creep);
         }
 
         if (creep.memory.transferring) {
@@ -58,5 +58,5 @@ const lessEnergy = (creep) => {
             target = _target;
         }
     });
-    return target;
+    return target.id;
 }
