@@ -13,18 +13,19 @@ var roleTowerkeeper = {
         if (creep.memory.transferring && creep.carry.energy == 0) {
             creep.memory.transferring = false;
             creep.say('harvesting');
+            creep.memory.depositTarget = null;
         }
         if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
             creep.memory.transferring = true;
             creep.say('transferring');
-            let depositTarget = lessEnergy(creep);
+            creep.memory.depositTarget = lessEnergy(creep);
         }
 
         if (creep.memory.transferring) {
             creep.memory.htarget = '';
-            if (depositTarget) {
-                if (creep.transfer(depositTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(depositTarget);
+            if (creep.memory.depositTarget) {
+                if (creep.transfer(creep.memory.depositTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.memory.depositTarget);
                 }
             }
         } else {
