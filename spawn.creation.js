@@ -3,9 +3,9 @@ const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
     MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
 ];
 const harvesterBodyLow = [
-    WORK, //WORK,
-    CARRY, //CARRY,
-    MOVE, //MOVE
+    WORK, WORK,
+    CARRY, CARRY,
+    MOVE, MOVE
 ];
 const minerBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, WORK,
@@ -13,7 +13,7 @@ const minerBody = [
     MOVE, MOVE, // MOVE, MOVE
 ];
 const minerBodyLow = [
-    WORK, WORK, //WORK, //WORK, //WORK, //WORK, //WORK,
+    WORK, WORK, WORK, WORK, //WORK, //WORK, //WORK,
     //CARRY,
     MOVE, //MOVE, // MOVE, MOVE
 ];
@@ -23,9 +23,9 @@ const upgraderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const upgraderBodyLow = [
-    WORK, //WORK, //WORK, WORK,
-    CARRY, //CARRY, //CARRY, CARRY,
-    MOVE, //MOVE, //MOVE, MOVE
+    WORK, WORK, //WORK, WORK,
+    CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
@@ -33,9 +33,9 @@ const builderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
-    WORK, //WORK, WORK, WORK, //WORK, WORK, // WORK, WORK,
-    CARRY, //CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, //MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
+    WORK, WORK, //WORK, WORK, //WORK, WORK, // WORK, WORK,
+    CARRY, CARRY, //CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, //MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const soldierBody = [
     TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
