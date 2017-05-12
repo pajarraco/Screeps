@@ -58,5 +58,6 @@ const lessEnergy = (creep) => {
             target = _target;
           }
       });
+      console.log(depositTargets, target);
     return target;
 }
