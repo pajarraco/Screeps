@@ -52,9 +52,11 @@ const lessEnergy = (creep) => {
             return (s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity);
         }
     });
-
-      depositTargets.map((target, targets)=>{
-          console.log(target, targets);
+    let target = depositTargets[0];
+      depositTargets.map((_target)=>{
+          if (_target.energy < target.energy){
+            target = _target;
+          }
       });
-    return depositTargets[0];
+    return target;
 }
