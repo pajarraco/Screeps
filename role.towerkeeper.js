@@ -27,8 +27,8 @@ var roleTowerkeeper = {
                 if (creep.transfer(Game.getObjectById(creep.memory.depositTarget), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(Game.getObjectById(creep.memory.depositTarget));
                 }
-            }else{
-              creep.memory.depositTarget = lessEnergy(creep);
+            } else {
+                creep.memory.depositTarget = lessEnergy(creep);
             }
         } else {
             if (!creep.memory.htarget) {
