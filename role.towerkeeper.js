@@ -17,13 +17,12 @@ var roleTowerkeeper = {
         if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
             creep.memory.transferring = true;
             creep.say('transferring');
+            let depositTarget = lessEnergy(creep);
         }
 
         if (creep.memory.transferring) {
             creep.memory.htarget = '';
-            var depositTarget = lessEnergy(creep);
             if (depositTarget) {
-                // var s = /*0;*/ creep.memory.source;
                 if (creep.transfer(depositTarget, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(depositTarget);
                 }
@@ -47,17 +46,16 @@ module.exports = roleTowerkeeper;
 
 /** @param {Creep} creep **/
 const lessEnergy = (creep) => {
-    var depositTargets = creep.room.find(FIND_STRUCTURES, {
+    let depositTargets = creep.room.find(FIND_STRUCTURES, {
         filter: (s) => {
             return (s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity);
         }
     });
     let target = depositTargets[0];
-      depositTargets.map((_target)=>{
-          if (_target.energy < target.energy){
+    depositTargets.map((_target) => {
+        if (_target.energy < target.energy) {
             target = _target;
-          }
-      });
-      console.log(depositTargets, target);
+        }
+    });
     return target;
 }
