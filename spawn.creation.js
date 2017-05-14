@@ -3,13 +3,13 @@ const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
     MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
 ];
 const harvesterBodyLow = [
-    WORK, WORK,
-    CARRY, CARRY,
-    MOVE, MOVE
+    WORK, //WORK,
+    CARRY, //CARRY,
+    MOVE, //MOVE
 ];
 const minerBody = [
     WORK, WORK, WORK, WORK, WORK, WORK,
-    //CARRY,
+    CARRY,
     MOVE, MOVE, // MOVE, MOVE
 ];
 const minerBodyLow = [
@@ -119,7 +119,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1 && spawn.room.name === home4) {
+                        if (builders.length < 1 && (spawn.room.name === home4 || spawn.room.name === home1) {
                             if (spawn.room.name !== home4) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
