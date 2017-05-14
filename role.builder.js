@@ -46,7 +46,7 @@ var roleBuilder = {
                     if (!harvestDrop.run(creep)) {
                         if (!harvestContainer.run(creep, 300)) {
                             if (!harvestLink.run(creep, 100)) {
-                                harvestSource.run(creep);
+                                // harvestSource.run(creep);
                             };
                         }
                     }
