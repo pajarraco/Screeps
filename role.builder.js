@@ -4,6 +4,7 @@ const harvestDrop = require('harvest.drop');
 const harvestContainer = require('harvest.container');
 const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
+const harvestSource = require('harvest.source');
 
 var roleBuilder = {
 
