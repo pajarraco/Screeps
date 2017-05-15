@@ -25,8 +25,8 @@ module.exports.loop = function() {
         structureLink.run(room);
     }
 
-    for (var name in Game.creeps) {
-        var creep = Game.creeps[name];
+    for (let name in Game.creeps) {
+        const creep = Game.creeps[name];
         if (creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         } else if (creep.memory.role == 'upgrader') {
