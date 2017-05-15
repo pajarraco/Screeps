@@ -5,6 +5,11 @@ const harvestLink = require('harvest.link');
 const harvestSource = require('harvest.source');
 const harvestDrop = require('harvest.drop');
 
+const home1 = 'E17N93';
+const home2 = 'E19N94';
+const home3 = 'E18N95';
+const home4 = 'E18N93';
+
 const roleUpgrader = {
 
     /** @param {Creep} creep **/
@@ -22,8 +27,10 @@ const roleUpgrader = {
         if (creep.memory.upgrading) {
             creep.memory.htarget = '';
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                if (creep.room.name === 'E19N94') {
+                if (creep.room.name === home2) {
                     creep.moveTo(28, 23);
+                } else if (creep.room.name === home3) {
+                    creep.moveTo(34, 20);
                 } else {
                     creep.moveTo(creep.room.controller);
                 }
