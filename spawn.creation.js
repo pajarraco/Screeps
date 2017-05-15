@@ -108,7 +108,7 @@ const creepsCreation = {
                     // Tower keeper
                     const towerkeepers = _.filter(
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-                    if (towerkeepers.length < 1 && spawn.room.name !== home4) {
+                    if (towerkeepers.length < 1) {
                         if (spawn.room.name !== home4) {
                             createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
                         } else {
