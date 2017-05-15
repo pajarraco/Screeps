@@ -33,7 +33,7 @@ var roleTowerkeeper = {
         } else {
             if (!creep.memory.htarget) {
                 if (!harvestStorage.run(creep, 100)) {
-                    if (!harvestContainer.run(creep, 100)) {
+                    if (!harvestContainer.run(creep, 200)) {
                         if (!harvestDrop.run(creep)) {
                             harvestLink.run(creep, 100);
                         }
