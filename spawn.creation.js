@@ -169,7 +169,11 @@ const createNewCreep = function(spawn, name, body, role, creeps) {
     (role === 'explorer') ? memory.role2 = 'mechanic': null;
     const newCreep = spawn.createCreep(body, undefined, memory);
     console.log(newCreep, role, spawn);
-    (newCreep == ERR_NOT_ENOUGH_ENERGY && role === 'harvester' && spawn.room.name === home4) ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
+    (
+        newCreep == ERR_NOT_ENOUGH_ENERGY &&
+        role === 'harvester' &&
+        (spawn.room.name === home4 || spawn.room.name === home3)
+    ) ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
 };
 
 const calSource = function(creeps) {
