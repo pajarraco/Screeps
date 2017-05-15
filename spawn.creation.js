@@ -58,7 +58,11 @@ const explorerBody = [
     CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
     //RANGED_ATTACK
-]
+];
+const deliveryBody = [
+    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY,
+    MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
+];
 
 const home1 = 'E17N93';
 const home2 = 'E19N94';
@@ -119,7 +123,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if (builders.length < 1 /*&& (spawn.room.name !== home2)*/) {
+                        if (builders.length < 1 /*&& (spawn.room.name !== home2)*/ ) {
                             if (spawn.room.name !== home4) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
                             } else {
@@ -149,6 +153,12 @@ const creepsCreation = {
                             const explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
                             if (explorers.length < 2 && spawn.room.name === home2) {
                                 createNewCreep(spawn, name, explorerBody, 'explorer', explorers);
+                            }
+                            //
+                            // Delivery
+                            const deliverys = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
+                            if (deliverys.length < 2 && spawn.room.name === home2) {
+                                createNewCreep(spawn, name, deliveryBody, 'delivery', deliverys);
                             }
                         }
                     }
