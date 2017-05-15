@@ -3,9 +3,9 @@ const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
     MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
 ];
 const harvesterBodyLow = [
-    WORK, //WORK,
-    CARRY, //CARRY,
-    MOVE, //MOVE
+    WORK, WORK,
+    CARRY, CARRY,
+    MOVE, MOVE
 ];
 const minerBody = [
     WORK, WORK, WORK, WORK, WORK, WORK,
@@ -13,7 +13,7 @@ const minerBody = [
     MOVE, MOVE, // MOVE, MOVE
 ];
 const minerBodyLow = [
-    WORK, WORK, WORK, WORK, //WORK, //WORK, //WORK,
+    WORK, WORK, WORK, WORK, WORK, //WORK, //WORK,
     //CARRY,
     MOVE, //MOVE, // MOVE, MOVE
 ];
@@ -23,9 +23,9 @@ const upgraderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const upgraderBodyLow = [
-    WORK, WORK, //WORK, WORK,
-    CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, //MOVE, MOVE
+    WORK, WORK, WORK, //WORK,
+    CARRY, CARRY, CARRY, //CARRY,
+    MOVE, MOVE, MOVE, //MOVE
 ];
 const builderBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
@@ -33,9 +33,9 @@ const builderBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
-    WORK, WORK, //WORK, WORK, //WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, //CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, //MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
+    WORK, WORK, WORK, //WORK, //WORK, WORK, // WORK, WORK,
+    CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const soldierBody = [
     TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,
@@ -109,10 +109,10 @@ const creepsCreation = {
                     const towerkeepers = _.filter(
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
                     if (towerkeepers.length < 1 && spawn.room.name !== home4) {
-                        if (spawn.room.name === home3) {
+                        if (spawn.room.name !== home4) {
                             createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
                         } else {
-                            createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
+                            createNewCreep(spawn, name, harvesterBodyLow, 'towerkeeper', towerkeepers);
                         }
                     } else {
                         //
