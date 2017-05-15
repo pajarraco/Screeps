@@ -3,7 +3,6 @@ const structureLink = {
     /** @param  {Room} room  **/
     run: function(room) {
 
-      console.log(room);
         const linkFrom1 = room.lookForAt('structure', 47, 16)[0];
         const linkFrom2 = room.lookForAt('structure', 28, 19)[1];
         const linkTo = room.lookForAt('structure', 32, 24)[0];
