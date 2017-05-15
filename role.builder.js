@@ -42,8 +42,7 @@ var roleBuilder = {
             }
         } else {
             if (!creep.memory.htarget) {
-              console.log(harvestStorage.run(creep, 100))
-                if (!harvestStorage.run(creep, 300)) {
+                if (!harvestStorage.run(creep, 100)) {
                     if (!harvestDrop.run(creep)) {
                         if (!harvestContainer.run(creep, 300)) {
                             if (!harvestLink.run(creep, 100)) {
