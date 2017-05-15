@@ -49,9 +49,9 @@ const conquesterBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const explorerminerBody = [
-    WORK, WORK, WORK, WORK, //WORK, WORK,
+    WORK, WORK, WORK, WORK, WORK, WORK,
     MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE,
-    RANGED_ATTACK
+    // RANGED_ATTACK
 ];
 const explorerBody = [
     WORK,
