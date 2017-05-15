@@ -129,7 +129,7 @@ const creepsCreation = {
                             //
                             // Soldier
                             const soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-                            if (soldiers.length < 1) {
+                            if (soldiers.length < 0) {
                                 createNewCreep(spawn, name, soldierBody, 'soldier', soldiers);
                             }
                             //
