@@ -18,19 +18,28 @@ const minerBodyLow = [
     MOVE, //MOVE, // MOVE, MOVE
 ];
 const upgraderBody = [
-    WORK, WORK, WORK, WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY, CARRY,
-    MOVE, MOVE, MOVE, MOVE, MOVE
+    WORK, WORK, WORK, //WORK, WORK,
+    CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const upgraderBodyLow = [
     WORK, WORK, WORK, //WORK,
     CARRY, CARRY, CARRY, //CARRY,
     MOVE, MOVE, MOVE, //MOVE
 ];
+const towerkeeperBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
+    CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY,
+    MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
+];
+const towerkeeperBodyLow = [
+    WORK, WORK,
+    CARRY, CARRY,
+    MOVE, MOVE
+];
 const builderBody = [
-    WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
+    WORK, WORK, WORK, //WORK, WORK, WORK, // WORK, WORK,
+    CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
     WORK, WORK, WORK, //WORK, //WORK, WORK, // WORK, WORK,
@@ -114,9 +123,9 @@ const creepsCreation = {
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
                     if (towerkeepers.length < 1) {
                         if (spawn.room.name !== home4) {
-                            createNewCreep(spawn, name, harvesterBody, 'towerkeeper', towerkeepers);
+                            createNewCreep(spawn, name, towerkeeperBody, 'towerkeeper', towerkeepers);
                         } else {
-                            createNewCreep(spawn, name, harvesterBodyLow, 'towerkeeper', towerkeepers);
+                            createNewCreep(spawn, name, towerkeeperBodyLow, 'towerkeeper', towerkeepers);
                         }
                     } else {
                         //
