@@ -14,8 +14,8 @@ const roleDelivery = {
         }
 
         if (creep.memory.transferring) {
-            const resource = _.filter(creep.carry, (resource, key) => key !== 'energy');
-            if (resource.length > 0) {
+            // const resource = _.filter(creep.carry, (resource, key) => key !== 'energy');
+            // if (resource.length > 0) {
                 const storage = Game.flags['Home'].room.find(
                     FIND_STRUCTURES, {
                         filter: (s) => s.structureType == STRUCTURE_STORAGE
@@ -27,7 +27,7 @@ const roleDelivery = {
                         }
                     });
                 }
-            } else {
+            // } else {
                 // deposit
                 // var links = creep.pos.findInRange(FIND_STRUCTURES, 3, {
                 //     filter: {
@@ -49,7 +49,7 @@ const roleDelivery = {
                 //         }
                 //     }
                 // }
-            }
+            // }
         } else {
             if (creep.memory.room == 1) {
                 if (creep.pos.roomName == Game.flags['Home2'].pos.roomName) {
