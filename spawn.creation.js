@@ -157,7 +157,7 @@ const creepsCreation = {
                             //
                             // Delivery
                             const deliverys = _.filter(Game.creeps, (creep) => creep.memory.role == 'delivery');
-                            if (deliverys.length < 2 && spawn.room.name === home2) {
+                            if (deliverys.length < 6 && spawn.room.name === home2) {
                                 createNewCreep(spawn, name, deliveryBody, 'delivery', deliverys);
                             }
                         }
