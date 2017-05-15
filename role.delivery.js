@@ -74,7 +74,6 @@ const roleDelivery = {
             }
         }
     }
-
 };
 
 const harvestStorage = (creep) => {
@@ -88,7 +87,6 @@ const harvestStorage = (creep) => {
             creep.moveTo(container);
         }
     }
-}
-}
+};
 
 module.exports = roleDelivery;
