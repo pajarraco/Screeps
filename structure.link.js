@@ -32,6 +32,15 @@ const structureLink = {
                     linkFrom1.transferEnergy(linkTo);
                 }
             }
+        } else if (room.name === home3) {
+            const linkFrom1 = room.lookForAt('structure', 43, 16)[1];
+            // const linkFrom2 = room.lookForAt('structure', 28, 19)[1];
+            const linkTo = room.lookForAt('structure', 33, 26)[1];
+            if (linkFrom1 && linkTo) {
+                if (linkTo.energy < (linkTo.energyCapacity - 100)) {
+                    linkFrom1.transferEnergy(linkTo);
+                }
+            }
         }
     }
 };
