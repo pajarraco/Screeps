@@ -8,7 +8,6 @@ const structureLink = {
     /** @param  {Room} room  **/
     run: function(room) {
 
-        console.log(room);
         if (room.name === home1) {
             const linkFrom1 = room.lookForAt('structure', 47, 16)[0];
             const linkFrom2 = room.lookForAt('structure', 28, 19)[1];
