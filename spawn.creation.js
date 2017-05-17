@@ -28,8 +28,8 @@ const upgraderBodyLow = [
     MOVE, MOVE, MOVE, //MOVE
 ];
 const towerkeeperBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
-    CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY,
-    MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
+    CARRY, CARRY, CARRY, CARRY, //CARRY, //CARRY, CARRY, CARRY,
+    MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, //MOVE, MOVE
 ];
 const towerkeeperBodyLow = [
     WORK, WORK,
