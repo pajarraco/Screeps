@@ -48,7 +48,8 @@ const structureLink = {
             console.log('room4 ', linkTo);
             if (linkFrom1 && linkTo) {
                 if (linkTo.energy < (linkTo.energyCapacity - 100)) {
-                    linkFrom1.transferEnergy(linkTo);
+                    send = linkFrom1.transferEnergy(linkTo);
+                    console.log(send);
                 }
             }
         }
