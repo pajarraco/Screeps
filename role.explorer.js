@@ -3,7 +3,7 @@ const attack = require('attack');
 const harvestSource = require('harvest.source');
 
 var harvestContainer = function(creep) {
-    var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+    var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
     if (target) {
         if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
             creep.moveTo(target);
