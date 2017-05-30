@@ -14,7 +14,7 @@ const minerBody = [
 ];
 const minerBodyLow = [
     WORK, WORK, WORK, WORK, WORK, //WORK, //WORK,
-    //CARRY,
+    // CARRY,
     MOVE, //MOVE, // MOVE, MOVE
 ];
 const upgraderBody = [
@@ -100,44 +100,44 @@ const creepsCreation = {
             // Miner
             const miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner' && creep.room.name == spawn.room.name);
             if (miners.length < 2) {
-                if (spawn.room.name !== home4) {
+                // if (spawn.room.name !== home4) {
                     createNewCreep(spawn, name, minerBody, 'miner', miners);
-                } else {
-                    createNewCreep(spawn, name, minerBodyLow, 'miner', miners);
-                }
+                // } else {
+                //     createNewCreep(spawn, name, minerBodyLow, 'miner', miners);
+                // }
             } else {
                 //
                 // upgrader
                 const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
                 if (upgraders.length < 1) {
-                    if (spawn.room.name !== home4) {
+                    // if (spawn.room.name !== home4) {
                         createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
-                    } else {
-                        createNewCreep(spawn, name, upgraderBodyLow, 'upgrader', upgraders);
-                    }
+                    // } else {
+                    //     createNewCreep(spawn, name, upgraderBodyLow, 'upgrader', upgraders);
+                    // }
                 } else {
                     //
                     // Tower keeper
                     const towerkeepers = _.filter(
                         Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
                     if (towerkeepers.length < 1) {
-                        if (spawn.room.name !== home4) {
+                        // if (spawn.room.name !== home4) {
                             createNewCreep(spawn, name, towerkeeperBody, 'towerkeeper', towerkeepers);
-                        } else {
-                            createNewCreep(spawn, name, towerkeeperBodyLow, 'towerkeeper', towerkeepers);
-                        }
+                        // } else {
+                        //     createNewCreep(spawn, name, towerkeeperBodyLow, 'towerkeeper', towerkeepers);
+                        // }
                     } else {
                         //
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
                         if (builders.length < 1 && (spawn.room.name === home4)) {
-                            if (spawn.room.name !== home4) {
+                            // if (spawn.room.name !== home4) {
                                 createNewCreep(spawn, name, builderBody, 'builder', builders);
-                            } else {
-                                createNewCreep(spawn, name, builderBodyLow, 'builder', builders);
-                            }
+                            // } else {
+                            //     createNewCreep(spawn, name, builderBodyLow, 'builder', builders);
+                            // }
                         } else {
                             //
                             // Soldier
