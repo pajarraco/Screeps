@@ -37,3 +37,5 @@ const roleHarvesterMine = {
         }
     }
 };
+
+module.exports = roleHarvesterMine;

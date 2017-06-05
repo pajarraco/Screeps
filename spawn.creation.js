@@ -143,7 +143,7 @@ const creepsCreation = {
                             // Harvester
                             const harvestersmine =
                                 _.filter(Game.creeps, (creep) => creep.memory.role == 'harvestermine' && creep.room.name == spawn.room.name);
-                            if (harvestersmine.length < 1) {
+                            if (harvestersmine.length < 1 && (spawn.room.name === home1)) {
                                 createNewCreep(spawn, name, harvesterBody, 'harvestermine', harvestersmine);
                             }
                             //
