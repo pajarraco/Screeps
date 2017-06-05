@@ -6,54 +6,6 @@ const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
 const harvestSource = require('harvest.source');
 
-var transferingMaterial = function(creep, resource, room) {
-    if (!creep.memory.term) {
-        var labs = creep.room.find(FIND_STRUCTURES, {
-            filter: (s) => s.structureType == STRUCTURE_LAB
-        });
-        var tk = creep.transfer(labs[0], resource);
-        if (tk == ERR_NOT_IN_RANGE) {
-            creep.moveTo(labs[0]);
-        } else if (tk == ERR_FULL) {
-            creep.memory.term = true;
-        }
-    } else {
-        var terminal = creep.room.find(FIND_STRUCTURES, {
-            filter: (s) => s.structureType == STRUCTURE_TERMINAL
-        });
-        if (creep.transfer(terminal[0], resource) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(terminal[0]);
-        } else {
-            if (terminal.send(resource, 100, room) == ERR_NOT_ENOUGH_RESOURCES) {
-                console.log('wait no ', resource);
-            }
-        }
-    }
-};
-
-var harvestMine = function(creep) {
-    if (creep.memory.transferring && (!creep.carry[RESOURCE_HYDROGEN] || !creep.carry[RESOURCE_KEANIUM])) {
-        creep.memory.transferring = false;
-        creep.memory.term = false;
-        creep.say('harvesting');
-    }
-    if (!creep.memory.transferring &&
-        (creep.carry[RESOURCE_HYDROGEN] == creep.carryCapacity || creep.carry[RESOURCE_KEANIUM] == creep.carryCapacity)) {
-        creep.memory.transferring = true;
-        creep.say('transferring');
-    }
-    if (creep.memory.transferring) {
-        transferingMaterial(creep, RESOURCE_HYDROGEN, 'E37S69');
-        transferingMaterial(creep, RESOURCE_KEANIUM, 'E37S68');
-    } else {
-        var sources = creep.room.find(FIND_MINERALS);
-        var i = 0; // creep.memory.source;
-        if (creep.harvest(sources[i]) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(sources[i]);
-        }
-    }
-};
-
 var roleHarvester = {
 
     /** @param {Creep} creep **/
