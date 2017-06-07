@@ -23,7 +23,7 @@ const roleHarvesterMine = {
                 if (labs.length > 0) {
                     _.each(creep.carry, (resource, key) => {
                         let tansfer = creep.transfer(labs[0], key);
-                        console.log(transfer);
+                        console.log(tansfer);
                         if (tansfer == ERR_NOT_IN_RANGE) {
                             creep.moveTo(labs[0]);
                         } else if (tansfer == ERR_FULL){
