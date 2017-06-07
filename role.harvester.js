@@ -37,17 +37,25 @@ var roleHarvester = {
                 }
             } else {
                 if (creep.memory.role == 'harvester') {
-                    var storages =
-                        creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                            filter: (s) => s.structureType == STRUCTURE_STORAGE
-                        });
+                    var storages = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (s) => s.structureType == STRUCTURE_STORAGE
+                    });
+                    var terminal = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (s) => s.structureType == STRUCTURE_TERMINAL
+                    });
                     _.each(creep.carry, (resource, key) => {
-                        if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(storages);
+                        if (terminal) {
+                            if (creep.transfer(terminal, key) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(terminal);
+                            }
                         } else {
-                            creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                                filter: (s) => s.structureType == STRUCTURE_SPAWN
-                            }));
+                            if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(storages);
+                            } else {
+                                creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                                    filter: (s) => s.structureType == STRUCTURE_SPAWN
+                                }));
+                            }
                         }
                     });
                 } else {
@@ -78,5 +86,3 @@ var roleHarvester = {
         }
     }
 };
-
-module.exports = roleHarvester;
