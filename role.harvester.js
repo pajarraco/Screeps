@@ -19,11 +19,12 @@ var roleHarvester = {
             }
         });
 
-        if (creep.memory.transferring && creep.carry.energy == 0) {
+        let sum = _.sum(creep.carry);
+        if (creep.memory.transferring && sum == 0) {
             creep.memory.transferring = false;
             creep.say('harvesting');
         }
-        if (!creep.memory.transferring && creep.carry.energy == creep.carryCapacity) {
+        if (!creep.memory.transferring && sum == creep.carryCapacity) {
             creep.memory.transferring = true;
             creep.say('transferring');
         }
