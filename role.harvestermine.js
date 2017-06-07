@@ -26,7 +26,9 @@ const roleHarvesterMine = {
                         console.log(transfer);
                         if (tansfer == ERR_NOT_IN_RANGE) {
                             creep.moveTo(labs[0]);
-                        } else if (tansfer == )
+                        } else if (tansfer == ERR_FULL){
+                          console.log('full');
+                        }
                     });
                 }
             }
