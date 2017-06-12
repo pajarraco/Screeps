@@ -44,11 +44,11 @@ var roleHarvester = {
                         filter: (s) => s.structureType == STRUCTURE_TERMINAL
                     });
                     _.each(creep.carry, (resource, key) => {
-                        if (terminal) {
-                            if (creep.transfer(terminal, key) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(terminal);
-                            }
-                        } else {
+                        // if (terminal) {
+                        //     if (creep.transfer(terminal, key) == ERR_NOT_IN_RANGE) {
+                        //         creep.moveTo(terminal);
+                        //     }
+                        // } else {
                             if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(storages);
                             } else {
@@ -56,7 +56,7 @@ var roleHarvester = {
                                     filter: (s) => s.structureType == STRUCTURE_SPAWN
                                 }));
                             }
-                        }
+                        // }
                     });
                 } else {
                     roleUpgrader.run(creep);
