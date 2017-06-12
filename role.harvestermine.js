@@ -38,7 +38,7 @@ const roleHarvesterMine = {
                 } else {
                     const storage = creep.room.find(
                         FIND_STRUCTURES, {
-                            filter: (s) => s.structureType == STRUCTURE_TERMINAL
+                            filter: (s) => s.structureType == STRUCTURE_STORAGE
                         });
                     if (storage.length > 0) {
                         _.each(creep.carry, (resource, key) => {
