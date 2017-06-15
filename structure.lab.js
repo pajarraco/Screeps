@@ -15,7 +15,7 @@ const structureLab = {
         const lab1_3 = labs1[2];
 
         if (lab1_2.mineralAmount > 0) {
-          console.log(Game.rooms[home1].creeps);
+          console.log(Game.creeps);
         }
 
 
