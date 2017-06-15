@@ -21,19 +21,31 @@ const roleHelper = {
             if (labs.length > 0) {
                 _.each(creep.carry, (resource, key) => {
                     if (key === 'O') {
-                        const storage = creep.room.find(
+                        const terminal = creep.room.find(
                             FIND_STRUCTURES, {
                                 filter: (s) => s.structureType == STRUCTURE_TERMINAL
                             });
-                        if (storage.length > 0) {
-                            if (creep.transfer(storage[0], key) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(storage[0]);
+                        if (terminal.length > 0) {
+                            if (creep.transfer(terminal[0], key) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(terminal[0]);
                             }
                         }
                     } else {
                         let tansfer = creep.transfer(labs[2], key);
                         if (tansfer == ERR_NOT_IN_RANGE) {
                             creep.moveTo(labs[2]);
+                        } else if (transfer == ERR_FULL) {
+                            tansfer = creep.transfer(labs[1], key);
+                            if (tansfer == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(labs[1]);
+                            } else if (transfer == ERR_FULL) {
+                                tansfer = creep.transfer(labs[0], key);
+                                if (tansfer == ERR_NOT_IN_RANGE) {
+                                    creep.moveTo(labs[0]);
+                                } else {
+
+                                }
+                            }
                         }
                     }
                 });
