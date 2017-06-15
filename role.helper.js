@@ -32,7 +32,7 @@ const roleHelper = {
                             }
                         }
                     } else {
-                        const myLab = _.filter(labs, (lab) => {
+                        const myLab = _.min(labs, (lab) => {
 
                             console.log(lab);
                         })
