@@ -57,10 +57,10 @@ const roleHelper = {
                 FIND_STRUCTURES, {
                     filter: (s) => s.structureType == STRUCTURE_LAB
                 });
-            if (creep.withdraw(labs[1], 'GO') == ERR_NOT_IN_RANGE) {
-                creep.moveTo(labs[1]);
+            if (creep.withdraw(labs[2], 'GO') == ERR_NOT_IN_RANGE) {
+                creep.moveTo(labs[2]);
             }
-            console.log('get go', creep.withdraw(labs[1], 'GO'));
+            console.log('get go', creep.withdraw(labs[2], 'GO'));
             creep.drop('GO');
 
             const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
