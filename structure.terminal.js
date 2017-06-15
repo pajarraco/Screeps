@@ -15,8 +15,8 @@ const structureTerminal = {
         let send = terminal1.send(RESOURCE_ENERGY, 100, home2, 'Energy send');
         console.log('terminal send', send);
 
-        let send2 = terminal2.send(RESOURCE_GHODIUM_OXIDE, 7, home1, 'send go');
-        console.log('terminal send2', send2);
+        // let send2 = terminal2.send(RESOURCE_GHODIUM_OXIDE, 100, home1, 'send go');
+        // console.log('terminal send2', send2);
 
     }
 };
