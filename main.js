@@ -12,6 +12,7 @@ const structureTower = require('structure.tower');
 const structureLink = require('structure.link');
 const roleDelivery = require('role.delivery');
 const roleHarvesterMine = require('role.harvestermine');
+const structureTerminal = require('structure.terminal');
 
 module.exports.loop = function() {
 
@@ -25,6 +26,8 @@ module.exports.loop = function() {
         structureTower.run(room);
         structureLink.run(room);
     }
+
+    structureTerminal.run();
 
     for (let name in Game.creeps) {
         const creep = Game.creeps[name];

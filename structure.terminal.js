@@ -6,7 +6,8 @@ const home4 = 'E18N93';
 const structureTerminal = {
 
     run: () => {
-
+    const terminal1 =   Game.rooms[home1].terminal;
+    console.log(terminal1);
 
 
     }
