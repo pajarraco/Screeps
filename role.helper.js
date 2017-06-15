@@ -46,9 +46,11 @@ const roleHelper = {
 
                                 }
                             }
+                        }else{
+                          creep.withdraw(labs[2]);
+                          creep.drop(key);
                         }
-                        creep.withdraw(labs[1]);
-                        creep.drop(key);
+
                     }
                 });
             }
