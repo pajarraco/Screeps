@@ -44,7 +44,9 @@ const roleHelper = {
                                 if (transfer == ERR_NOT_IN_RANGE) {
                                     creep.moveTo(labs[2]);
                                 } else {
-
+                                    if (creep.transfer(terminal, key)) {
+                                        creep.moveTo(terminal);
+                                    }
                                 }
                             }
                         }
