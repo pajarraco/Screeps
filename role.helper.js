@@ -31,9 +31,9 @@ const roleHelper = {
                             }
                         }
                     } else {
-                        let tansfer = creep.transfer(labs[2], key);
+                        let tansfer = creep.transfer(labs[1], key);
                         if (tansfer == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(labs[2]);
+                            creep.moveTo(labs[1]);
                         }
                     }
                 });
