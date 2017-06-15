@@ -48,7 +48,9 @@ const roleHelper = {
                             }
                         }else{
                           creep.withdraw(labs[2]);
-                          creep.drop(key);
+                          creep.drop('KO');
+                          creep.withdraw(labs[1]);
+                          creep.drop('GO');
                         }
 
                     }
