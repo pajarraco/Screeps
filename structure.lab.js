@@ -16,9 +16,9 @@ const structureLab = {
 
         if (lab1_2.mineralAmount > 0) {
             const creeps = _.filter(Game.creeps, (creep) => {
-                console.log(creep);
+                console.log(creep.body);
             })
-            console.log(creeps);
+            // console.log(creeps);
         }
 
 
