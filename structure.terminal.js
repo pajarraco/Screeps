@@ -9,6 +9,7 @@ const structureTerminal = {
         const terminal1 = Game.rooms[home1].terminal;
         const terminal2 = Game.rooms[home2].terminal;
 
+        console.log(terminal1.store);
         let send = terminal1.send(RESOURCE_ENERGY, 100, home2, 'Energy send');
         console.log('terminal send', send);
 
