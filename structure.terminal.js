@@ -6,11 +6,11 @@ const home4 = 'E18N93';
 const structureTerminal = {
 
     run: () => {
-    const terminal1 = Game.rooms[home1].terminal;
-    const terminal2 = Game.rooms[home2].terminal;
+        const terminal1 = Game.rooms[home1].terminal;
+        const terminal2 = Game.rooms[home2].terminal;
 
-    let send = terminal1.send(RESOURCE_ENERGY,50,home2);
-console.log(send);
+        let send = terminal1.send(RESOURCE_ENERGY, 50, home2, 'Energy send');
+        console.log(send);
 
     }
 };
