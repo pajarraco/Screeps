@@ -47,6 +47,8 @@ const roleHelper = {
                                 }
                             }
                         }
+                        creep.withdraw(labs[1]);
+                        creep.drop(key);
                     }
                 });
             }
