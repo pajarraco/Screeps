@@ -7,6 +7,10 @@ const roleHelper = {
         if (creep.memory.transferring && sum == 0) {
             creep.memory.transferring = false;
             creep.say('harvesting');
+            console.log('get ko', creep.withdraw(labs[2], 'KO'));
+            creep.drop('KO');
+            console.log('get go', creep.withdraw(labs[1], 'GO'));
+            creep.drop('GO');
         }
         if (!creep.memory.transferring && sum == creep.carryCapacity) {
             creep.memory.transferring = true;
@@ -46,13 +50,7 @@ const roleHelper = {
 
                                 }
                             }
-                        } else {
-                            console.log('get ko', creep.withdraw(labs[2], 'KO'));
-                            creep.drop('KO');
-                            console.log('get go', creep.withdraw(labs[1], 'GO'));
-                            creep.drop('GO');
                         }
-
                     }
                 });
             }
