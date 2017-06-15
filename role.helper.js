@@ -32,25 +32,26 @@ const roleHelper = {
                             }
                         }
                     } else {
-                        let transfer = creep.transfer(labs[1], key);
+                        const myLab = _.filter(labs, (lab) => {
+                            let minLab = {
+                                energy: 3000
+                            };
+                            if (lab.energy < minLab.energy) {
+                                minLab = lab;
+                            }
+                            return minLab;
+                        })
+
+                        let transfer = creep.transfer(myLab, key);
                         if (transfer == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(labs[1]);
+                            creep.moveTo(myLab);
                         } else if (transfer == ERR_FULL) {
-                            transfer = creep.transfer(labs[0], key);
-                            if (transfer == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(labs[0]);
-                            } else if (transfer == ERR_FULL) {
-                                transfer = creep.transfer(labs[2], key);
-                                if (transfer == ERR_NOT_IN_RANGE) {
-                                    creep.moveTo(labs[2]);
-                                } else {
-                                    if (terminal.length > 0) {
-                                        if (creep.transfer(terminal[0], key)) {
-                                            creep.moveTo(terminal[0]);
-                                        }
-                                    }
+                            if (terminal.length > 0) {
+                                if (creep.transfer(terminal[0], key)) {
+                                    creep.moveTo(terminal[0]);
                                 }
                             }
+
                         }
                     }
                 });
