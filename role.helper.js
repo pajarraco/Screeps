@@ -34,7 +34,7 @@ const roleHelper = {
                     } else {
                         const myLab = _.min(labs, (lab) => {
 
-                            console.log(lab);
+                            return lab.energy;
                         })
                         console.log('labs', labs);
                         console.log('mylabs', myLab);
