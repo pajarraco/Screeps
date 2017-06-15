@@ -14,8 +14,8 @@ const structureLab = {
         const lab1_2 = labs1[1];
         const lab1_3 = labs1[2];
 
-        if (lab1_1.store > 0){
-          console.log(lab1_1.store);
+        if (lab1_1.mineralAmountnumber > 0){
+          console.log(lab1_1.mineralAmountnumber);
         }
 
 
