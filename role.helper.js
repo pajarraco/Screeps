@@ -14,7 +14,18 @@ const roleHelper = {
         }
 
         if (creep.memory.transferring) {
-
+            const labs = creep.room.find(
+                FIND_STRUCTURES, {
+                    filter: (s) => s.structureType == STRUCTURE_LAB
+                });
+            if (labs.length > 0) {
+                _.each(creep.carry, (resource, key) => {
+                    let tansfer = creep.transfer(labs[1], key);
+                    if (tansfer == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(labs[1]);
+                    }
+                });
+            }
         } else {
             const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_STORAGE
