@@ -15,15 +15,13 @@ const structureLab = {
         const lab1_3 = labs1[2];
 
         if (lab1_2.mineralAmount > 0) {
-            const creeps = _.filter(Game.creeps, (creep) => {
-            //  console.log(creep.room.name);
-              return creep.room.name === home1 && creep.memory.role === 'soldier';
-
-            })
-            console.log(creeps);
+            const creeps = _.filter(Game.creeps, (creep) => creep.room.name === home1 && creep.memory.role === 'soldier');
+            if (creeps.length > 0) {
+                if (lab1_2.boostCreep(creeps[0]) === ERR_NOT_IN_RANGE) {
+                    creep.moveTo(lab1_2);
+                }
+            }
         }
-
-
     }
 };
 module.exports = structureLab;
