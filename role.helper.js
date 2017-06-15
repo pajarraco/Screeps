@@ -57,8 +57,9 @@ const roleHelper = {
                 FIND_STRUCTURES, {
                     filter: (s) => s.structureType == STRUCTURE_LAB
                 });
-            console.log('get ko', creep.withdraw(labs[2], 'KO'));
-            creep.drop('KO');
+            if (creep.withdraw(labs[1], 'GO') == ERR_NOT_IN_RANGE) {
+                creep.moveTo(labs[1]);
+            }
             console.log('get go', creep.withdraw(labs[1], 'GO'));
             creep.drop('GO');
 
