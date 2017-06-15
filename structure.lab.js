@@ -6,7 +6,7 @@ const home4 = 'E18N93';
 const structureLab = {
 
     run: () => {
-      const lab1_1 = Game.rooms[home1].lab;
+      const lab1_1 = Game.rooms[home1].labs;
       console.log(lab1_1);
     }
 };
