@@ -9,11 +9,11 @@ const structureTerminal = {
         const terminal1 = Game.rooms[home1].terminal;
         const terminal2 = Game.rooms[home2].terminal;
 
-        console.log('Terminal1', JSON.stringify(terminal1.store));
-        console.log('Terminal2', JSON.stringify(terminal2.store));
+        // console.log('Terminal1', JSON.stringify(terminal1.store));
+        // console.log('Terminal2', JSON.stringify(terminal2.store));
 
         let send = terminal1.send(RESOURCE_ENERGY, 500, home2, 'Energy send');
-        console.log('terminal send', send);
+        // console.log('terminal send', send);
 
         // let send2 = terminal2.send(RESOURCE_GHODIUM_OXIDE, 100, home1, 'send go');
         // console.log('terminal send2', send2);

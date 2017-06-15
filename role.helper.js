@@ -8,7 +8,11 @@ var roleHelper = {
                 filter: (s) => s.structureType == STRUCTURE_STORAGE
             });
         if (storage) {
-            console.log('storages', JSON.stringify(storage.store));
+          _.each(storage.store, (resource, key)=>{
+
+              console.log(resource, key);
+          });
+
         }
 
     }
