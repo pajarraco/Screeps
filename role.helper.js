@@ -41,6 +41,7 @@ const roleHelper = {
                             }
                             return minLab;
                         })
+                        console.log('labs', labs, myLab);
 
                         let transfer = creep.transfer(myLab, key);
                         if (transfer == ERR_NOT_IN_RANGE) {
