@@ -6,11 +6,19 @@ const home4 = 'E18N93';
 const structureLab = {
 
     run: () => {
-        const lab1_1 = Game.rooms[home1].find(
+        const labs1 = Game.rooms[home1].find(
             FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_LAB
             });
-        console.log(lab1_1);
+        const lab1_1 = labs1[0];
+        const lab1_2 = labs1[1];
+        const lab1_3 = labs1[2];
+
+        if (lab1_1.store > 0){
+          console.log(lab1_1.store);
+        }
+
+
     }
 };
 module.exports = structureLab;
