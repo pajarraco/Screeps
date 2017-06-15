@@ -20,9 +20,10 @@ const roleHelper = {
                 });
             if (labs.length > 0) {
                 _.each(creep.carry, (resource, key) => {
-                    let tansfer = creep.transfer(labs[1], key);
+
+                    let tansfer = creep.transfer(labs[2], key);
                     if (tansfer == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(labs[1]);
+                        creep.moveTo(labs[2]);
                     }
                 });
             }
