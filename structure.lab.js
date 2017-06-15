@@ -17,7 +17,7 @@ const structureLab = {
         if (lab1_2.mineralAmount > 0) {
             const creeps = _.filter(Game.creeps, (creep) => {
             //  console.log(creep.room.name);
-              return creep.room.name === home1;
+              return creep.room.name === home1 && creep.memory.role === 'soldier';
 
             })
             console.log(creeps);
