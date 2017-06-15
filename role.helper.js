@@ -52,30 +52,19 @@ const roleHelper = {
                 });
             }
         } else {
-
-            const labs = creep.room.find(
-                FIND_STRUCTURES, {
-                    filter: (s) => s.structureType == STRUCTURE_LAB
+            const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                filter: (s) => s.structureType == STRUCTURE_STORAGE
+            });
+            if (storage) {
+                _.each(storage.store, (resource, key) => {
+                    // console.log(resource, key);
+                    if (key === 'energy') {
+                        if (creep.withdraw(storage, key)) {
+                            creep.moveTo(storage);
+                        }
+                    }
                 });
-            if (creep.withdraw(labs[2], 'KO') == ERR_NOT_IN_RANGE) {
-                creep.moveTo(labs[2]);
             }
-            console.log('get go', creep.withdraw(labs[2], 'KO'));
-            creep.drop('KO');
-
-            // const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-            //     filter: (s) => s.structureType == STRUCTURE_STORAGE
-            // });
-            // if (storage) {
-            //     _.each(storage.store, (resource, key) => {
-            //         // console.log(resource, key);
-            //         if (key === 'energy') {
-            //             if (creep.withdraw(storage, key)) {
-            //                 creep.moveTo(storage);
-            //             }
-            //         }
-            //     });
-            // }
         }
     }
 };
