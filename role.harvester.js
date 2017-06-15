@@ -5,6 +5,7 @@ const harvestContainer = require('harvest.container');
 const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
 const harvestSource = require('harvest.source');
+const harvestTerminal = require('harvest.terminal');
 
 var roleHarvester = {
 
@@ -49,13 +50,13 @@ var roleHarvester = {
                         //         creep.moveTo(terminal);
                         //     }
                         // } else {
-                            if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(storages);
-                            } else {
-                                creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                                    filter: (s) => s.structureType == STRUCTURE_SPAWN
-                                }));
-                            }
+                        if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(storages);
+                        } else {
+                            creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                                filter: (s) => s.structureType == STRUCTURE_SPAWN
+                            }));
+                        }
                         // }
                     });
                 } else {
@@ -66,17 +67,21 @@ var roleHarvester = {
             if (!creep.memory.htarget) {
                 if (!harvestLink.run(creep, 600)) {
                     if (depositTargets) {
-                        if (!harvestStorage.run(creep, 500)) {
-                            if (!harvestDrop.run(creep)) {
-                                if (!harvestContainer.run(creep, 100)) {
-                                    harvestSource.run(creep);
+                        if (!harvestTerminal.run(creep)) {
+                            if (!harvestStorage.run(creep, 500)) {
+                                if (!harvestDrop.run(creep)) {
+                                    if (!harvestContainer.run(creep, 100)) {
+                                        harvestSource.run(creep);
+                                    }
                                 }
                             }
                         }
                     } else {
-                        if (!harvestDrop.run(creep)) {
-                            if (!harvestContainer.run(creep, 100)) {
-                                harvestSource.run(creep);
+                        if (!harvestTerminal.run(creep)) {
+                            if (!harvestDrop.run(creep)) {
+                                if (!harvestContainer.run(creep, 100)) {
+                                    harvestSource.run(creep);
+                                }
                             }
                         }
                     }
