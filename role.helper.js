@@ -63,19 +63,19 @@ const roleHelper = {
             console.log('get go', creep.withdraw(labs[2], 'GO'));
             creep.drop('GO');
 
-            const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                filter: (s) => s.structureType == STRUCTURE_STORAGE
-            });
-            if (storage) {
-                _.each(storage.store, (resource, key) => {
-                    // console.log(resource, key);
-                    if (key === 'energy') {
-                        if (creep.withdraw(storage, key)) {
-                            creep.moveTo(storage);
-                        }
-                    }
-                });
-            }
+            // const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+            //     filter: (s) => s.structureType == STRUCTURE_STORAGE
+            // });
+            // if (storage) {
+            //     _.each(storage.store, (resource, key) => {
+            //         // console.log(resource, key);
+            //         if (key === 'energy') {
+            //             if (creep.withdraw(storage, key)) {
+            //                 creep.moveTo(storage);
+            //             }
+            //         }
+            //     });
+            // }
         }
     }
 };
