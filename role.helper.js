@@ -33,15 +33,10 @@ const roleHelper = {
                         }
                     } else {
                         const myLab = _.filter(labs, (lab) => {
-                            let minLab = {
-                                energy: 3000
-                            };
-                            if (lab.energy < minLab.energy) {
-                                minLab = lab;
-                            }
-                            return minLab;
+
+                            console.log(lab);
                         })
-                        console.log('labs', labs, myLab);
+                        console.log('labs', labs);
                         console.log('mylabs', myLab);
                         let transfer = creep.transfer(myLab, key);
                         if (transfer == ERR_NOT_IN_RANGE) {
