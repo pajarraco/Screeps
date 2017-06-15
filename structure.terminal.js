@@ -13,10 +13,10 @@ const structureTerminal = {
         // console.log('Terminal2', JSON.stringify(terminal2.store));
 
         let send = terminal1.send(RESOURCE_OXYGEN, 100, home2, 'Send O');
-        // console.log('terminal send', send);
+        console.log('terminal send', send);
 
         let send2 = terminal2.send(RESOURCE_HYDROGEN, 100, home1, 'Send H');
-        // console.log('terminal send2', send2);
+        console.log('terminal send2', send2);
 
     }
 };
