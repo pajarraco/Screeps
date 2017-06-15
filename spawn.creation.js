@@ -5,7 +5,7 @@ const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
 const harvesterBodyLow = [
     WORK, //WORK,
     CARRY, //CARRY,
-    MOVE,// MOVE
+    MOVE, // MOVE
 ];
 const minerBody = [
     WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,
@@ -150,6 +150,13 @@ const creepsCreation = {
                                 _.filter(Game.creeps, (creep) => creep.memory.role == 'harvestermine' && creep.room.name == spawn.room.name);
                             if (harvestersmine.length < 1 && (spawn.room.name === home1 || spawn.room.name === home2)) {
                                 createNewCreep(spawn, name, harvestersmineBody, 'harvestermine', harvestersmine);
+                            }
+                            //
+                            // helper
+                            const helpers =
+                                _.filter(Game.creeps, (creep) => creep.memory.role == 'helper' && creep.room.name == spawn.room.name);
+                            if (helpers.length < 1 && (spawn.room.name === home1 || spawn.room.name === home2)) {
+                                createNewCreep(spawn, name, builderBody, 'helper', helpers);
                             }
                             //
                             // Soldier

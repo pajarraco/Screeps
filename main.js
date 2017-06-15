@@ -7,11 +7,12 @@ const roleSoldier = require('role.soldier');
 const roleConquest = require('role.conquest');
 const roleExplorerminer = require('role.explorerminer');
 const roleExplorer = require('role.explorer');
+const roleDelivery = require('role.delivery');
+const roleHarvesterMine = require('role.harvestermine');
+const roleHelper = require('role.helper');
 const spawnsCreation = require('spawn.creation');
 const structureTower = require('structure.tower');
 const structureLink = require('structure.link');
-const roleDelivery = require('role.delivery');
-const roleHarvesterMine = require('role.harvestermine');
 const structureTerminal = require('structure.terminal');
 
 module.exports.loop = function() {
@@ -53,6 +54,8 @@ module.exports.loop = function() {
             roleDelivery.run(creep);
         } else if (creep.memory.role == 'harvestermine') {
             roleHarvesterMine.run(creep);
+        }else if (creep.memory.role == 'helper') {
+            roleHelper.run(creep);
         }
 
     }
