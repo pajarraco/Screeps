@@ -19,13 +19,13 @@ const roleHelper = {
                 FIND_STRUCTURES, {
                     filter: (s) => s.structureType == STRUCTURE_LAB
                 });
+            const terminal = creep.room.find(
+                FIND_STRUCTURES, {
+                    filter: (s) => s.structureType == STRUCTURE_TERMINAL
+                });
             if (labs.length > 0) {
                 _.each(creep.carry, (resource, key) => {
                     if (key === 'O') {
-                        const terminal = creep.room.find(
-                            FIND_STRUCTURES, {
-                                filter: (s) => s.structureType == STRUCTURE_TERMINAL
-                            });
                         if (terminal.length > 0) {
                             if (creep.transfer(terminal[0], key) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(terminal[0]);
@@ -44,8 +44,10 @@ const roleHelper = {
                                 if (transfer == ERR_NOT_IN_RANGE) {
                                     creep.moveTo(labs[2]);
                                 } else {
-                                    if (creep.transfer(terminal, key)) {
-                                        creep.moveTo(terminal);
+                                    if (terminal.length > 0) {
+                                        if (creep.transfer(terminal[0], key)) {
+                                            creep.moveTo(terminal[0]);
+                                        }
                                     }
                                 }
                             }
