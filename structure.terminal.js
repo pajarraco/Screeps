@@ -12,7 +12,7 @@ const structureTerminal = {
         console.log('Terminal1', JSON.stringify(terminal1.store));
         console.log('Terminal2', JSON.stringify(terminal2.store));
 
-        let send = terminal1.send(RESOURCE_ENERGY, 100, home2, 'Energy send');
+        let send = terminal1.send(RESOURCE_ENERGY, 500, home2, 'Energy send');
         console.log('terminal send', send);
 
         // let send2 = terminal2.send(RESOURCE_GHODIUM_OXIDE, 100, home1, 'send go');
