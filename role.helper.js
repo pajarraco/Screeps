@@ -32,22 +32,16 @@ const roleHelper = {
                             }
                         }
                     } else {
-                        const myLab = _.min(labs, (lab) => {
-
-                            return lab.energy;
-                        })
-                        console.log('labs', labs);
-                        console.log('mylabs', myLab);
+                        const myLab = _.min(labs, (lab) => lab.energy);
                         let transfer = creep.transfer(myLab, key);
-                        if (transfer == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(myLab);
-                        } else if (transfer == ERR_FULL) {
+                        if (transfer == ERR_FULL) {
                             if (terminal.length > 0) {
                                 if (creep.transfer(terminal[0], key)) {
                                     creep.moveTo(terminal[0]);
                                 }
                             }
-
+                        } else if (transfer == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(myLab);
                         }
                     }
                 });
