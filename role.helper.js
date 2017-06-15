@@ -44,7 +44,7 @@ const roleHelper = {
             });
             if (storage) {
                 _.each(storage.store, (resource, key) => {
-                    console.log(resource, key);
+                    // console.log(resource, key);
                     if (key !== 'energy') {
                         if (creep.withdraw(storage, key)) {
                             creep.moveTo(storage);
