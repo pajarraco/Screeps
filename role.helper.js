@@ -31,16 +31,16 @@ const roleHelper = {
                             }
                         }
                     } else {
-                        let tansfer = creep.transfer(labs[2], key);
-                        if (tansfer == ERR_NOT_IN_RANGE) {
+                        let transfer = creep.transfer(labs[2], key);
+                        if (transfer == ERR_NOT_IN_RANGE) {
                             creep.moveTo(labs[2]);
                         } else if (transfer == ERR_FULL) {
-                            tansfer = creep.transfer(labs[1], key);
-                            if (tansfer == ERR_NOT_IN_RANGE) {
+                            transfer = creep.transfer(labs[1], key);
+                            if (transfer == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(labs[1]);
                             } else if (transfer == ERR_FULL) {
-                                tansfer = creep.transfer(labs[0], key);
-                                if (tansfer == ERR_NOT_IN_RANGE) {
+                                transfer = creep.transfer(labs[0], key);
+                                if (transfer == ERR_NOT_IN_RANGE) {
                                     creep.moveTo(labs[0]);
                                 } else {
 
