@@ -14,6 +14,7 @@ const spawnsCreation = require('spawn.creation');
 const structureTower = require('structure.tower');
 const structureLink = require('structure.link');
 const structureTerminal = require('structure.terminal');
+const structureLab = require('structure.lab');
 
 module.exports.loop = function() {
 
@@ -29,6 +30,7 @@ module.exports.loop = function() {
     }
 
     structureTerminal.run();
+    structureLab.run();
 
     for (let name in Game.creeps) {
         const creep = Game.creeps[name];
