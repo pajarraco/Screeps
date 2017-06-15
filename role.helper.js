@@ -7,10 +7,7 @@ const roleHelper = {
         if (creep.memory.transferring && sum == 0) {
             creep.memory.transferring = false;
             creep.say('harvesting');
-            console.log('get ko', creep.withdraw(labs[2], 'KO'));
-            creep.drop('KO');
-            console.log('get go', creep.withdraw(labs[1], 'GO'));
-            creep.drop('GO');
+
         }
         if (!creep.memory.transferring && sum == creep.carryCapacity) {
             creep.memory.transferring = true;
@@ -55,6 +52,16 @@ const roleHelper = {
                 });
             }
         } else {
+
+            const labs = creep.room.find(
+                FIND_STRUCTURES, {
+                    filter: (s) => s.structureType == STRUCTURE_LAB
+                });
+            console.log('get ko', creep.withdraw(labs[2], 'KO'));
+            creep.drop('KO');
+            console.log('get go', creep.withdraw(labs[1], 'GO'));
+            creep.drop('GO');
+
             const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
                 filter: (s) => s.structureType == STRUCTURE_STORAGE
             });
