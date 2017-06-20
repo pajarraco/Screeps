@@ -137,7 +137,7 @@ const creepsCreation = {
                         // Builder
                         const builders =
                             _.filter(Game.creeps, (creep) => creep.memory.role == 'builder' && creep.room.name == spawn.room.name);
-                        if ((builders.length < 1 && spawn.room.name === home1) || ( builders.length < 1 && spawn.room.name === home2)) {
+                        if (builders.length < 1) {
                             // if (spawn.room.name !== home4) {
                             createNewCreep(spawn, name, builderBody, 'builder', builders);
                             // } else {
@@ -148,14 +148,14 @@ const creepsCreation = {
                             // Harvester
                             const harvestersmine =
                                 _.filter(Game.creeps, (creep) => creep.memory.role == 'harvestermine' && creep.room.name == spawn.room.name);
-                            if (harvestersmine.length < 1 && (spawn.room.name === home1 || spawn.room.name === home2)) {
+                            if (harvestersmine.length < 0 && (spawn.room.name === home1 || spawn.room.name === home2)) {
                                 createNewCreep(spawn, name, harvestersmineBody, 'harvestermine', harvestersmine);
                             }
                             //
                             // helper
                             const helpers =
                                 _.filter(Game.creeps, (creep) => creep.memory.role == 'helper' && creep.room.name == spawn.room.name);
-                            if (helpers.length < 1 && (spawn.room.name === home1 || spawn.room.name === home2)) {
+                            if (helpers.length < 0 && (spawn.room.name === home1 || spawn.room.name === home2)) {
                                 createNewCreep(spawn, name, builderBody, 'helper', helpers);
                             }
                             //
