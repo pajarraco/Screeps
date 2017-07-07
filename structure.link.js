@@ -52,11 +52,16 @@ const structureLink = {
             }
         } else if (room.name === home4) {
             const linkFrom1 = room.lookForAt('structure', 40, 13)[0];
-            // const linkFrom2 = room.lookForAt('structure', 28, 19)[1];
+            const linkFrom2 = room.lookForAt('structure', 28, 15)[0];
             const linkTo = room.lookForAt('structure', 25, 13)[0];
             if (linkFrom1 && linkTo) {
                 if (linkTo.energy < (linkTo.energyCapacity - 100)) {
                     linkFrom1.transferEnergy(linkTo);
+                }
+            }
+            if (linkFrom2 && linkTo) {
+                if (linkTo.energy < (linkTo.energyCapacity - 100)) {
+                    linkFrom2.transferEnergy(linkTo);
                 }
             }
         }

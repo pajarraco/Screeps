@@ -34,6 +34,11 @@ module.exports.loop = function() {
 
     for (let name in Game.creeps) {
         const creep = Game.creeps[name];
+        // temporal fix for room3
+        if (creep.room.name === 'E19N95') {
+            creep.moveTo(Game.rooms['E18N95']);
+        }
+
         if (creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         } else if (creep.memory.role == 'upgrader') {
@@ -56,7 +61,7 @@ module.exports.loop = function() {
             roleDelivery.run(creep);
         } else if (creep.memory.role == 'harvestermine') {
             roleHarvesterMine.run(creep);
-        }else if (creep.memory.role == 'helper') {
+        } else if (creep.memory.role == 'helper') {
             roleHelper.run(creep);
         }
 
