@@ -66,27 +66,27 @@ var roleHarvester = {
     } else {
       if (!creep.memory.htarget) {
         // if (!harvestTerminal.run(creep)) {
-          if (!harvestLink.run(creep, 600)) {
-            if (depositTargets) {
+        if (!harvestLink.run(creep, 600)) {
+          if (depositTargets) {
             //   if (!harvestTerminal.run(creep)) {
-                if (!harvestStorage.run(creep, 500)) {
-                  if (!harvestDrop.run(creep)) {
-                    if (!harvestContainer.run(creep, 100)) {
-                      harvestSource.run(creep);
-                    }
-                  }
-                }
-            //   }
-            } else {
-            //   if (!harvestTerminal.run(creep)) {
-                if (!harvestDrop.run(creep)) {
-                  if (!harvestContainer.run(creep, 100)) {
-                    harvestSource.run(creep);
-                  }
+            if (!harvestStorage.run(creep, 500)) {
+              if (!harvestDrop.run(creep)) {
+                if (!harvestContainer.run(creep, 100)) {
+                  harvestSource.run(creep);
                 }
               }
-            // }
+            }
+            //   }
+          } else {
+            if (!harvestTerminal.run(creep)) {
+              if (!harvestDrop.run(creep)) {
+                if (!harvestContainer.run(creep, 100)) {
+                  harvestSource.run(creep);
+                }
+              }
+            }
           }
+        }
         // }
       }
       harvest.run(creep);
