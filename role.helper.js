@@ -20,10 +20,13 @@ const roleHelper = {
       //     FIND_STRUCTURES, {
       //       filter: (s) => s.structureType == STRUCTURE_LAB
       //     });
-      const terminal = creep.room.find(
-        FIND_STRUCTURES, {
-          filter: (s) => s.structureType == STRUCTURE_TERMINAL
-        });
+      const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
+        filter: (s) => s.structureType == STRUCTURE_STORAGE
+      });
+    //   const terminal = creep.room.find(
+    //     FIND_STRUCTURES, {
+    //       filter: (s) => s.structureType == STRUCTURE_TERMINAL
+    //     });
       //   if (labs.length > 0) {
       _.each(creep.carry, (resource, key) => {
         if (key === 'O' || key === 'H') {
@@ -37,9 +40,9 @@ const roleHelper = {
           // }
         } else {
           // if (creep.memory.target === 'terminal') {
-          if (terminal.length > 0) {
-            if (creep.transfer(terminal[0], key)) {
-              creep.moveTo(terminal[0]);
+          if (storage) {
+            if (creep.transfer(storage, key)) {
+              creep.moveTo(storage);
             }
           }
           // } else {
@@ -75,11 +78,11 @@ const roleHelper = {
       if (terminal[0]) {
         _.each(terminal[0].store, (resource, key) => {
           // console.log(resource, key);
-          if (key !== 'energy') {
+        //   if (key !== 'energy') {
             if (creep.withdraw(terminal[0], key)) {
               creep.moveTo(terminal[0]);
             }
-          }
+        //   }
         });
       }
     }
