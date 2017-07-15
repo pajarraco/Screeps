@@ -45,19 +45,19 @@ var roleHarvester = {
             filter: (s) => s.structureType == STRUCTURE_TERMINAL
           });
           _.each(creep.carry, (resource, key) => {
-            if (terminal) {
-              if (creep.transfer(terminal, key) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(terminal);
-              }
+            // if (terminal) {
+            //     if (creep.transfer(terminal, key) == ERR_NOT_IN_RANGE) {
+            //         creep.moveTo(terminal);
+            //     }
+            // } else {
+            if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(storages);
             } else {
-              if (creep.transfer(storages, key) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storages);
-              } else {
-                creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {
-                  filter: (s) => s.structureType == STRUCTURE_SPAWN
-                }));
-              }
+              creep.moveTo(creep.pos.findClosestByRange(FIND_STRUCTURES, {
+                filter: (s) => s.structureType == STRUCTURE_SPAWN
+              }));
             }
+            // }
           });
         } else {
           roleUpgrader.run(creep);
@@ -65,29 +65,29 @@ var roleHarvester = {
       }
     } else {
       if (!creep.memory.htarget) {
-        // if (!harvestTerminal.run(creep)) {
-        if (!harvestLink.run(creep, 600)) {
-          if (depositTargets) {
-            // if (!harvestTerminal.run(creep)) {
-            if (!harvestStorage.run(creep, 500)) {
-              if (!harvestDrop.run(creep)) {
-                if (!harvestContainer.run(creep, 100)) {
-                  harvestSource.run(creep);
+        if (!harvestTerminal.run(creep)) {
+          if (!harvestLink.run(creep, 600)) {
+            if (depositTargets) {
+              if (!harvestTerminal.run(creep)) {
+                if (!harvestStorage.run(creep, 500)) {
+                  if (!harvestDrop.run(creep)) {
+                    if (!harvestContainer.run(creep, 100)) {
+                      harvestSource.run(creep);
+                    }
+                  }
+                }
+              }
+            } else {
+              if (!harvestTerminal.run(creep)) {
+                if (!harvestDrop.run(creep)) {
+                  if (!harvestContainer.run(creep, 100)) {
+                    harvestSource.run(creep);
+                  }
                 }
               }
             }
-            // }
-          } else {
-            // if (!harvestTerminal.run(creep)) {
-            if (!harvestDrop.run(creep)) {
-              if (!harvestContainer.run(creep, 100)) {
-                harvestSource.run(creep);
-              }
-            }
-            // }
           }
         }
-        // }
       }
       harvest.run(creep);
     }
