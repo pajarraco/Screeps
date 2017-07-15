@@ -16,54 +16,49 @@ const structureLink = require('structure.link');
 const structureTerminal = require('structure.terminal');
 const structureLab = require('structure.lab');
 
-module.exports.loop = function() {
+module.exports.loop = function () {
 
-    for (const spawnName in Game.spawns) {
-        const spawn = Game.spawns[spawnName];
-        spawnsCreation.run(spawn);
+  for (const spawnName in Game.spawns) {
+    const spawn = Game.spawns[spawnName];
+    spawnsCreation.run(spawn);
+  }
+
+  for (let roomName in Game.rooms) {
+    const room = Game.rooms[roomName];
+    structureTower.run(room);
+    structureLink.run(room);
+  }
+
+  structureTerminal.run();
+  structureLab.run();
+
+  for (let name in Game.creeps) {
+    const creep = Game.creeps[name];
+    if (creep.memory.role == 'harvester') {
+      roleHarvester.run(creep);
+    } else if (creep.memory.role == 'upgrader') {
+      roleUpgrader.run(creep);
+    } else if (creep.memory.role == 'builder') {
+      roleBuilder.run(creep);
+    } else if (creep.memory.role == 'miner') {
+      roleMiner.run(creep);
+    } else if (creep.memory.role == 'towerkeeper') {
+      roleTowerkeeper.run(creep);
+    } else if (creep.memory.role == 'soldier') {
+      roleSoldier.run(creep);
+    } else if (creep.memory.role == 'conquest') {
+      roleConquest.run(creep);
+    } else if (creep.memory.role == 'explorerminer') {
+      roleExplorerminer.run(creep);
+    } else if (creep.memory.role == 'explorer') {
+      roleExplorer.run(creep);
+    } else if (creep.memory.role == 'delivery') {
+      roleDelivery.run(creep);
+    } else if (creep.memory.role == 'harvestermine') {
+      roleHarvesterMine.run(creep);
+    } else if (creep.memory.role == 'helper') {
+      roleHelper.run(creep);
     }
 
-    for (let roomName in Game.rooms) {
-        const room = Game.rooms[roomName];
-        structureTower.run(room);
-        structureLink.run(room);
-    }
-
-    structureTerminal.run();
-    structureLab.run();
-
-    for (let name in Game.creeps) {
-        const creep = Game.creeps[name];
-        // temporal fix for room3
-        if (creep.room.name === 'E19N95') {
-            creep.moveTo(Game.rooms['E18N95']);
-        }
-
-        if (creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
-        } else if (creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        } else if (creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
-        } else if (creep.memory.role == 'miner') {
-            roleMiner.run(creep);
-        } else if (creep.memory.role == 'towerkeeper') {
-            roleTowerkeeper.run(creep);
-        } else if (creep.memory.role == 'soldier') {
-            roleSoldier.run(creep);
-        } else if (creep.memory.role == 'conquest') {
-            roleConquest.run(creep);
-        } else if (creep.memory.role == 'explorerminer') {
-            roleExplorerminer.run(creep);
-        } else if (creep.memory.role == 'explorer') {
-            roleExplorer.run(creep);
-        } else if (creep.memory.role == 'delivery') {
-            roleDelivery.run(creep);
-        } else if (creep.memory.role == 'harvestermine') {
-            roleHarvesterMine.run(creep);
-        } else if (creep.memory.role == 'helper') {
-            roleHelper.run(creep);
-        }
-
-    }
+  }
 }

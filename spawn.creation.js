@@ -23,9 +23,9 @@ const harvestersmineBody = [
     MOVE, MOVE, MOVE, MOVE, MOVE, MOVE,
 ];
 const upgraderBody = [
-    WORK, WORK, WORK, //WORK, WORK,
-    CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, MOVE, //MOVE, MOVE
+    WORK, WORK, WORK, WORK, WORK,
+    CARRY, CARRY, CARRY, CARRY, CARRY,
+    MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const upgraderBodyLow = [
     WORK, WORK, WORK, //WORK,
@@ -42,9 +42,9 @@ const towerkeeperBodyLow = [
     MOVE, MOVE
 ];
 const builderBody = [
-    WORK, WORK, WORK, //WORK, WORK, WORK, // WORK, WORK,
-    CARRY, CARRY, CARRY, //CARRY, CARRY, CARRY, //CARRY, CARRY,
-    MOVE, MOVE, MOVE, //MOVE, MOVE, MOVE, //MOVE, MOVE
+    WORK, WORK, WORK, WORK, WORK, WORK, // WORK, WORK,
+    CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, //CARRY, CARRY,
+    MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, MOVE
 ];
 const builderBodyLow = [
     WORK, WORK, WORK, //WORK, //WORK, WORK, // WORK, WORK,
@@ -115,7 +115,7 @@ const creepsCreation = {
                 // upgrader
                 const upgraders =
                     _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-                if (upgraders.length < 1) {
+                if (upgraders.length < 3) {
                     // if (spawn.room.name !== home4) {
                     createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
                     // } else {
