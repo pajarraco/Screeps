@@ -36,6 +36,7 @@ const roleHelper = {
             //     }
             // }
           } else {
+              console.log('terminal');
             if (creep.memory.target === 'terminal') {
               if (terminal.length > 0) {
                 if (creep.transfer(terminal[0], key)) {
