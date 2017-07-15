@@ -26,7 +26,7 @@ const roleHelper = {
         });
       //   if (labs.length > 0) {
       _.each(creep.carry, (resource, key) => {
-        if (key === 'O') {
+        if (key === 'O' || key === 'H') {
           for (const resourceType in creep.carry) {
             creep.drop(resourceType);
           }
