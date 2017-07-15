@@ -16,15 +16,15 @@ const roleHelper = {
     }
 
     if (creep.memory.transferring) {
-      const labs = creep.room.find(
-        FIND_STRUCTURES, {
-          filter: (s) => s.structureType == STRUCTURE_LAB
-        });
+    //   const labs = creep.room.find(
+    //     FIND_STRUCTURES, {
+    //       filter: (s) => s.structureType == STRUCTURE_LAB
+    //     });
       const terminal = creep.room.find(
         FIND_STRUCTURES, {
           filter: (s) => s.structureType == STRUCTURE_TERMINAL
         });
-      if (labs.length > 0) {
+    //   if (labs.length > 0) {
         _.each(creep.carry, (resource, key) => {
           if (key === 'O') {
             for (const resourceType in creep.carry) {
@@ -53,7 +53,7 @@ const roleHelper = {
             }
           }
         });
-      }
+    //   }
     } else {
       const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (s) => s.structureType == STRUCTURE_STORAGE
