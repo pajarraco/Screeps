@@ -29,7 +29,7 @@ const roleHelper = {
       //     });
       //   if (labs.length > 0) {
       _.each(creep.carry, (resource, key) => {
-        if (key === 'O' || key === 'H') {
+        if (key === 'O' || key === 'H' || key === 'GO') {
           for (const resourceType in creep.carry) {
             creep.drop(resourceType);
           }
@@ -40,9 +40,14 @@ const roleHelper = {
           // }
         } else {
           // if (creep.memory.target === 'terminal') {
-          if (storage) {
-            if (creep.transfer(storage, key)) {
-              creep.moveTo(storage);
+          // if (storage) {
+          //   if (creep.transfer(storage, key)) {
+          //     creep.moveTo(storage);
+          //   }
+          // }
+          if (terminal.length > 0) {
+            if (creep.transfer(terminal[0], key) == ERR_NOT_IN_RANGE) {
+              creep.moveTo(terminal[0]);
             }
           }
           // } else {
@@ -66,12 +71,12 @@ const roleHelper = {
       });
       if (storage) {
         // _.each(storage.store, (resource, key) => {
-          // console.log(resource, key);
-          // if (key === 'O' || key === 'H') {
-            if (creep.withdraw(storage, 'energy')) {
-              creep.moveTo(storage);
-            }
-          // }
+        // console.log(resource, key);
+        // if (key === 'O' || key === 'H') {
+        if (creep.withdraw(storage, 'energy')) {
+          creep.moveTo(storage);
+        }
+        // }
         // });
       }
       // if (terminal[0]) {
