@@ -14,7 +14,7 @@ const harvestLink = {
         if (creep.room.name === home1) {
             linkTo = creep.room.lookForAt('structure', 32, 24)[0];
         } else if (creep.room.name === home2) {
-            linkTo = creep.room.lookForAt('structure', 31, 29)[0];
+            linkTo = creep.room.lookForAt('structure', 30, 29)[0];
         } else if (creep.room.name === home3) {
             linkTo = creep.room.lookForAt('structure', 33, 26)[0];
         }else if (creep.room.name === home4) {
