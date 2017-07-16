@@ -149,7 +149,7 @@ const creepsCreation = {
               //
               // helper
               const helpers = _.filter(Game.creeps, (creep) => creep.memory.role == 'helper' && creep.room.name == spawn.room.name);
-              if (helpers.length < 1 && (spawn.roon.name === home1 || spawn.room.name === home2)) {
+              if (helpers.length < 1 && (spawn.room.name === home2)) {
                 createNewCreep(spawn, name, builderBody, 'helper', helpers);
               }
               //
