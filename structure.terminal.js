@@ -17,7 +17,7 @@ const structureTerminal = {
     // let send = terminal1.send(RESOURCE_ENERGY, 100, home4, 'Send O');
     // console.log('terminal send', send);
 
-    let send2 = terminal2.send(RESOURCE_ENERGY, 300, home1, 'Send H');
+    let send2 = terminal2.send(RESOURCE_ENERGY, 250, home1, 'Send H');
     console.log('terminal send2', send2);
 
   }
