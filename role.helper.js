@@ -4,18 +4,18 @@ const roleHelper = {
   run: (creep) => {
 
     let sum = _.sum(creep.carry);
-    if (creep.memory.transferring && sum == 0) {
-      creep.memory.transferring = false;
+    if (creep.memory.transfering && sum == 0) {
+      creep.memory.transfering = false;
       creep.say('harvesting');
 
     }
-    if (!creep.memory.transferring && sum == creep.carryCapacity) {
+    if (!creep.memory.transfering && sum == creep.carryCapacity) {
       creep.memory.transferring = true;
       creep.memory.target = '';
-      creep.say('transferring');
+      creep.say('transfering');
     }
 
-    if (creep.memory.transferring) {
+    if (creep.memory.transfering) {
       //   const labs = creep.room.find(
       //     FIND_STRUCTURES, {
       //       filter: (s) => s.structureType == STRUCTURE_LAB
