@@ -122,22 +122,22 @@ var roleExplorer = {
                 }
             } else {
                 if (creep.memory.room == 1) {
-                    if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
+                    if (creep.pos.roomName == Game.flags['Room5'].pos.roomName) {
                         harvestContainer(creep);
                     } else {
-                        creep.moveTo(Game.flags['Room2']);
+                        creep.moveTo(Game.flags['Room5']);
                     }
                 } else if (creep.memory.room == 2) {
-                    if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
+                    if (creep.pos.roomName == Game.flags['Room5'].pos.roomName) {
                         harvestContainer(creep);
                     } else {
-                        creep.moveTo(Game.flags['Room2']);
+                        creep.moveTo(Game.flags['Room5']);
                     }
                 } else if (creep.memory.room == 3) {
-                    if (creep.pos.roomName == Game.flags['Room2'].pos.roomName) {
+                    if (creep.pos.roomName == Game.flags['Room5'].pos.roomName) {
                         harvestContainer(creep);
                     } else {
-                        creep.moveTo(Game.flags['Room2']);
+                        creep.moveTo(Game.flags['Room5']);
                     }
                 }
             }
