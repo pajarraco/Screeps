@@ -114,7 +114,7 @@ const creepsCreation = {
         //
         // upgrader
         const upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader' && creep.room.name == spawn.room.name);
-        if (upgraders.length < 3) {
+        if (upgraders.length < 2) {
           if (spawn.room.name !== home5) {
             createNewCreep(spawn, name, upgraderBody, 'upgrader', upgraders);
           } else {
@@ -150,13 +150,13 @@ const creepsCreation = {
               //
               // helper
               const helpers = _.filter(Game.creeps, (creep) => creep.memory.role == 'helper' && creep.room.name == spawn.room.name);
-              if (helpers.length < 2 && (spawn.room.name === home2)) {
+              if (helpers.length < 1 && (spawn.room.name === home2)) {
                 createNewCreep(spawn, name, builderBody, 'helper', helpers);
               }
               //
               // Soldier
               const soldiers = _.filter(Game.creeps, (creep) => creep.memory.role == 'soldier');
-              if (soldiers.length < 2 && spawn.room.name === home1) {
+              if (soldiers.length < 1 && spawn.room.name === home1) {
                 createNewCreep(spawn, name, soldierBody, 'soldier', soldiers);
               }
               //
