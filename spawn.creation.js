@@ -173,7 +173,7 @@ const creepsCreation = {
               //
               // Explorer
               const explorers = _.filter(Game.creeps, (creep) => creep.memory.role == 'explorer');
-              if (explorers.length < 2 && spawn.room.name === home1) {
+              if (explorers.length < 6 && spawn.room.name === home1) {
                 createNewCreep(spawn, name, explorerBody, 'explorer', explorers);
               }
               //
