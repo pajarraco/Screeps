@@ -3,9 +3,9 @@ const harvesterBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
   MOVE, MOVE, MOVE, MOVE, MOVE, //MOVE, //MOVE, MOVE
 ];
 const harvesterBodyLow = [
-  WORK, //WORK,
-  CARRY, //CARRY,
-  MOVE, //MOVE
+  WORK, WORK,
+  CARRY, CARRY,
+  MOVE, MOVE
 ];
 const minerBody = [
   WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK,
@@ -205,7 +205,7 @@ const createNewCreep = function (spawn, name, body, role, creeps) {
   (
     newCreep == ERR_NOT_ENOUGH_ENERGY &&
     role === 'harvester' &&
-    (spawn.room.name === home1 || spawn.room.name === home2)
+    (spawn.room.name === home5)
   ) ? spawn.createCreep(harvesterBodyLow, undefined, memory): null;
 };
 
