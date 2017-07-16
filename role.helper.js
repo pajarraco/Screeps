@@ -23,10 +23,9 @@ const roleHelper = {
       const storage = creep.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (s) => s.structureType == STRUCTURE_STORAGE
       });
-      //   const terminal = creep.room.find(
-      //     FIND_STRUCTURES, {
-      //       filter: (s) => s.structureType == STRUCTURE_TERMINAL
-      //     });
+      const terminal = creep.room.find(FIND_STRUCTURES, {
+        filter: (s) => s.structureType == STRUCTURE_TERMINAL
+      });
       //   if (labs.length > 0) {
       _.each(creep.carry, (resource, key) => {
         if (key === 'O' || key === 'H' || key === 'GO') {
