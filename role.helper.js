@@ -10,7 +10,7 @@ const roleHelper = {
 
     }
     if (!creep.memory.transfering && sum == creep.carryCapacity) {
-      creep.memory.transferring = true;
+      creep.memory.transfering = true;
       creep.memory.target = '';
       creep.say('transfering');
     }
