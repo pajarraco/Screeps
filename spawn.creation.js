@@ -13,7 +13,7 @@ const minerBody = [
   MOVE, MOVE, MOVE, //MOVE
 ];
 const minerBodyLow = [
-  WORK, WORK, WORK, //WORK, WORK, //WORK, //WORK,
+  WORK, WORK, WORK, WORK, WORK, //WORK, //WORK,
   // CARRY,
   MOVE, //MOVE, // MOVE, MOVE
 ];
