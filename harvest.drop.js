@@ -3,7 +3,8 @@ const harvestDrop = {
   /** @param {Creep} creep **/
   run: (creep) => {
     // const target = creep.room.find(FIND_DROPPED_RESOURCES);
-    const x = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
+    const y = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
+    console.log(y);
     // let x = target[0];
     // for (let j = 0; j < target.length; j++) {
     //   if (target[j].amount > x.amount) {
