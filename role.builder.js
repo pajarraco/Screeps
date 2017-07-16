@@ -45,13 +45,13 @@ var roleBuilder = {
       if (!creep.memory.htarget) {
         if (!harvestTerminal.run(creep)) {
           if (!harvestStorage.run(creep, 100)) {
-            // if (!harvestDrop.run(creep)) {
-            if (!harvestContainer.run(creep, 300)) {
-              if (!harvestLink.run(creep, 100)) {
-                // harvestSource.run(creep);
+            if (!harvestDrop.run(creep)) {
+              if (!harvestContainer.run(creep, 300)) {
+                if (!harvestLink.run(creep, 100)) {
+                  // harvestSource.run(creep);
+                }
               }
             }
-            // }
           }
         }
       }

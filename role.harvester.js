@@ -70,20 +70,20 @@ var roleHarvester = {
             if (depositTargets) {
               if (!harvestTerminal.run(creep)) {
                 if (!harvestStorage.run(creep, 500)) {
-                  // if (!harvestDrop.run(creep)) {
-                  if (!harvestContainer.run(creep, 100)) {
-                    harvestSource.run(creep);
+                  if (!harvestDrop.run(creep)) {
+                    if (!harvestContainer.run(creep, 100)) {
+                      harvestSource.run(creep);
+                    }
                   }
-                  // }
                 }
               }
             } else {
               if (!harvestTerminal.run(creep)) {
-                // if (!harvestDrop.run(creep)) {
-                if (!harvestContainer.run(creep, 100)) {
-                  harvestSource.run(creep);
+                if (!harvestDrop.run(creep)) {
+                  if (!harvestContainer.run(creep, 100)) {
+                    harvestSource.run(creep);
+                  }
                 }
-                // }
               }
             }
           }
