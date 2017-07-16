@@ -39,8 +39,8 @@ const roleUpgrader = {
       if (!creep.memory.htarget) {
         if (!harvestStorage.run(creep, 10)) {
           if (!harvestContainer.run(creep, 10)) {
-            harvestLink.run(creep, 500);
             if (!harvestDrop.run(creep)) {
+              harvestLink.run(creep, 500);
               // harvestSource.run(creep);
             }
           }
