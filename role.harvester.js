@@ -1,11 +1,11 @@
 const roleUpgrader = require('role.upgrader');
 const harvest = require('harvest');
-const harvestDrop = require('harvest.drop');
 const harvestContainer = require('harvest.container');
 const harvestStorage = require('harvest.storage');
 const harvestLink = require('harvest.link');
 const harvestSource = require('harvest.source');
 const harvestTerminal = require('harvest.terminal');
+const harvestDrop = require('harvest.drop');
 
 var roleHarvester = {
 
