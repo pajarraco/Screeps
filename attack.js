@@ -30,7 +30,7 @@ const attack = {
       }
       return true;
     } else {
-      return false;
+      return true;
     }
   }
 };
