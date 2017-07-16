@@ -65,14 +65,14 @@ const roleHelper = {
         filter: (s) => s.structureType == STRUCTURE_TERMINAL
       });
       if (storage) {
-        _.each(storage.store, (resource, key) => {
+        // _.each(storage.store, (resource, key) => {
           // console.log(resource, key);
           // if (key === 'O' || key === 'H') {
-            if (creep.withdraw(storage, key)) {
+            if (creep.withdraw(storage, 'energy')) {
               creep.moveTo(storage);
             }
           // }
-        });
+        // });
       }
       // if (terminal[0]) {
       //   _.each(terminal[0].store, (resource, key) => {
