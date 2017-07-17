@@ -28,9 +28,9 @@ const upgraderBody = [
   MOVE, MOVE, MOVE, MOVE, MOVE
 ];
 const upgraderBodyLow = [
-  WORK, //WORK, WORK, //WORK,
-  CARRY, //CARRY, CARRY, //CARRY,
-  MOVE, //MOVE, MOVE, //MOVE
+  WORK, WORK, //WORK, //WORK,
+  CARRY, CARRY, //CARRY, //CARRY,
+  MOVE, MOVE, //MOVE, //MOVE
 ];
 const towerkeeperBody = [WORK, WORK, //WORK, WORK, // WORK, WORK, WORK, WORK,
   CARRY, CARRY, //CARRY, //CARRY, //CARRY, //CARRY, CARRY, CARRY,
@@ -124,12 +124,12 @@ const creepsCreation = {
           //
           // Tower keeper
           const towerkeepers = _.filter(Game.creeps, (creep) => creep.memory.role == 'towerkeeper' && creep.room.name == spawn.room.name);
-          if (towerkeepers.length < 1 && spawn.room.name !== home5) {
-            // if (spawn.room.name !== home4) {
-            createNewCreep(spawn, name, towerkeeperBody, 'towerkeeper', towerkeepers);
-            // } else {
-            //     createNewCreep(spawn, name, towerkeeperBodyLow, 'towerkeeper', towerkeepers);
-            // }
+          if (towerkeepers.length < 1) {
+            if (spawn.room.name !== home5) {
+              createNewCreep(spawn, name, towerkeeperBody, 'towerkeeper', towerkeepers);
+            } else {
+              createNewCreep(spawn, name, towerkeeperBodyLow, 'towerkeeper', towerkeepers);
+            }
           } else {
             //
             // Builder
