@@ -34,30 +34,34 @@ module.exports.loop = function () {
 
   for (let name in Game.creeps) {
     const creep = Game.creeps[name];
-    if (creep.memory.role == 'harvester') {
-      roleHarvester.run(creep);
-    } else if (creep.memory.role == 'upgrader') {
-      roleUpgrader.run(creep);
-    } else if (creep.memory.role == 'builder') {
-      roleBuilder.run(creep);
-    } else if (creep.memory.role == 'miner') {
-      roleMiner.run(creep);
-    } else if (creep.memory.role == 'towerkeeper') {
-      roleTowerkeeper.run(creep);
-    } else if (creep.memory.role == 'soldier') {
-      roleSoldier.run(creep);
-    } else if (creep.memory.role == 'conquest') {
-      roleConquest.run(creep);
-    } else if (creep.memory.role == 'explorerminer') {
-      roleExplorerminer.run(creep);
-    } else if (creep.memory.role == 'explorer') {
-      roleExplorer.run(creep);
-    } else if (creep.memory.role == 'delivery') {
-      roleDelivery.run(creep);
-    } else if (creep.memory.role == 'harvestermine') {
-      roleHarvesterMine.run(creep);
-    } else if (creep.memory.role == 'helper') {
-      roleHelper.run(creep);
+    if (creep.room.name === 'E19N95') {
+      creep.move(Game.rooms['E18N95']);
+    } else {
+      if (creep.memory.role == 'harvester') {
+        roleHarvester.run(creep);
+      } else if (creep.memory.role == 'upgrader') {
+        roleUpgrader.run(creep);
+      } else if (creep.memory.role == 'builder') {
+        roleBuilder.run(creep);
+      } else if (creep.memory.role == 'miner') {
+        roleMiner.run(creep);
+      } else if (creep.memory.role == 'towerkeeper') {
+        roleTowerkeeper.run(creep);
+      } else if (creep.memory.role == 'soldier') {
+        roleSoldier.run(creep);
+      } else if (creep.memory.role == 'conquest') {
+        roleConquest.run(creep);
+      } else if (creep.memory.role == 'explorerminer') {
+        roleExplorerminer.run(creep);
+      } else if (creep.memory.role == 'explorer') {
+        roleExplorer.run(creep);
+      } else if (creep.memory.role == 'delivery') {
+        roleDelivery.run(creep);
+      } else if (creep.memory.role == 'harvestermine') {
+        roleHarvesterMine.run(creep);
+      } else if (creep.memory.role == 'helper') {
+        roleHelper.run(creep);
+      }
     }
 
   }
