@@ -67,7 +67,7 @@ const structureLink = {
       }
     } else if (room.name === home5) {
       const linkFrom1 = room.lookForAt('structure', 12, 21)[0];
-      const linkFrom2 = room.lookForAt('structure', 26, 32)[0];
+      const linkFrom2 = room.lookForAt('structure', 26, 33)[0];
       const linkTo = room.lookForAt('structure', 23, 27)[0];
       if (linkFrom1 && linkTo) {
         if (linkTo.energy < (linkTo.energyCapacity - 100)) {
