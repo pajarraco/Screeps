@@ -2,6 +2,7 @@ const home1 = 'E17N93';
 const home2 = 'E19N94';
 const home3 = 'E18N95';
 const home4 = 'E18N93';
+const home5 = 'E17N94';
 
 const harvestLink = {
 
@@ -19,6 +20,8 @@ const harvestLink = {
             linkTo = creep.room.lookForAt('structure', 33, 26)[0];
         }else if (creep.room.name === home4) {
             linkTo = creep.room.lookForAt('structure', 25, 13)[0];
+        }else if (creep.room.name === home5) {
+            linkTo = creep.room.lookForAt('structure', 23, 27)[0];
         }
         if (linkTo) {
             if (linkTo.energy >= (linkTo.energyCapacity - _max)) {
